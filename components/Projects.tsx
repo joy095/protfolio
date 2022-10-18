@@ -18,10 +18,12 @@ const Projects = (props: Props) => {
 
       <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20">
         {projects.map((project) => (
-          <div className="w-screen flex-shrink-0 snap-center flex flex-col space-x-5 items-center justify-center p-20 md:p-44 h-screen">
+          <div
+            key={project}
+            className="w-screen flex-shrink-0 snap-center flex flex-col space-x-5 items-center justify-center p-20 md:p-44 h-screen"
+          >
             <motion.img
               initial={{ y: -300, opacity: 0 }}
-              onTransitionEnd={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               src="https://assets.hongkiat.com/uploads/clean-simple-minimalist-website-design/tinker.jpg"
