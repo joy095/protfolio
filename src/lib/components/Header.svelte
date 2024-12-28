@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
+	import { headerAnimationComplete } from '$lib/store';
 
 	let currentTime: string;
 	let timezone: string = 'Kolkata';
@@ -25,6 +26,10 @@
 		}, 2500);
 		return () => clearInterval(interval);
 	});
+
+	const onAnimationEnd = () => {
+		headerAnimationComplete.set(true); // Notify other components
+	};
 
 	// Track scroll direction
 	let scrollDirection = 'up'; // Initially set to 'up'
@@ -55,7 +60,10 @@
 	class:scrolling-up={scrollDirection === 'up'}
 >
 	{#if isVisible}
-		<div class="relative overflow-hidden flex justify-between items-center py-5">
+		<div
+			on:outroend={onAnimationEnd}
+			class="relative overflow-hidden flex justify-between items-center py-5"
+		>
 			<div class="nav-border"></div>
 
 			<a class="font-bold text-xl" href="/" in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}>
