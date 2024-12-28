@@ -8,6 +8,9 @@
 	let currentY = mouseY;
 	let isHovered = false;
 
+	// Create a MutationObserver to watch for new links
+	let observer: MutationObserver;
+
 	const moveCursor = () => {
 		const speed = 0.1;
 		currentX += (mouseX - currentX) * speed;
@@ -34,27 +37,69 @@
 		isHovered = false;
 	};
 
-	onMount(() => {
-		window.addEventListener('mousemove', handleMouseMove);
-		const links = document.querySelectorAll('a');
-		links.forEach((link) => {
+	const attachLinkListeners = (element: Element) => {
+		if (element.tagName.toLowerCase() === 'a') {
+			element.addEventListener('mouseenter', handleMouseEnter);
+			element.addEventListener('mouseleave', handleMouseLeave);
+		}
+		// Also check children
+		element.querySelectorAll('a').forEach((link) => {
 			link.addEventListener('mouseenter', handleMouseEnter);
 			link.addEventListener('mouseleave', handleMouseLeave);
+		});
+	};
+
+	const removeLinkListeners = (element: Element) => {
+		if (element.tagName.toLowerCase() === 'a') {
+			element.removeEventListener('mouseenter', handleMouseEnter);
+			element.removeEventListener('mouseleave', handleMouseLeave);
+		}
+		element.querySelectorAll('a').forEach((link) => {
+			link.removeEventListener('mouseenter', handleMouseEnter);
+			link.removeEventListener('mouseleave', handleMouseLeave);
+		});
+	};
+
+	onMount(() => {
+		// Initial setup
+		window.addEventListener('mousemove', handleMouseMove);
+		document.querySelectorAll('a').forEach(attachLinkListeners);
+
+		// Create observer for dynamic content
+		observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				// Handle added nodes
+				mutation.addedNodes.forEach((node) => {
+					if (node instanceof Element) {
+						attachLinkListeners(node);
+					}
+				});
+				// Handle removed nodes
+				mutation.removedNodes.forEach((node) => {
+					if (node instanceof Element) {
+						removeLinkListeners(node);
+					}
+				});
+			});
+		});
+
+		// Start observing
+		observer.observe(document.body, {
+			childList: true,
+			subtree: true
 		});
 
 		moveCursor();
 
 		return () => {
 			window.removeEventListener('mousemove', handleMouseMove);
-			links.forEach((link) => {
-				link.removeEventListener('mouseenter', handleMouseEnter);
-				link.removeEventListener('mouseleave', handleMouseLeave);
-			});
+			document.querySelectorAll('a').forEach(removeLinkListeners);
+			observer.disconnect();
 		};
 	});
 </script>
 
-<div bind:this={cursor} class="cursor {isHovered ? 'hovered' : ''}"></div>
+<div bind:this={cursor} class="cursor" class:hovered={isHovered}></div>
 
 <style>
 	.cursor {
@@ -71,6 +116,6 @@
 	}
 
 	.cursor.hovered {
-		transform: translate(-50%, -50%) scale(2);
+		transform: translate(-50%, -50%) scale(1.5);
 	}
 </style>
