@@ -8,5 +8,9 @@ export default defineConfig({
 	},
 	ssr: {
 		noExternal: ['gsap']
+	},
+	preview: {
+		host: '0.0.0.0', // Make the app accessible on all network interfaces
+		port: 4000 // Change this to any port you'd like for production preview
 	}
 });
