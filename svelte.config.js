@@ -1,14 +1,18 @@
-import adapter from '@sveltejs/adapter-vercel'; // or '@sveltejs/adapter-static' for static sites
-import { defineConfig } from 'vite';
+import adapter from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-export default defineConfig({
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	// Consult https://svelte.dev/docs/kit/integrations
+	// for more information about preprocessors
+	preprocess: vitePreprocess(),
+
 	kit: {
-		// Other SvelteKit configurations
-
-		// Explicitly use the Vercel adapter if deploying to Vercel
-		adapter: adapter({
-			// options for the vercel adapter
-			// e.g., pages: 'build', assets: 'build'
-		})
+		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
+		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
+		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
+		adapter: adapter()
 	}
-});
+};
+
+export default config;
