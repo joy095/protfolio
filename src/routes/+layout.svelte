@@ -8,6 +8,7 @@
 	import '../app.css';
 	import Header from '$lib/components/Header.svelte';
 	import SplashScreen from '$lib/components/SplashScreen.svelte';
+	import Cursor from '$lib/Cursor.svelte';
 
 	onMount(() => {
 		initializeLenis();
@@ -18,6 +19,8 @@
 	<SplashScreen />
 
 	<Header />
+
+	<Cursor />
 
 	<main class="mt-20">
 		<slot />

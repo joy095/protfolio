@@ -65,7 +65,9 @@
 			<nav>
 				<ul class="flex gap-8 font-semibold text-black/85 text-lg">
 					<li in:fly={{ y: 20, duration: 800, delay: 200, opacity: 0 }}>
-						<a href="/" class="relative line-animate transition-opacity duration-200"> Home </a>
+						<a href="/#about" class="relative line-animate transition-opacity duration-200">
+							About
+						</a>
 					</li>
 					<li in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}>
 						<a href="/#project" class="relative line-animate transition-opacity duration-200">

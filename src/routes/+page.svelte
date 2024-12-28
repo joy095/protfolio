@@ -1,5 +1,5 @@
 <script>
-	import AnimatedElement from '$lib/components/AnimatedElement.svelte';
+	import AnimatedElement from '$lib/components/Hero.svelte';
 </script>
 
 <div class="container-auto mt-2">
