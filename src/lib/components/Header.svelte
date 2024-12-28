@@ -55,7 +55,7 @@
 	class:scrolling-up={scrollDirection === 'up'}
 >
 	{#if isVisible}
-		<div class="relative overflow-hidden flex justify-between items-center py-5 px-8">
+		<div class="relative overflow-hidden flex justify-between items-center py-5">
 			<div class="nav-border"></div>
 
 			<a class="font-bold text-xl" href="/" in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}>
