@@ -2,22 +2,6 @@
 	import AnimatedElement from '$lib/components/Hero.svelte';
 </script>
 
-<div class="container-auto mt-2">
-	<div class="flex items-center gap-2">
-		<img class="icon" src="/icons/line.svg" alt="" />
-		Hello
-	</div>
-
+<div class="container-auto">
 	<AnimatedElement />
 </div>
-
-<style>
-	.icon {
-		animation: spinner 15s linear infinite;
-	}
-	@keyframes spinner {
-		to {
-			transform: rotate(-360deg);
-		}
-	}
-</style>
