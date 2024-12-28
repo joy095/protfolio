@@ -2,7 +2,7 @@
 	"name": "protfolio",
 	"version": "0.0.1",
 	"engines": {
-		"node": ">=22.0.0 "
+		"node": "22.0.0"
 	},
 	"scripts": {
 		"dev": "vite dev",
