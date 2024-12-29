@@ -8,7 +8,7 @@
 	import Header from '$lib/components/Header.svelte';
 	import SplashScreen from '$lib/components/SplashScreen.svelte';
 	import Cursor from '$lib/Cursor.svelte';
-	import { headerAnimationComplete } from '$lib/store';
+	import { headerAnimationComplete } from '$lib/store/store';
 
 	let numberOfLines = 11;
 

@@ -90,13 +90,11 @@
 
 		<h2
 			in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}
-			class="text-[7rem] leading-[0.8] font-light tracking-tighter mt-5 flex justify-center"
+			class="text-[7rem] font-light leading-[0.9] mt-4 tracking-tighter flex justify-center"
 			style="transform: translateX({$xPos2}px)"
 		>
 			lives by develop
 		</h2>
-
-		<div class="h-[150vh]"></div>
 	</div>
 {/if}
 
