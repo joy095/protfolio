@@ -4,5 +4,13 @@ export interface Work {
 	slug: {
 		current: string;
 	};
-	image?: string;
+	image: SanityImage;
+}
+
+export interface SanityImage {
+	_type: 'image';
+	asset: {
+		_ref: string;
+		_type: 'reference';
+	};
 }

@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { posts, isLoading, error, fetchPosts } from '$lib/store/posts';
-	import type { Post } from '$lib/types/post';
+	import { urlFor } from '$lib/sanity';
+	import type { Work } from '$lib/types/post';
 
 	onMount(() => {
 		fetchPosts();
@@ -23,7 +24,7 @@
 			{#each $posts as post (post._id)}
 				<article class="post-card">
 					{#if post.image}
-						<img src={post.image} alt={post.title} />
+						<img src={urlFor(post.image)} alt={post.title} />
 					{/if}
 					<h2>{post.title}</h2>
 				</article>
