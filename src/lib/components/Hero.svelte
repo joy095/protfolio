@@ -29,7 +29,7 @@
 		scrollDirection = direction;
 
 		// Update scroll position while scrolling
-		xPos1.set(direction === 'down' ? -100 : 10);
+		xPos1.set(direction === 'down' ? -100 : 100);
 		xPos2.set(direction === 'down' ? 100 : -100);
 
 		// Clear previous timeout
@@ -62,7 +62,7 @@
 		<div
 			in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
 			id="animated-text"
-			class="flex items-center gap-5 ml-[10vw] transition-transform duration-800"
+			class="flex items-center justify-center gap-5 transition-transform duration-800"
 			style="transform: translateX({$xPos1}px)"
 		>
 			<img class="icon {scrollDirection}" src="/icons/line.svg" alt="" />
@@ -90,7 +90,7 @@
 
 		<h2
 			in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}
-			class="text-[7rem] leading-[0.8] font-light tracking-tighter mt-5"
+			class="text-[7rem] leading-[0.8] font-light tracking-tighter mt-5 flex justify-center"
 			style="transform: translateX({$xPos2}px)"
 		>
 			lives by develop

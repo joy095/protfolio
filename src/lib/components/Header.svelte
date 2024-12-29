@@ -7,6 +7,8 @@
 	let timezone: string = 'Kolkata';
 	let isVisible = false;
 
+	let numberOfLines = 11;
+
 	// Update time function to fetch the current time
 	const updateTime = () => {
 		const now = new Date();
@@ -54,7 +56,8 @@
 </script>
 
 <header
-	class="header-container container-auto"
+	class="header-container container-auto background"
+	style="--number-of-lines: {numberOfLines}"
 	class:scrolling-down={scrollDirection === 'down'}
 	class:scrolling-up={scrollDirection === 'up'}
 >
@@ -165,5 +168,30 @@
 
 	.line-animate:hover {
 		color: #444;
+	}
+
+	/* Background container */
+	.background {
+		min-height: 68px;
+		overflow: hidden; /* Prevent scrolling from pseudo-elements */
+	}
+
+	/* Background lines */
+	.background::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -5vw; /* Start at the very left */
+		right: 0; /* Extend to the very right */
+		bottom: 0;
+		background-image: repeating-linear-gradient(
+			to right,
+			transparent,
+			transparent calc((100% - 4vw) / var(--number-of-lines) - 1px),
+			/* 4vw for left and right padding */ rgba(204, 204, 204, 0.3)
+				calc((100% - 4vw) / var(--number-of-lines) - 1px),
+			rgba(204, 204, 204, 0.3) calc((100% - 4vw) / var(--number-of-lines))
+		);
+		z-index: -1; /* Send to back */
 	}
 </style>
