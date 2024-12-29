@@ -4,36 +4,52 @@
 	import { urlFor } from '$lib/sanity';
 	import type { Work } from '$lib/types/post';
 
+	let contentVisible = false;
+
 	onMount(() => {
 		fetchPosts();
 	});
+
+	setTimeout(() => {
+		contentVisible = true;
+	}, 2000);
 </script>
 
-<main>
-	<h1>Blog Posts</h1>
+{#if contentVisible}
+	<section class="container-auto" id="project">
+		<div class="flex justify-between border-b-2 border-black/80 pb-3">
+			<p class="font-medium text-2xl leading-[1.6] tracking-tighter">Featured work</p>
 
-	{#if $isLoading}
-		<div class="loading">Loading posts...</div>
-	{:else if $error}
-		<div class="error">
-			Error: {$error}
-			<button on:click={fetchPosts}>Retry</button>
+			<div class="text-lg font-medium flex items-center gap-1">
+				Scroll
+				<img src="/icons/arrow.svg" alt="arrow" class="animate-bounce h-4 w-4" />
+			</div>
 		</div>
-	{:else if $posts.length > 0}
-		<div class="posts-grid">
-			{#each $posts as post (post._id)}
-				<article class="post-card">
-					{#if post.image}
-						<img src={urlFor(post.image)} alt={post.title} />
-					{/if}
-					<h2>{post.title}</h2>
-				</article>
-			{/each}
-		</div>
-	{:else}
-		<p>No posts found.</p>
-	{/if}
-</main>
+		<h1>Blog Posts</h1>
+
+		{#if $isLoading}
+			<div class="loading">Loading posts...</div>
+		{:else if $error}
+			<div class="error">
+				Error: {$error}
+				<button on:click={fetchPosts}>Retry</button>
+			</div>
+		{:else if $posts.length > 0}
+			<div class="posts-grid">
+				{#each $posts as post (post._id)}
+					<article class="post-card">
+						{#if post.image}
+							<img src={urlFor(post.image)} alt={post.title} />
+						{/if}
+						<h2>{post.title}</h2>
+					</article>
+				{/each}
+			</div>
+		{:else}
+			<p>No posts found.</p>
+		{/if}
+	</section>
+{/if}
 
 <style>
 	.posts-grid {

@@ -28,9 +28,9 @@
 	});
 </script>
 
-<!-- {#if showSplash}
+{#if showSplash}
 	<SplashScreen />
-{/if} -->
+{/if}
 
 {#if !showSplash}
 	<Header />
