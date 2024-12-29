@@ -23,13 +23,9 @@
 		const interval = setInterval(updateTime, 1000); // Update every second
 		setTimeout(() => {
 			isVisible = true; // Set the header visible after 2.5 seconds
-		}, 2500);
+		}, 0);
 		return () => clearInterval(interval);
 	});
-
-	const onAnimationEnd = () => {
-		headerAnimationComplete.set(true); // Notify other components
-	};
 
 	// Track scroll direction
 	let scrollDirection = 'up'; // Initially set to 'up'
@@ -48,6 +44,9 @@
 	onMount(() => {
 		window.addEventListener('scroll', handleScroll);
 
+		headerAnimationComplete.set(true); // Update the store immediately
+		console.log('Store updated in onMount');
+
 		return () => {
 			window.removeEventListener('scroll', handleScroll); // Cleanup on destroy
 		};
@@ -61,7 +60,7 @@
 >
 	{#if isVisible}
 		<div
-			on:outroend={onAnimationEnd}
+			on:introend={headerAnimationComplete}
 			class="relative overflow-hidden flex justify-between items-center py-5"
 		>
 			<div class="nav-border"></div>

@@ -1,24 +1,17 @@
 <script lang="ts">
 	import '@fontsource-variable/space-grotesk';
-
 	import { onMount } from 'svelte';
 
 	import { initializeLenis } from '$lib/scroll';
-
 	import '../app.css';
+
 	import Header from '$lib/components/Header.svelte';
 	import SplashScreen from '$lib/components/SplashScreen.svelte';
 	import Cursor from '$lib/Cursor.svelte';
 	import { headerAnimationComplete } from '$lib/store';
 
-	let isReady = false;
-
-	// React to store changes
-	$: if ($headerAnimationComplete) {
-		isReady = true;
-	}
-
 	let showSplash = true;
+	let isContentVisible = false;
 
 	onMount(() => {
 		initializeLenis();
@@ -28,22 +21,29 @@
 			showSplash = false;
 		}, 3000);
 	});
+
+	headerAnimationComplete.subscribe((isComplete: boolean) => {
+		isContentVisible = isComplete; // Reactively show content when header animation ends
+	});
 </script>
 
-<div>
-	{#if showSplash}
-		<SplashScreen />
-	{/if}
+<!-- Splash Screen -->
+{#if showSplash}
+	<SplashScreen />
+{/if}
 
-	<!-- {#if isReady} -->
+<!-- Header -->
+{#if !showSplash}
 	<Header />
-	<!-- {/if} -->
-	<Cursor />
+{/if}
 
+<!-- Main Content -->
+{#if isContentVisible}
+	<Cursor />
 	<main class="mt-20">
 		<slot />
 	</main>
-</div>
+{/if}
 
 <style>
 	:global(html) {
