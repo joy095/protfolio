@@ -14,7 +14,11 @@
 	let lastScrollTop = 0;
 	let scrollTimeout: ReturnType<typeof setTimeout>;
 
-	const xPos = tweened(0, {
+	const xPos1 = tweened(0, {
+		duration: 4000,
+		easing: cubicOut
+	});
+	const xPos2 = tweened(0, {
 		duration: 4000,
 		easing: cubicOut
 	});
@@ -25,14 +29,16 @@
 		scrollDirection = direction;
 
 		// Update scroll position while scrolling
-		xPos.set(direction === 'down' ? -50 : 50);
+		xPos1.set(direction === 'down' ? -100 : 10);
+		xPos2.set(direction === 'down' ? 100 : -100);
 
 		// Clear previous timeout
 		clearTimeout(scrollTimeout);
 
 		// Set timeout to reset position when scrolling stops
 		scrollTimeout = setTimeout(() => {
-			xPos.set(0);
+			xPos1.set(0);
+			xPos2.set(0);
 		}, 150); // Adjust delay as needed
 
 		lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
@@ -57,14 +63,14 @@
 			in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
 			id="animated-text"
 			class="flex items-center gap-5 ml-[10vw] transition-transform duration-800"
-			style="transform: translateX({$xPos}px)"
+			style="transform: translateX({$xPos1}px)"
 		>
 			<img class="icon {scrollDirection}" src="/icons/line.svg" alt="" />
 			<h2 class="text-[7rem] leading-[0.8] font-light tracking-tighter">I'm Joy Karmakar</h2>
 		</div>
 
 		<div class="flex justify-between mt-10 gap-10 mx-14">
-			<div class="max-w-[50%]">
+			<div in:fly={{ y: 20, duration: 800, delay: 600, opacity: 0 }} class="max-w-[50%]">
 				<StaggerText
 					charClass="font-medium text-2xl leading-[1.6] tracking-tighter"
 					{text}
@@ -81,6 +87,14 @@
 				<h3 class="font-bold text-[7rem]">A developer</h3>
 			</div>
 		</div>
+
+		<h2
+			in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}
+			class="text-[7rem] leading-[0.8] font-light tracking-tighter mt-5"
+			style="transform: translateX({$xPos2}px)"
+		>
+			lives by develop
+		</h2>
 
 		<div class="h-[150vh]"></div>
 	</div>
