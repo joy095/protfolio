@@ -16,28 +16,24 @@
 	onMount(() => {
 		initializeLenis();
 
-		// Hide splash screen after 3 seconds
 		setTimeout(() => {
 			showSplash = false;
 		}, 3000);
 	});
 
 	headerAnimationComplete.subscribe((isComplete: boolean) => {
-		isContentVisible = isComplete; // Reactively show content when header animation ends
+		isContentVisible = isComplete;
 	});
 </script>
 
-<!-- Splash Screen -->
-{#if showSplash}
+<!-- {#if showSplash}
 	<SplashScreen />
-{/if}
+{/if} -->
 
-<!-- Header -->
 {#if !showSplash}
 	<Header />
 {/if}
 
-<!-- Main Content -->
 {#if isContentVisible}
 	<Cursor />
 	<main class="mt-20">

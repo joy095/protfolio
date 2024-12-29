@@ -3,6 +3,10 @@
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
+	import StaggerText from './StaggerText.svelte';
+
+	let text =
+		'A passionate web developer with 2 years of experience in building responsive and scalable web applications using React.js, Node.js, and TypeScript. Skilled in crafting intuitive user interfaces with Tailwind CSS and managing databases like PostgreSQL and MongoDB.';
 
 	let showHero = false;
 
@@ -48,7 +52,7 @@
 </script>
 
 {#if showHero}
-	<div class="overflow-hidden">
+	<div class="overflow-hidden container-auto">
 		<div
 			in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
 			id="animated-text"
@@ -56,7 +60,26 @@
 			style="transform: translateX({$xPos}px)"
 		>
 			<img class="icon {scrollDirection}" src="/icons/line.svg" alt="" />
-			<h2 class="text-8xl leading-[0.8] font-light tracking-tighter">I'm Joy Karmakar</h2>
+			<h2 class="text-[7rem] leading-[0.8] font-light tracking-tighter">I'm Joy Karmakar</h2>
+		</div>
+
+		<div class="flex justify-between mt-10 gap-10 mx-14">
+			<div class="max-w-[50%]">
+				<StaggerText
+					charClass="font-medium text-2xl leading-[1.6] tracking-tighter"
+					{text}
+					delay={5}
+					initialDelay={200}
+					duration={800}
+				/>
+			</div>
+
+			<div
+				in:fly={{ y: 20, duration: 800, delay: 200, opacity: 0 }}
+				class="flex items-center min-w-fit"
+			>
+				<h3 class="font-bold text-[7rem]">A developer</h3>
+			</div>
 		</div>
 
 		<div class="h-[150vh]"></div>
@@ -64,6 +87,10 @@
 {/if}
 
 <style>
+	.letter {
+		display: inline-block;
+	}
+
 	.icon {
 		animation: spinnerUp 10s linear infinite;
 	}
