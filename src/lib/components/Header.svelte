@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { headerAnimationComplete } from '$lib/store/store';
+	import { smoothScrollToSection } from '$lib/scroll';
 
 	let currentTime: string;
 	let timezone: string = 'Kolkata';
@@ -44,15 +45,26 @@
 	};
 
 	onMount(() => {
+		const hash = window.location.hash;
+		if (hash) {
+			setTimeout(() => {
+				const section = document.querySelector(hash);
+				if (section) {
+					section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			}, 100);
+		}
+
 		window.addEventListener('scroll', handleScroll);
 
-		headerAnimationComplete.set(true); // Update the store immediately
-		console.log('Store updated in onMount');
+		headerAnimationComplete.set(true);
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll); // Cleanup on destroy
 		};
 	});
+
+	// Check for stored scroll target after page load
 </script>
 
 <header
@@ -80,7 +92,11 @@
 						</a>
 					</li>
 					<li in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}>
-						<a href="/#project" class="relative line-animate transition-opacity duration-200">
+						<a
+							href="/#project"
+							on:click={(e) => smoothScrollToSection(e, '#project')}
+							class="relative line-animate transition-opacity duration-200"
+						>
 							Project
 						</a>
 					</li>

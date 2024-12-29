@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import { posts, isLoading, error, fetchPosts } from '$lib/store/posts';
 	import { urlFor } from '$lib/sanity';
-	import type { Work } from '$lib/types/post';
 
 	let contentVisible = false;
 
