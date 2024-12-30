@@ -7,8 +7,9 @@
 	let currentX = mouseX;
 	let currentY = mouseY;
 	let isHovered = false;
+	let isCustomHover = false;
 
-	// Create a MutationObserver to watch for new links
+	// Create a MutationObserver to watch for new elements
 	let observer: MutationObserver;
 
 	const moveCursor = () => {
@@ -29,52 +30,55 @@
 		mouseY = event.clientY;
 	};
 
-	const handleMouseEnter = () => {
-		isHovered = true;
+	const handleMouseEnter = (event: Event) => {
+		if (event.target instanceof HTMLElement) {
+			// Type guard for HTMLElement
+			isHovered = true;
+			isCustomHover = event.target.classList.contains('project-banner');
+		}
 	};
 
-	const handleMouseLeave = () => {
+	const handleMouseLeave = (event: Event) => {
 		isHovered = false;
+		isCustomHover = false;
 	};
 
 	const attachLinkListeners = (element: Element) => {
-		if (element.tagName.toLowerCase() === 'a') {
+		if (element.tagName.toLowerCase() === 'a' || element.classList.contains('project-banner')) {
 			element.addEventListener('mouseenter', handleMouseEnter);
 			element.addEventListener('mouseleave', handleMouseLeave);
 		}
 		// Also check children
-		element.querySelectorAll('a').forEach((link) => {
-			link.addEventListener('mouseenter', handleMouseEnter);
-			link.addEventListener('mouseleave', handleMouseLeave);
+		element.querySelectorAll('a, .project-banner').forEach((el) => {
+			el.addEventListener('mouseenter', handleMouseEnter);
+			el.addEventListener('mouseleave', handleMouseLeave);
 		});
 	};
 
 	const removeLinkListeners = (element: Element) => {
-		if (element.tagName.toLowerCase() === 'a') {
+		if (element.tagName.toLowerCase() === 'a' || element.classList.contains('project-banner')) {
 			element.removeEventListener('mouseenter', handleMouseEnter);
 			element.removeEventListener('mouseleave', handleMouseLeave);
 		}
-		element.querySelectorAll('a').forEach((link) => {
-			link.removeEventListener('mouseenter', handleMouseEnter);
-			link.removeEventListener('mouseleave', handleMouseLeave);
+		element.querySelectorAll('a, .project-banner').forEach((el) => {
+			el.removeEventListener('mouseenter', handleMouseEnter);
+			el.removeEventListener('mouseleave', handleMouseLeave);
 		});
 	};
 
 	onMount(() => {
 		// Initial setup
 		window.addEventListener('mousemove', handleMouseMove);
-		document.querySelectorAll('a').forEach(attachLinkListeners);
+		document.querySelectorAll('a, .project-banner').forEach(attachLinkListeners);
 
 		// Create observer for dynamic content
 		observer = new MutationObserver((mutations) => {
 			mutations.forEach((mutation) => {
-				// Handle added nodes
 				mutation.addedNodes.forEach((node) => {
 					if (node instanceof Element) {
 						attachLinkListeners(node);
 					}
 				});
-				// Handle removed nodes
 				mutation.removedNodes.forEach((node) => {
 					if (node instanceof Element) {
 						removeLinkListeners(node);
@@ -83,7 +87,6 @@
 			});
 		});
 
-		// Start observing
 		observer.observe(document.body, {
 			childList: true,
 			subtree: true
@@ -93,13 +96,18 @@
 
 		return () => {
 			window.removeEventListener('mousemove', handleMouseMove);
-			document.querySelectorAll('a').forEach(removeLinkListeners);
+			document.querySelectorAll('a, .project-banner').forEach(removeLinkListeners);
 			observer.disconnect();
 		};
 	});
 </script>
 
-<div bind:this={cursor} class="cursor" class:hovered={isHovered}></div>
+<div
+	bind:this={cursor}
+	class="cursor"
+	class:hovered={isHovered && !isCustomHover}
+	class:project-banner={isCustomHover}
+></div>
 
 <style>
 	.cursor {
@@ -117,5 +125,9 @@
 
 	.cursor.hovered {
 		transform: translate(-50%, -50%) scale(2);
+	}
+
+	.cursor.project-banner {
+		border-radius: 0;
 	}
 </style>

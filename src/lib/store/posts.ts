@@ -16,6 +16,8 @@ export const fetchPosts = async (): Promise<void> => {
       title,
       slug,
       image,
+	  description,
+	  type,
     }`;
 
 		const result = await client.fetch<Work[]>(query);

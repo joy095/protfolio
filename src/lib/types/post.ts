@@ -5,6 +5,8 @@ export interface Work {
 		current: string;
 	};
 	image: SanityImage;
+	description: string;
+	type: string;
 }
 
 export interface SanityImage {

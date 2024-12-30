@@ -34,14 +34,20 @@
 				<button on:click={fetchPosts}>Retry</button>
 			</div>
 		{:else if $posts.length > 0}
-			<div class="posts-grid">
+			<div class="post-container">
 				{#each $posts as post (post._id)}
-					<article class="post-card">
+					<div class="post-card">
+						<div class="flex flex-col justify-between gap-5">
+							<h2 class="title">{post.title}</h2>
+							<div class="flex flex-col gap-6">
+								<p class="font-medium text-xl tracking-[.8]">{post.description}</p>
+								<a class="btn" href={post.slug.current}>{post.type}</a>
+							</div>
+						</div>
 						{#if post.image}
-							<img src={urlFor(post.image)} alt={post.title} />
+							<img class="project-banner" src={urlFor(post.image)} alt={post.title} />
 						{/if}
-						<h2>{post.title}</h2>
-					</article>
+					</div>
 				{/each}
 			</div>
 		{:else}
@@ -51,24 +57,36 @@
 {/if}
 
 <style>
-	.posts-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-		padding: 1rem;
+	.post-container {
+		margin-top: 5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
 	}
 
 	.post-card {
-		border: 1px solid #ddd;
-		padding: 1rem;
-		border-radius: 8px;
+		display: flex;
+		justify-content: space-between;
+		gap: 3rem;
 	}
 
 	.post-card img {
-		width: 100%;
-		height: 200px;
+		width: 70%;
+		height: 30rem;
 		object-fit: cover;
-		border-radius: 4px;
+	}
+
+	.title {
+		font-size: 2rem;
+		font-weight: 500;
+	}
+
+	.btn {
+		background-color: rgba(21, 21, 21, 0.08);
+		padding: 0.6rem 1rem;
+		width: fit-content;
+		border-radius: 0.25rem;
+		font-weight: 500;
 	}
 
 	.loading {
