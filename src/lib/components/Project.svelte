@@ -37,7 +37,7 @@
 			<div class="post-container">
 				{#each $posts as post (post._id)}
 					<div class="post-card">
-						<div class="flex flex-col justify-between gap-5">
+						<div class="flex flex-col justify-between gap-5 w-[30%] pr-5">
 							<h2 class="title">{post.title}</h2>
 							<div class="flex flex-col gap-6">
 								<p class="font-medium text-xl tracking-[.8]">{post.description}</p>
@@ -45,7 +45,9 @@
 							</div>
 						</div>
 						{#if post.image}
-							<img class="project-banner" src={urlFor(post.image)} alt={post.title} />
+							<div class="banner-wrap">
+								<img class="project-banner" src={urlFor(post.image)} alt={post.title} />
+							</div>
 						{/if}
 					</div>
 				{/each}
@@ -67,13 +69,34 @@
 	.post-card {
 		display: flex;
 		justify-content: space-between;
-		gap: 3rem;
 	}
 
-	.post-card img {
+	.banner-wrap {
 		width: 70%;
 		height: 30rem;
-		object-fit: cover;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.banner-wrap::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #f1efed;
+		z-index: 1;
+		animation: slideDown 2s ease forwards;
+	}
+
+	@keyframes slideDown {
+		0% {
+			top: 0;
+		}
+		100% {
+			top: 100%;
+		}
 	}
 
 	.title {
