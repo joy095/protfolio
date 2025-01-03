@@ -9,19 +9,16 @@
 	let isHovered = false;
 	let isCustomHover = false;
 
-	// Create a MutationObserver to watch for new elements
 	let observer: MutationObserver;
 
 	const moveCursor = () => {
 		const speed = 0.1;
 		currentX += (mouseX - currentX) * speed;
 		currentY += (mouseY - currentY) * speed;
-
 		if (cursor) {
 			cursor.style.left = `${currentX}px`;
 			cursor.style.top = `${currentY}px`;
 		}
-
 		requestAnimationFrame(moveCursor);
 	};
 
@@ -32,7 +29,6 @@
 
 	const handleMouseEnter = (event: Event) => {
 		if (event.target instanceof HTMLElement) {
-			// Type guard for HTMLElement
 			isHovered = true;
 			isCustomHover = event.target.classList.contains('project-banner');
 		}
@@ -48,7 +44,6 @@
 			element.addEventListener('mouseenter', handleMouseEnter);
 			element.addEventListener('mouseleave', handleMouseLeave);
 		}
-		// Also check children
 		element.querySelectorAll('.nav-links, .project-banner').forEach((el) => {
 			el.addEventListener('mouseenter', handleMouseEnter);
 			el.addEventListener('mouseleave', handleMouseLeave);
@@ -67,11 +62,9 @@
 	};
 
 	onMount(() => {
-		// Initial setup
 		window.addEventListener('mousemove', handleMouseMove);
 		document.querySelectorAll('.nav-links, .project-banner').forEach(attachLinkListeners);
 
-		// Create observer for dynamic content
 		observer = new MutationObserver((mutations) => {
 			mutations.forEach((mutation) => {
 				mutation.addedNodes.forEach((node) => {
@@ -87,11 +80,7 @@
 			});
 		});
 
-		observer.observe(document.body, {
-			childList: true,
-			subtree: true
-		});
-
+		observer.observe(document.body, { childList: true, subtree: true });
 		moveCursor();
 
 		return () => {
@@ -128,20 +117,26 @@
 	}
 
 	.project-banner {
-		transition: transform 0.5s ease;
+		background-color: rgba(0, 0, 0, 0.3);
+		backdrop-filter: blur(2px);
 		transform: translate(-50%, -50%) scale(6.5);
+		transition: transform 0.5s ease;
+		mix-blend-mode: normal;
 	}
+
 	.project-banner::after {
 		content: 'Explore';
 		position: absolute;
 		height: 100%;
 		width: 100%;
 		top: 38%;
-		left: 25%;
+		left: 24.5%;
 		right: 0;
 		bottom: 0;
-		font-size: 0.2rem;
+		font-size: 0.18rem;
 		font-weight: 600;
 		z-index: 1;
+		color: #ffffff;
+		mix-blend-mode: difference;
 	}
 </style>
