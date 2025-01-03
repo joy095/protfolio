@@ -80,18 +80,22 @@
 		>
 			<div class="nav-border"></div>
 
-			<a class="font-bold text-xl" href="/" in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}>
+			<a
+				class="nav-links font-bold text-xl"
+				href="/"
+				in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
+			>
 				Joy Karmakar
 			</a>
 
 			<nav>
 				<ul class="flex gap-8 font-semibold text-black/85 text-lg">
-					<li in:fly={{ y: 20, duration: 800, delay: 200, opacity: 0 }}>
+					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 200, opacity: 0 }}>
 						<a href="/#about" class="relative line-animate transition-opacity duration-200">
 							About
 						</a>
 					</li>
-					<li in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}>
+					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}>
 						<a
 							href="/#project"
 							on:click={(e) => smoothScrollToSection(e, '#project')}
@@ -100,7 +104,7 @@
 							Project
 						</a>
 					</li>
-					<li in:fly={{ y: 20, duration: 800, delay: 600, opacity: 0 }}>
+					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 600, opacity: 0 }}>
 						<a href="/contact" class="relative line-animate transition-opacity duration-200">
 							Contact
 						</a>

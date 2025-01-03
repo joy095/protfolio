@@ -44,23 +44,23 @@
 	};
 
 	const attachLinkListeners = (element: Element) => {
-		if (element.tagName.toLowerCase() === 'a' || element.classList.contains('project-banner')) {
+		if (element.classList.contains('nav-links') || element.classList.contains('project-banner')) {
 			element.addEventListener('mouseenter', handleMouseEnter);
 			element.addEventListener('mouseleave', handleMouseLeave);
 		}
 		// Also check children
-		element.querySelectorAll('a, .project-banner').forEach((el) => {
+		element.querySelectorAll('.nav-links, .project-banner').forEach((el) => {
 			el.addEventListener('mouseenter', handleMouseEnter);
 			el.addEventListener('mouseleave', handleMouseLeave);
 		});
 	};
 
 	const removeLinkListeners = (element: Element) => {
-		if (element.tagName.toLowerCase() === 'a' || element.classList.contains('project-banner')) {
+		if (element.classList.contains('nav-links') || element.classList.contains('project-banner')) {
 			element.removeEventListener('mouseenter', handleMouseEnter);
 			element.removeEventListener('mouseleave', handleMouseLeave);
 		}
-		element.querySelectorAll('a, .project-banner').forEach((el) => {
+		element.querySelectorAll('.nav-links, .project-banner').forEach((el) => {
 			el.removeEventListener('mouseenter', handleMouseEnter);
 			el.removeEventListener('mouseleave', handleMouseLeave);
 		});
@@ -69,7 +69,7 @@
 	onMount(() => {
 		// Initial setup
 		window.addEventListener('mousemove', handleMouseMove);
-		document.querySelectorAll('a, .project-banner').forEach(attachLinkListeners);
+		document.querySelectorAll('.nav-links, .project-banner').forEach(attachLinkListeners);
 
 		// Create observer for dynamic content
 		observer = new MutationObserver((mutations) => {
@@ -96,7 +96,7 @@
 
 		return () => {
 			window.removeEventListener('mousemove', handleMouseMove);
-			document.querySelectorAll('a, .project-banner').forEach(removeLinkListeners);
+			document.querySelectorAll('.nav-links, .project-banner').forEach(removeLinkListeners);
 			observer.disconnect();
 		};
 	});
@@ -127,7 +127,21 @@
 		transform: translate(-50%, -50%) scale(2);
 	}
 
-	.cursor.project-banner {
-		border-radius: 0;
+	.project-banner {
+		transition: transform 0.5s ease;
+		transform: translate(-50%, -50%) scale(6.5);
+	}
+	.project-banner::after {
+		content: 'Explore';
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top: 38%;
+		left: 25%;
+		right: 0;
+		bottom: 0;
+		font-size: 0.2rem;
+		font-weight: 600;
+		z-index: 1;
 	}
 </style>
