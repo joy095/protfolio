@@ -1,7 +1,38 @@
+<!-- src/routes/posts/+page.svelte -->
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { posts, isLoading, error, fetchPosts } from '$lib/store/posts';
 	import { urlFor } from '$lib/sanity';
+	import RevealImage from '$lib/components/RevealImage.svelte';
+
+	function intersectionObserver(node: HTMLElement, index: number) {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						setTimeout(() => {
+							node.style.opacity = '1';
+							node.style.transform = 'translateY(0)';
+						}, index * 200);
+						observer.unobserve(node);
+					}
+				});
+			},
+			{
+				root: null,
+				rootMargin: '50px',
+				threshold: 0.1
+			}
+		);
+
+		observer.observe(node);
+
+		return {
+			destroy() {
+				observer.disconnect();
+			}
+		};
+	}
 
 	let contentVisible = false;
 
@@ -18,7 +49,6 @@
 	<section class="container-auto" id="project">
 		<div class="flex justify-between border-b-2 border-black/80 pb-3">
 			<p class="font-medium text-2xl leading-[1.6] tracking-tighter">Featured work</p>
-
 			<div class="text-lg font-medium flex items-center gap-1">
 				Scroll
 				<img src="/icons/arrow.svg" alt="arrow" class="animate-bounce h-4 w-4" />
@@ -35,8 +65,11 @@
 			</div>
 		{:else if $posts.length > 0}
 			<div class="post-container">
-				{#each $posts as post (post._id)}
-					<div class="post-card">
+				{#each $posts as post, index (post._id)}
+					<div
+						class="post-card opacity-0 translate-y-10 transition-all duration-1000 ease-out"
+						use:intersectionObserver={index}
+					>
 						<div class="flex flex-col justify-between gap-5 w-[30%] pr-5">
 							<h2 class="title">{post.title}</h2>
 							<div class="flex flex-col gap-6">
@@ -46,7 +79,14 @@
 						</div>
 						{#if post.image}
 							<div class="banner-wrap">
-								<img class="project-banner" src={urlFor(post.image)} alt={post.title} />
+								<RevealImage
+									src={urlFor(post.image)}
+									alt={post.title}
+									revealOptions={{
+										duration: 2,
+										delay: index * 200
+									}}
+								/>
 							</div>
 						{/if}
 					</div>
@@ -69,34 +109,12 @@
 	.post-card {
 		display: flex;
 		justify-content: space-between;
+		will-change: transform, opacity;
 	}
 
 	.banner-wrap {
 		width: 70%;
 		height: 30rem;
-		position: relative;
-		overflow: hidden;
-	}
-
-	.banner-wrap::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-color: #f1efed;
-		z-index: 1;
-		animation: slideDown 6s ease forwards;
-	}
-
-	@keyframes slideDown {
-		0% {
-			top: 0;
-		}
-		100% {
-			top: 100%;
-		}
 	}
 
 	.title {

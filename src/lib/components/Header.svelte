@@ -89,7 +89,7 @@
 			on:introend={headerAnimationComplete}
 			class="relative overflow-hidden flex justify-between items-center py-5"
 		>
-			<div class="nav-border" />
+			<div class="nav-border"></div>
 
 			<a
 				class="nav-links font-bold text-xl"
