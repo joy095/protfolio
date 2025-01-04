@@ -80,6 +80,7 @@
 						{#if post.image}
 							<div class="banner-wrap">
 								<RevealImage
+									className="project-banner"
 									src={urlFor(post.image)}
 									alt={post.title}
 									revealOptions={{
