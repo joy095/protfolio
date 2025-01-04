@@ -2,7 +2,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { headerAnimationComplete } from '$lib/store/store';
+	import { headerAnimationComplete } from '$lib/stores/store';
 	import { smoothScrollToSection } from '$lib/scroll';
 
 	let currentTime: string;
@@ -107,6 +107,7 @@
 					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 200, opacity: 0 }}>
 						<a
 							href="/#about"
+							on:click={(e) => smoothScrollToSection(e, '#about')}
 							class="button overflow-hidden flex"
 							on:mouseover={() => handleHover('about')}
 							on:focus={() => handleHover('about')}
