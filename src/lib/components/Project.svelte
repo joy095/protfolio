@@ -87,7 +87,7 @@
 		bottom: 0;
 		background-color: #f1efed;
 		z-index: 1;
-		animation: slideDown 2s ease forwards;
+		animation: slideDown 6s ease forwards;
 	}
 
 	@keyframes slideDown {

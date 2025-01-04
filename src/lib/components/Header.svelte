@@ -1,3 +1,4 @@
+<!-- @format -->
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
@@ -5,43 +6,50 @@
 	import { smoothScrollToSection } from '$lib/scroll';
 
 	let currentTime: string;
-	let timezone: string = 'Kolkata';
+	let timezone: string;
 	let isVisible = false;
-
 	let numberOfLines = 11;
 
-	// Update time function to fetch the current time
+	// Get user's timezone
+	const getUserTimezone = () => {
+		const timezoneName = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		// Convert timezone format from "America/New_York" to "New York"
+		return timezoneName.split('/').pop()?.replace(/_/g, ' ') || timezoneName;
+	};
+
+	// Update time function to fetch the current time in user's timezone
 	const updateTime = () => {
 		const now = new Date();
 		currentTime = new Intl.DateTimeFormat('en-US', {
 			hour: '2-digit',
 			minute: '2-digit',
 			hour12: false,
-			timeZone: 'Asia/Kolkata'
+			timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
 		}).format(now);
 	};
 
 	onMount(() => {
+		timezone = getUserTimezone();
 		updateTime();
-		const interval = setInterval(updateTime, 1000); // Update every second
+		const interval = setInterval(updateTime, 1000);
 		setTimeout(() => {
-			isVisible = true; // Set the header visible after 2.5 seconds
+			isVisible = true;
 		}, 0);
 		return () => clearInterval(interval);
 	});
 
 	// Track scroll direction
-	let scrollDirection = 'up'; // Initially set to 'up'
+	let scrollDirection = 'up';
 	let lastScrollY = 0;
 
 	const handleScroll = () => {
 		const currentScrollY = window.scrollY;
 		if (currentScrollY > lastScrollY) {
-			scrollDirection = 'down'; // Scrolling down
+			scrollDirection = 'down';
 		} else if (currentScrollY < lastScrollY) {
-			scrollDirection = 'up'; // Scrolling up
+			scrollDirection = 'up';
 		}
-		lastScrollY = currentScrollY; // Update scroll position
+		lastScrollY = currentScrollY;
 	};
 
 	onMount(() => {
@@ -56,15 +64,18 @@
 		}
 
 		window.addEventListener('scroll', handleScroll);
-
 		headerAnimationComplete.set(true);
 
 		return () => {
-			window.removeEventListener('scroll', handleScroll); // Cleanup on destroy
+			window.removeEventListener('scroll', handleScroll);
 		};
 	});
 
-	// Check for stored scroll target after page load
+	// Handle hover state for buttons
+	let hoveredButtons: { [key: string]: boolean } = {};
+	const handleHover = (id: string) => {
+		hoveredButtons[id] = true;
+	};
 </script>
 
 <header
@@ -78,12 +89,15 @@
 			on:introend={headerAnimationComplete}
 			class="relative overflow-hidden flex justify-between items-center py-5"
 		>
-			<div class="nav-border"></div>
+			<div class="nav-border" />
 
 			<a
 				class="nav-links font-bold text-xl"
 				href="/"
 				in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
+				on:mouseover={() => handleHover('home')}
+				on:focus={() => handleHover('home')}
+				class:hovered={hoveredButtons['home']}
 			>
 				Joy Karmakar
 			</a>
@@ -91,7 +105,13 @@
 			<nav>
 				<ul class="flex gap-8 font-semibold text-black/85 text-lg">
 					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 200, opacity: 0 }}>
-						<a href="/#about" class="relative line-animate transition-opacity duration-200">
+						<a
+							href="/#about"
+							class="button overflow-hidden flex"
+							on:mouseover={() => handleHover('about')}
+							on:focus={() => handleHover('about')}
+							class:hovered={hoveredButtons['about']}
+						>
 							About
 						</a>
 					</li>
@@ -99,13 +119,22 @@
 						<a
 							href="/#project"
 							on:click={(e) => smoothScrollToSection(e, '#project')}
-							class="relative line-animate transition-opacity duration-200"
+							class="button overflow-hidden flex"
+							on:mouseover={() => handleHover('project')}
+							on:focus={() => handleHover('project')}
+							class:hovered={hoveredButtons['project']}
 						>
 							Project
 						</a>
 					</li>
 					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 600, opacity: 0 }}>
-						<a href="/contact" class="relative line-animate transition-opacity duration-200">
+						<a
+							href="/contact"
+							class="button overflow-hidden flex"
+							on:mouseover={() => handleHover('contact')}
+							on:focus={() => handleHover('contact')}
+							class:hovered={hoveredButtons['contact']}
+						>
 							Contact
 						</a>
 					</li>
@@ -133,17 +162,15 @@
 		background-color: #f1efed;
 		z-index: 10;
 		transition: transform 0.3s ease-in-out;
-		transform: translateY(0); /* Initially visible */
+		transform: translateY(0);
 	}
 
-	/* Scroll down behavior (header moves up) */
 	.scrolling-down {
-		transform: translateY(-100%); /* Header goes up when scrolling down */
+		transform: translateY(-100%);
 	}
 
-	/* Scroll up behavior (header comes down) */
 	.scrolling-up {
-		transform: translateY(0); /* Header comes back down when scrolling up */
+		transform: translateY(0);
 	}
 
 	/* Border animation for nav */
@@ -166,52 +193,70 @@
 		}
 	}
 
-	/* Line animation for the nav links */
-	.line-animate {
+	/* Button hover animation styles */
+	.button {
 		position: relative;
+		cursor: pointer;
+		overflow: hidden;
 	}
 
-	.line-animate::after {
+	.button::before {
 		content: '';
 		position: absolute;
-		width: 0;
+		bottom: 0;
+		left: -100%;
 		height: 2px;
-		bottom: -2px;
-		left: 0;
-		background-color: currentColor;
-		transition: width 0.3s ease;
-	}
-
-	.line-animate:hover::after {
 		width: 100%;
+		background-color: #333;
+		transition: left 0.4s ease;
 	}
 
-	.line-animate:hover {
-		color: #444;
+	.button:hover::before {
+		animation: slideIn 0.4s ease forwards;
 	}
 
-	/* Background container */
+	.button.hovered:not(:hover)::before {
+		animation: slideOut 0.4s ease forwards;
+	}
+
+	@keyframes slideIn {
+		0% {
+			left: -100%;
+		}
+		100% {
+			left: 0%;
+		}
+	}
+
+	@keyframes slideOut {
+		0% {
+			left: 0%;
+		}
+		100% {
+			left: 100%;
+		}
+	}
+
+	/* Background styles */
 	.background {
 		min-height: 68px;
-		overflow: hidden; /* Prevent scrolling from pseudo-elements */
+		overflow: hidden;
 	}
 
-	/* Background lines */
 	.background::before {
 		content: '';
 		position: absolute;
 		top: 0;
-		left: -5vw; /* Start at the very left */
-		right: 0; /* Extend to the very right */
+		left: -5vw;
+		right: 0;
 		bottom: 0;
 		background-image: repeating-linear-gradient(
 			to right,
 			transparent,
 			transparent calc((100% - 4vw) / var(--number-of-lines) - 1px),
-			/* 4vw for left and right padding */ rgba(204, 204, 204, 0.3)
-				calc((100% - 4vw) / var(--number-of-lines) - 1px),
+			rgba(204, 204, 204, 0.3) calc((100% - 4vw) / var(--number-of-lines) - 1px),
 			rgba(204, 204, 204, 0.3) calc((100% - 4vw) / var(--number-of-lines))
 		);
-		z-index: -1; /* Send to back */
+		z-index: -1;
 	}
 </style>
