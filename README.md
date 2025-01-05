@@ -2,7 +2,7 @@
 
 ## About Me
 
-A passionate Art Director and Product Designer from India, specializing in creating engaging user experiences through interactive design. With a background in visual arts and technology, I focus on crafting meaningful digital experiences that make a genuine impact.
+A passionate Web Developer from India, specializing in creating engaging user experiences through interactive design. With a background in visual arts and technology, I focus on crafting meaningful digital experiences that make a genuine impact.
 
 ## Tech Stack
 
