@@ -1,13 +1,27 @@
 <script lang="ts">
+	import Marquee from './Marquee.svelte';
+
 	let numberOfLines = 11;
 </script>
 
 <footer class="background relative" style="--number-of-lines: {numberOfLines}">
 	<div class="h-full w-full absolute bg-[#151515] -z-10"></div>
 
-	<h2 class="text-[13rem] font-semibold tracking-[0.8]">Let's Work together</h2>
+	<Marquee speed={20} direction="left" pauseOnHover={true}>
+		<h2 class="text-[13rem] font-semibold tracking-[0.5] leading-[1] -mt-11">
+			Let's Work together&nbsp;
+		</h2>
+	</Marquee>
 
-	<div class="container-auto">Hello</div>
+	<div class="container-auto">
+		<div class="flex justify-between mt-32">
+			<div class="flex flex-col gap-5"></div>
+			<p class="text-[1.375rem] font-medium leading-[1.5] w-[30%]">
+				I'm currently available for new work, let me know if you need a digital designer. I'd love
+				to talk about the next big thing!
+			</p>
+		</div>
+	</div>
 </footer>
 
 <style>

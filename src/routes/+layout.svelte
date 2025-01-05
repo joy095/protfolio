@@ -46,7 +46,9 @@
 	</main>
 {/if}
 
-<Footer />
+{#if isContentVisible}
+	<Footer />
+{/if}
 
 <style>
 	:global(html) {
