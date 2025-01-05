@@ -1,7 +1,56 @@
-<script>
+<script lang="ts">
 	import { fly } from 'svelte/transition';
 
+	interface FormData {
+		name: string;
+		email: string;
+		message: string;
+	}
+
+	let formData: FormData = {
+		name: '',
+		email: '',
+		message: ''
+	};
+
 	let showContact = false;
+	let isEmailValid = false;
+	let isSubmitting = false;
+	let submitStatus: 'idle' | 'success' | 'error' = 'idle';
+
+	const validateEmail = (email: string): boolean => {
+		const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+		isEmailValid = emailRegex.test(email);
+		return isEmailValid;
+	};
+
+	const handleSubmit = async (event: SubmitEvent) => {
+		event.preventDefault();
+		if (!validateEmail(formData.email)) return;
+
+		try {
+			isSubmitting = true;
+			const response = await fetch(`${import.meta.env.VITE_MAIL_API}/send-email`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(formData)
+			});
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+
+			submitStatus = 'success';
+			formData = { name: '', email: '', message: '' };
+		} catch (error) {
+			console.error('Submission error:', error);
+			submitStatus = 'error';
+		} finally {
+			isSubmitting = false;
+		}
+	};
 
 	setTimeout(() => {
 		showContact = true;
@@ -9,7 +58,168 @@
 </script>
 
 {#if showContact}
-	<div class="container-auto" in:fly={{ duration: 800, y: 50 }}>
-		<h1>Hello</h1>
+	<div class="container-auto">
+		<h1
+			class="mt-40 font-semibold text-[6.875rem] tracking-tighter leading-tight"
+			in:fly={{ duration: 800, y: 50 }}
+		>
+			Contact
+		</h1>
+
+		<div class="border-t border-black">
+			<div class="flex mt-20">
+				<div class="w-[30%]"></div>
+				<div class="w-[70%]">
+					<p class="text-3xl leading-[1.5] font-medium">
+						I'm looking forward to hearing from you! If you prefer not to fill out forms, feel free
+						to email me directly and let's talk about the next big thing!
+					</p>
+
+					<a
+						class="text-xl font-medium button overflow-hidden flex items-center pb-2 gap-2 mt-5 w-fit nav-links"
+						href="mailto:joykarmakar987654321@gmail.com"
+						>joykarmakar987654321@gmail.com
+
+						<div class="h-4 w-4">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="2"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+								/>
+							</svg>
+						</div>
+					</a>
+
+					<form on:submit={handleSubmit} class="mt-10 mb-32 bg-[#e5e1dc] p-8">
+						<div class="flex flex-col gap-2">
+							<label class="text-xl font-medium" for="name">Name</label>
+							<input
+								class="rounded bg-[#f1efed] placeholder:text-[#888786] p-3 focus:outline-none"
+								type="text"
+								name="name"
+								bind:value={formData.name}
+								required
+								placeholder="Ex. John Doe"
+							/>
+						</div>
+						<div class="flex flex-col gap-2 mt-6">
+							<label class="text-xl font-medium" for="email">Email</label>
+							<input
+								class="rounded bg-[#f1efed] placeholder:text-[#888786] p-3 focus:outline-none"
+								type="text"
+								name="email"
+								bind:value={formData.email}
+								on:input={(e) => validateEmail(e.currentTarget.value)}
+								class:invalid={!isEmailValid && formData.email}
+								required
+								placeholder="hello.website.com"
+							/>
+							{#if !isEmailValid && formData.email}
+								<p class="text-red-500 text-sm mt-1">Please enter a valid email address</p>
+							{/if}
+						</div>
+						<div class="flex flex-col gap-2 mt-6">
+							<label class="text-xl font-medium" for="message">Message</label>
+							<textarea
+								class="rounded bg-[#f1efed] placeholder:text-[#888786] p-3 focus:outline-none"
+								name="message"
+								bind:value={formData.message}
+								required
+								placeholder="Share Message"
+								rows="5"
+							></textarea>
+						</div>
+
+						<button
+							disabled={!isEmailValid || isSubmitting}
+							class="nav-links mt-6 px-7 py-3 bg-[#151515] text-[#f1efed]"
+						>
+							{#if isSubmitting}
+								Sending...
+							{:else}
+								Submit
+							{/if}
+						</button>
+
+						{#if submitStatus === 'success'}
+							<p class="text-green-500 mt-2">Message sent successfully!</p>
+						{:else if submitStatus === 'error'}
+							<p class="text-red-500 mt-2">Failed to send message. Please try again.</p>
+						{/if}
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 {/if}
+
+<style>
+	.invalid {
+		border: 2px solid red;
+	}
+
+	button:disabled {
+		opacity: 0.8;
+		cursor: not-allowed;
+	}
+
+	/* Button hover animation styles */
+	.button {
+		position: relative;
+		cursor: pointer;
+		overflow: hidden;
+	}
+
+	.button:hover div {
+		rotate: 45deg;
+		transition: rotate 0.4s ease;
+	}
+	.button:not(:hover) div {
+		rotate: 0deg;
+		transition: rotate 0.4s ease;
+	}
+
+	.button::before {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: -100%;
+		height: 2px;
+		width: 100%;
+		background-color: #151515;
+		transition: left 0.4s ease;
+	}
+
+	.button:hover::before {
+		animation: slideIn 0.4s ease forwards;
+	}
+
+	.button:not(:hover)::before {
+		animation: slideOut 0.4s ease forwards;
+	}
+
+	@keyframes slideIn {
+		0% {
+			left: -100%;
+		}
+		100% {
+			left: 0%;
+		}
+	}
+
+	@keyframes slideOut {
+		0% {
+			left: 0%;
+		}
+		100% {
+			left: 100%;
+		}
+	}
+</style>

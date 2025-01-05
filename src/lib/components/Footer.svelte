@@ -11,7 +11,7 @@
 		<div class="h-full w-full absolute bg-[#151515] -z-10"></div>
 
 		<div>
-			<Marquee speed={20} direction="left" pauseOnHover={true}>
+			<Marquee speed={20} direction="left">
 				<h2 class="text-[13rem] font-semibold tracking-tighter leading-[1] -mt-11">
 					Let's Work together&nbsp;
 				</h2>

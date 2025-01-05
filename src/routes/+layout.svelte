@@ -55,6 +55,7 @@
 		font-family: 'Space Grotesk Variable', sans-serif;
 		color: #151515;
 		background-color: #f1efed;
+		letter-spacing: -0.02em;
 	}
 
 	/* Background container */
