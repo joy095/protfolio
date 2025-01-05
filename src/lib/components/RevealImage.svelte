@@ -13,7 +13,7 @@
 </script>
 
 <div class="reveal-wrapper {className}" use:useImageReveal={revealOptions}>
-	<img {src} {alt} class="w-full h-full object-cover" />
+	<img loading="lazy" {src} {alt} class="w-full h-full object-cover" />
 </div>
 
 <style>

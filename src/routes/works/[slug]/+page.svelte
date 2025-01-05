@@ -63,6 +63,7 @@
 			{#if work.image}
 				<div class="relative aspect-video mb-8 rounded-lg overflow-hidden shadow-lg">
 					<img
+						loading="lazy"
 						src={urlFor(work.image)}
 						alt={work.title}
 						class="absolute inset-0 w-full h-full object-cover"

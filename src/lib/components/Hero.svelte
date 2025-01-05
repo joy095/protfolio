@@ -65,7 +65,7 @@
 			class="flex items-center justify-center gap-5 transition-transform duration-800"
 			style="transform: translateX({$xPos1}px)"
 		>
-			<img class="icon {scrollDirection}" src="/icons/line.svg" alt="" />
+			<img loading="lazy" class="icon {scrollDirection}" src="/icons/line.svg" alt="" />
 			<h2 class="text-[7rem] leading-[0.8] font-light tracking-tighter">I'm Joy Karmakar</h2>
 		</div>
 

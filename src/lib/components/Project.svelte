@@ -51,7 +51,7 @@
 			<p class="font-medium text-2xl leading-[1.6] tracking-tighter">Featured work</p>
 			<div class="text-lg font-medium flex items-center gap-1">
 				Scroll
-				<img src="/icons/arrow.svg" alt="arrow" class="animate-bounce h-4 w-4" />
+				<img loading="lazy" src="/icons/arrow.svg" alt="arrow" class="animate-bounce h-4 w-4" />
 			</div>
 		</div>
 		<div id="project"></div>

@@ -1,8 +1,5 @@
-<script lang="ts">
-	import StaggerText from './StaggerText.svelte';
+<script>
 	import { fade, fly } from 'svelte/transition';
-
-	let text = `Hi, I'm Joy Karmakar, an art director and product designer based in India. With my background in visual arts and technology, I specialize in creating engaging user experiences through interactive design. I am deeply passionate about using my creative skills to collaborate on innovative and meaningful projects that make a genuine impact.`;
 
 	let inVisible = false;
 
@@ -18,20 +15,14 @@
 				class="font-medium text-2xl leading-[1.6] tracking-tighter"
 				in:fly={{ x: -20, duration: 600, delay: 100 }}
 			>
-				About
+				Expericence
 			</p>
 			<div class="nav-border"></div>
 		</div>
 
-		<div id="about" class="flex justify-between mt-16">
+		<div class="flex justify-between mt-16">
 			<div class="w-[60%]">
-				<StaggerText
-					charClass="font-medium text-3xl leading-[1.6] tracking-tighter"
-					{text}
-					delay={5}
-					initialDelay={200}
-					duration={800}
-				/>
+				<p class="font-medium text-3xl leading-[1.6] tracking-tighter"></p>
 			</div>
 			<div class="w-[30%]" in:fade={{ duration: 800, delay: 300 }}>
 				<img loading="lazy" src="my_image.webp" alt="Joy Karmakar" />
