@@ -13,7 +13,8 @@
 						setTimeout(() => {
 							node.style.opacity = '1';
 							node.style.transform = 'translateY(0)';
-						}, index * 200);
+						}, index * 100);
+
 						observer.unobserve(node);
 					}
 				});
@@ -84,8 +85,8 @@
 										src={urlFor(post.image)}
 										alt={post.title}
 										revealOptions={{
-											duration: 1.2,
-											delay: index * 200
+											duration: 1,
+											delay: index * 100
 										}}
 									/>
 								</a>

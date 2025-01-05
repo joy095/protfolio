@@ -21,11 +21,39 @@
 		</div>
 
 		<div class="flex justify-between mt-16">
-			<div class="w-[60%]">
-				<p class="font-medium text-3xl leading-[1.6] tracking-tighter"></p>
+			<div class="w-[30%]">
+				<p class="font-medium text-xl leading-[1.6] tracking-tighter">
+					I've worked with companies and clients. I enjoy collaborating with clients who appreciate
+					the importance of good developer.
+				</p>
 			</div>
-			<div class="w-[30%]" in:fade={{ duration: 800, delay: 300 }}>
-				<img loading="lazy" src="my_image.webp" alt="Joy Karmakar" />
+			<div class="flex justify-between w-[60%]">
+				<div class="flex flex-col gap-5 w-full">
+					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">Skkyee</p>
+					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">Skkyee</p>
+					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">Acceleratron</p>
+					<p class="text-xl font-medium border-b-2 w-full pb-5">Logic ‘n’ Color</p>
+				</div>
+				<div class="flex flex-col gap-5 border-b-2 w-full">
+					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">Web Developer</p>
+					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">
+						Web Development Intern
+					</p>
+					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">Internship</p>
+					<p class="text-xl font-medium border-b-2 w-full pb-5">Frontend Developer</p>
+				</div>
+				<div class="flex flex-col gap-5 border-b-2 w-full">
+					<p class="flex justify-end text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">
+						Apr 2024 - Present
+					</p>
+					<p class="flex justify-end text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">
+						Jan 2024 - Apr 2024
+					</p>
+					<p class="flex justify-end text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">
+						Dec 2023 - Jan 2024
+					</p>
+					<p class="flex justify-end text-xl font-medium w-full pb-5">Jun 2023 - Nov 2023</p>
+				</div>
 			</div>
 		</div>
 	</div>
