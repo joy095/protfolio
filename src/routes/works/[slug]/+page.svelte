@@ -4,6 +4,7 @@
 	import { isLoading, error, fetchPostBySlug } from '$lib/stores/posts';
 	import type { Work } from '$lib/types/post';
 	import { urlFor } from '$lib/sanity';
+	import ParallaxScroll from '$lib/components/ParallaxScroll.svelte';
 
 	export let data: { work: Work | null };
 
@@ -61,14 +62,14 @@
 		<!-- Main content -->
 		<div class="prose prose-lg max-w-none">
 			{#if work.image}
-				<div class="relative aspect-video mb-8 rounded-lg overflow-hidden shadow-lg">
+				<ParallaxScroll speed={0.2}>
 					<img
 						loading="lazy"
 						src={urlFor(work.image)}
 						alt={work.title}
-						class="absolute inset-0 w-full h-full object-cover"
+						class="w-full h-full object-cover"
 					/>
-				</div>
+				</ParallaxScroll>
 			{/if}
 
 			<div class="bg-white rounded-lg shadow-sm p-6">

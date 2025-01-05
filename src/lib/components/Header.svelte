@@ -93,7 +93,8 @@
 
 			<a
 				class="nav-links font-bold text-xl"
-				href="/"
+				href="/#hero"
+				on:click={(e) => smoothScrollToSection(e, '#hero')}
 				in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
 				on:mouseover={() => handleHover('home')}
 				on:focus={() => handleHover('home')}

@@ -8,58 +8,60 @@
 <footer class="background relative" style="--number-of-lines: {numberOfLines}">
 	<div class="h-full w-full absolute bg-[#151515] -z-10"></div>
 
-	<Marquee speed={20} direction="left" pauseOnHover={true}>
-		<h2 class="text-[13rem] font-semibold tracking-[0.5] leading-[1] -mt-11">
-			Let's Work together&nbsp;
-		</h2>
-	</Marquee>
+	<div>
+		<Marquee speed={20} direction="left" pauseOnHover={true}>
+			<h2 class="text-[13rem] font-semibold tracking-tighter leading-[1] -mt-11">
+				Let's Work together&nbsp;
+			</h2>
+		</Marquee>
 
-	<div class="container-auto">
-		<div class="flex justify-between mt-32">
-			<div class="flex flex-col gap-5">
+		<div class="container-auto">
+			<div class="flex justify-between mt-32">
+				<div class="flex flex-col gap-5">
+					<a
+						class="text-xl font-medium button overflow-hidden flex items-center gap-2"
+						target="_blank"
+						href="https://www.linkedin.com/in/joy-karmakar-cooch-behar"
+						>Linkdin
+						<img class="h-4 w-4" src="/icons/arrow-2.svg" alt="icon" />
+					</a>
+				</div>
+				<p class="text-[1.375rem] font-medium leading-[1.5] w-[30%]">
+					I'm currently available for new work, let me know if you need a digital designer. I'd love
+					to talk about the next big thing!
+				</p>
+			</div>
+
+			<div class="flex justify-between items-center mt-32 gap-5">
+				<a class="text-xl font-medium" href="mailto:joykarmakar987654321@gmail.com"
+					>joykarmakar987654321@gmail.com</a
+				>
+				<p class="text-xl font-medium leading-[1.5]">© 2025 Joy Karmakar. All rights reserved.</p>
 				<a
-					class="text-xl font-medium button overflow-hidden flex items-center gap-2"
-					target="_blank"
-					href="https://www.linkedin.com/in/joy-karmakar-cooch-behar"
-					>Linkdin
-					<img class="h-5 w-5" src="/icons/arrow-2.svg" alt="icon" />
+					class="text-xl font-medium flex gap-1 items-center"
+					href="#hero"
+					on:click={(e) => smoothScrollToSection(e, '#hero')}
+				>
+					<div class="h-5 w-5 animate-bounce">
+						<svg
+							data-slot="icon"
+							fill="none"
+							stroke-width="2"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+							></path>
+						</svg>
+					</div>
+					Back to top
 				</a>
 			</div>
-			<p class="text-[1.375rem] font-medium leading-[1.5] w-[30%]">
-				I'm currently available for new work, let me know if you need a digital designer. I'd love
-				to talk about the next big thing!
-			</p>
-		</div>
-
-		<div class="flex justify-between items-center mt-32 gap-5">
-			<a class="text-xl font-medium" href="mailto:joykarmakar987654321@gmail.com"
-				>joykarmakar987654321@gmail.com</a
-			>
-			<p class="text-xl font-medium leading-[1.5]">© 2025 Joy Karmakar. All rights reserved.</p>
-			<a
-				class="text-xl font-medium flex gap-1 items-center"
-				href="#hero"
-				on:click={(e) => smoothScrollToSection(e, '#hero')}
-			>
-				<div class="h-5 w-5 animate-bounce">
-					<svg
-						data-slot="icon"
-						fill="none"
-						stroke-width="2"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-						xmlns="http://www.w3.org/2000/svg"
-						aria-hidden="true"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
-						></path>
-					</svg>
-				</div>
-				Back to top
-			</a>
 		</div>
 	</div>
 </footer>
@@ -70,6 +72,7 @@
 		min-height: 100vh; /* Full viewport height */
 		overflow: hidden; /* Prevent scrolling from pseudo-elements */
 		color: #f1efed;
+		bottom: 0;
 	}
 
 	/* Background lines */
