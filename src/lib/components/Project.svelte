@@ -4,6 +4,7 @@
 	import { posts, isLoading, error, fetchPosts } from '$lib/stores/posts';
 	import { urlFor } from '$lib/sanity';
 	import RevealImage from '$lib/components/RevealImage.svelte';
+	import { smoothScrollToSection } from '$lib/scroll.js';
 
 	function intersectionObserver(node: HTMLElement, index: number) {
 		const observer = new IntersectionObserver(
@@ -50,10 +51,14 @@
 	<section class="container-auto">
 		<div class="flex justify-between border-b-2 border-black/80 pb-3">
 			<p class="font-medium text-2xl leading-[1.6] tracking-tighter">Featured work</p>
-			<div class="text-lg font-medium flex items-center gap-1">
+			<a
+				on:click={(e) => smoothScrollToSection(e, '#project')}
+				href="#project"
+				class="text-lg font-medium flex items-center gap-1"
+			>
 				Scroll
 				<img loading="lazy" src="/icons/arrow.svg" alt="arrow" class="animate-bounce h-4 w-4" />
-			</div>
+			</a>
 		</div>
 		<div id="project"></div>
 		{#if $isLoading}
@@ -74,22 +79,20 @@
 							<h2 class="title">{post.title}</h2>
 							<div class="flex flex-col gap-6">
 								<p class="font-medium text-xl tracking-[.8]">{post.description}</p>
-								<a class="btn" href="work/{post.slug.current}">{post.type}</a>
+								<a class="btn" href="works/{post.slug.current}">View</a>
 							</div>
 						</div>
 						{#if post.image}
 							<div class="banner-wrap">
-								<a href="works/{post.slug.current}">
-									<RevealImage
-										className="project-banner"
-										src={urlFor(post.image)}
-										alt={post.title}
-										revealOptions={{
-											duration: 1,
-											delay: index * 100
-										}}
-									/>
-								</a>
+								<RevealImage
+									className="project-banner"
+									src={urlFor(post.image)}
+									alt={post.title}
+									revealOptions={{
+										duration: 1,
+										delay: index * 100
+									}}
+								/>
 							</div>
 						{/if}
 					</div>

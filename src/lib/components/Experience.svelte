@@ -9,7 +9,7 @@
 </script>
 
 {#if inVisible}
-	<div in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }} class="container-auto mt-40">
+	<div in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }} class="container-auto mt-40 mb-40">
 		<div class="flex justify-between pb-3 relative overflow-hidden">
 			<p
 				class="font-medium text-2xl leading-[1.6] tracking-tighter"

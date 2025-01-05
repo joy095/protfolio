@@ -58,7 +58,7 @@
 </script>
 
 {#if showHero}
-	<div class="overflow-hidden container-auto">
+	<div id="hero" class="overflow-hidden container-auto">
 		<div
 			in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
 			id="animated-text"
