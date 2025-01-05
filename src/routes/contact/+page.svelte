@@ -30,7 +30,7 @@
 
 		try {
 			isSubmitting = true;
-			const response = await fetch(`${import.meta.env.VITE_MAIL_API}/send-email`, {
+			const response = await fetch('/api/send-email', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
