@@ -9,6 +9,7 @@
 	import SplashScreen from '$lib/components/SplashScreen.svelte';
 	import Cursor from '$lib/Cursor.svelte';
 	import { headerAnimationComplete } from '$lib/stores/store';
+	import Footer from '$lib/components/Footer.svelte';
 
 	let numberOfLines = 11;
 
@@ -44,6 +45,8 @@
 		</div>
 	</main>
 {/if}
+
+<Footer />
 
 <style>
 	:global(html) {
