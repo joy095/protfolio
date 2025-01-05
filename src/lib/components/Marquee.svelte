@@ -2,14 +2,12 @@
 <script>
 	export let speed = 30; // Speed in seconds
 	export let direction = 'left'; // or 'right'
-	export let pauseOnHover = true;
 </script>
 
 <div class="marquee-container">
 	<div
 		class="marquee-content"
 		style="--duration: {speed}s; --direction: {direction === 'left' ? -1 : 1};"
-		class:pause-on-hover={pauseOnHover}
 	>
 		<div class="marquee-item">
 			<slot />
@@ -36,10 +34,6 @@
 
 	.marquee-item {
 		flex-shrink: 0;
-	}
-
-	.pause-on-hover:hover {
-		animation-play-state: paused;
 	}
 
 	@keyframes scroll {

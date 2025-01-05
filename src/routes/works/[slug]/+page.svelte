@@ -46,7 +46,7 @@
 		</div>
 	</div>
 {:else if work}
-	<article class="max-w-4xl mx-auto px-4 py-12">
+	<article class="container-auto">
 		<!-- Header -->
 		<header class="mb-8">
 			<div class="flex items-center justify-between mb-4">
@@ -67,7 +67,7 @@
 						loading="lazy"
 						src={urlFor(work.image)}
 						alt={work.title}
-						class="w-full h-full object-cover"
+						class="w-full h-[90vh] object-cover"
 					/>
 				</ParallaxScroll>
 			{/if}
