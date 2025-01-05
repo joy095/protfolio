@@ -21,7 +21,9 @@
 
 {#if $isLoading}
 	<div class="flex justify-center items-center min-h-[500px]">
-		<div class="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full" />
+		<div
+			class="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full"
+		></div>
 	</div>
 {:else if $error}
 	<div class="max-w-3xl mx-auto px-4 py-12">

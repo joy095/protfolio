@@ -84,7 +84,7 @@
 										src={urlFor(post.image)}
 										alt={post.title}
 										revealOptions={{
-											duration: 2,
+											duration: 1.2,
 											delay: index * 200
 										}}
 									/>
