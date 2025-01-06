@@ -48,7 +48,7 @@
 {:else if work}
 	<article class="container-auto mt-40">
 		<!-- Header -->
-		<header class="mb-3 relative pb-2">
+		<header class="mb-3 relative pb-2 overflow-hidden">
 			<div class="nav-border"></div>
 			<div class="flex items-end justify-between mb-4">
 				<h1 class="text-[6.875rem] font-bold text-gray-900">{work.title}</h1>
