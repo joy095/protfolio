@@ -46,21 +46,29 @@
 		</div>
 	</div>
 {:else if work}
-	<article class="container-auto">
+	<article class="container-auto mt-40">
 		<!-- Header -->
-		<header class="mb-8">
-			<div class="flex items-center justify-between mb-4">
-				<h1 class="text-4xl font-bold text-gray-900">{work.title}</h1>
-				<span
-					class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary"
-				>
-					{work.type}
+		<header class="mb-3 relative pb-2">
+			<div class="nav-border"></div>
+			<div class="flex items-end justify-between mb-4">
+				<h1 class="text-[6.875rem] font-bold text-gray-900">{work.title}</h1>
+				<span class="rounded-full text-2xl font-medium">
+					{work.description}
 				</span>
 			</div>
 		</header>
 
 		<!-- Main content -->
 		<div class="prose prose-lg max-w-none">
+			<div class="flex items-end flex-col gap-5 mb-8">
+				<a
+					class="text-xl font-medium button overflow-hidden flex items-center gap-2"
+					target="_blank"
+					href={work.link}
+					>View live website
+					<img class="h-4 w-4" src="/icons/arrow-black.svg" alt="icon" />
+				</a>
+			</div>
 			{#if work.image}
 				<ParallaxScroll speed={0.2}>
 					<img
@@ -72,11 +80,6 @@
 				</ParallaxScroll>
 			{/if}
 
-			<div class="bg-white rounded-lg shadow-sm p-6">
-				<h2 class="text-2xl font-semibold text-gray-900 mb-4">Description</h2>
-				<p class="text-gray-600">{work.description}</p>
-			</div>
-
 			<!-- Additional content sections can be added here based on your Work type -->
 		</div>
 	</article>
@@ -85,3 +88,80 @@
 		<p class="text-gray-500">Work not found.</p>
 	</div>
 {/if}
+
+<style>
+	.nav-border {
+		position: absolute;
+		bottom: 0;
+		height: 2px;
+		background-color: black;
+		width: 100%;
+		right: 100%;
+		opacity: 0;
+		animation: border 1.2s ease-in-out 0.4s forwards;
+	}
+
+	@keyframes border {
+		0% {
+			right: 100%;
+			opacity: 1;
+		}
+		100% {
+			right: 0;
+			opacity: 1;
+		}
+	}
+
+	.button {
+		position: relative;
+		cursor: pointer;
+		overflow: hidden;
+		width: fit-content;
+	}
+
+	.button:hover img {
+		rotate: 45deg;
+		transition: rotate 0.4s ease;
+	}
+	.button:not(:hover) img {
+		rotate: 0deg;
+		transition: rotate 0.4s ease;
+	}
+
+	.button::before {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: -100%;
+		height: 2px;
+		width: 100%;
+		background-color: #151515;
+		transition: left 0.4s ease;
+	}
+
+	.button:hover::before {
+		animation: slideIn 0.4s ease forwards;
+	}
+
+	.button:not(:hover)::before {
+		animation: slideOut 0.4s ease forwards;
+	}
+
+	@keyframes slideIn {
+		0% {
+			left: -100%;
+		}
+		100% {
+			left: 0%;
+		}
+	}
+
+	@keyframes slideOut {
+		0% {
+			left: 0%;
+		}
+		100% {
+			left: 100%;
+		}
+	}
+</style>

@@ -129,10 +129,8 @@
 		position: absolute;
 		height: 100%;
 		width: 100%;
-		top: 38%;
-		left: 24.5%;
-		right: 0;
-		bottom: 0;
+		top: 37.5%;
+		left: 29.5%;
 		font-size: 0.18rem;
 		font-weight: 600;
 		z-index: 1;

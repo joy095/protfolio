@@ -12,6 +12,7 @@ export const load: PageServerLoad = async ({ params }: { params: { slug: string 
       image,
       description,
       type,
+	  link,
     }`;
 
 		const work = await client.fetch(query, { slug: params.slug });

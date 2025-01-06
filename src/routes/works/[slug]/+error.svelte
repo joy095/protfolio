@@ -24,7 +24,7 @@
 		<div class="flex gap-4 justify-center">
 			<a
 				href="/"
-				class="inline-block bg-primary px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+				class="inline-block border border-[#151515] px-6 py-2 rounded-lg text-[#151515] hover:text-[#f1efed] hover:bg-[rgba(21,21,21,0.8)] transition-colors"
 			>
 				Return Home
 			</a>
@@ -32,7 +32,7 @@
 			{#if $page.status !== 404}
 				<button
 					onclick={() => window.location.reload()}
-					class="inline-block border border-primary text-primary px-6 py-2 rounded-lg hover:bg-primary/10 transition-colors"
+					class="inline-block text-[#f1efed] px-6 py-2 rounded-lg bg-[#151515] hover:bg-[rgba(21,21,21,0.8)] transition-colors"
 				>
 					Try Again
 				</button>
