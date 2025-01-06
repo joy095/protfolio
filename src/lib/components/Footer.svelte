@@ -1,9 +1,15 @@
 <script lang="ts">
 	import Marquee from './Marquee.svelte';
-	import { smoothScrollToSection } from '$lib/scroll';
 	import ParallaxScroll from './ParallaxScroll.svelte';
 
 	let numberOfLines = 11;
+
+	const scrollToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		});
+	};
 </script>
 
 <ParallaxScroll speed={0.3}>
@@ -13,7 +19,7 @@
 		<div>
 			<Marquee speed={20} direction="left">
 				<h2 class="text-[13rem] font-semibold tracking-tighter leading-[1] -mt-11">
-					Let's Work together&nbsp;
+					Let's Work together
 				</h2>
 			</Marquee>
 
@@ -41,10 +47,10 @@
 					<p class="text-xl font-medium leading-[1.5]">
 						© 2025 Joy Karmakar. All rights reserved.
 					</p>
-					<a
+					<button
 						class="text-xl font-medium flex gap-1 items-center"
-						href="#hero"
-						on:click={(e) => smoothScrollToSection(e, '#hero')}
+						on:click={scrollToTop}
+						on:keydown={(e) => e.key === 'Enter' && scrollToTop()}
 					>
 						<div class="h-5 w-5 animate-bounce">
 							<svg
@@ -64,7 +70,7 @@
 							</svg>
 						</div>
 						Back to top
-					</a>
+					</button>
 				</div>
 			</div>
 		</div>
