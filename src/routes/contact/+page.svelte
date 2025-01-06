@@ -5,12 +5,16 @@
 		name: string;
 		email: string;
 		message: string;
+		subject: string;
+		phone?: string;
 	}
 
 	let formData: FormData = {
 		name: '',
 		email: '',
-		message: ''
+		message: '',
+		subject: '',
+		phone: ''
 	};
 
 	let showContact = false;
@@ -22,6 +26,14 @@
 		const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 		isEmailValid = emailRegex.test(email);
 		return isEmailValid;
+	};
+
+	let isPhoneValid = false;
+
+	const validatePhone = (phone: string): boolean => {
+		const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+		isPhoneValid = phoneRegex.test(phone);
+		return isPhoneValid;
 	};
 
 	const handleSubmit = async (event: SubmitEvent) => {
@@ -43,7 +55,7 @@
 			}
 
 			submitStatus = 'success';
-			formData = { name: '', email: '', message: '' };
+			formData = { name: '', email: '', subject: '', message: '' };
 		} catch (error) {
 			console.error('Submission error:', error);
 			submitStatus = 'error';
@@ -99,7 +111,7 @@
 
 					<form on:submit={handleSubmit} class="mt-10 mb-32 bg-[#e5e1dc] p-8">
 						<div class="flex flex-col gap-2">
-							<label class="text-xl font-medium" for="name">Name</label>
+							<label class="text-xl font-medium" for="name">Name*</label>
 							<input
 								class="rounded bg-[#f1efed] placeholder:text-[#888786] p-3 focus:outline-none"
 								type="text"
@@ -109,8 +121,21 @@
 								placeholder="Ex. John Doe"
 							/>
 						</div>
+
 						<div class="flex flex-col gap-2 mt-6">
-							<label class="text-xl font-medium" for="email">Email</label>
+							<label class="text-xl font-medium" for="name">Subject</label>
+							<input
+								class="rounded bg-[#f1efed] placeholder:text-[#888786] p-3 focus:outline-none"
+								type="text"
+								name="subject"
+								bind:value={formData.subject}
+								required
+								placeholder="Subject"
+							/>
+						</div>
+
+						<div class="flex flex-col gap-2 mt-6">
+							<label class="text-xl font-medium" for="email">Email*</label>
 							<input
 								class="rounded bg-[#f1efed] placeholder:text-[#888786] p-3 focus:outline-none"
 								type="text"
@@ -125,8 +150,25 @@
 								<p class="text-red-500 text-sm mt-1">Please enter a valid email address</p>
 							{/if}
 						</div>
+
 						<div class="flex flex-col gap-2 mt-6">
-							<label class="text-xl font-medium" for="message">Message</label>
+							<label class="text-xl font-medium" for="name">Phone</label>
+							<input
+								class="rounded bg-[#f1efed] placeholder:text-[#888786] p-3 focus:outline-none"
+								type="tel"
+								name="phone"
+								bind:value={formData.phone}
+								on:input={(e) => validatePhone(e.currentTarget.value)}
+								class:invalid={!isPhoneValid && formData.phone}
+								placeholder="+91 1234567890"
+							/>
+							{#if !isPhoneValid && formData.phone}
+								<p class="text-red-500 text-sm mt-1">Please enter a valid phone number</p>
+							{/if}
+						</div>
+
+						<div class="flex flex-col gap-2 mt-6">
+							<label class="text-xl font-medium" for="message">Message*</label>
 							<textarea
 								class="rounded bg-[#f1efed] placeholder:text-[#888786] p-3 focus:outline-none"
 								name="message"
