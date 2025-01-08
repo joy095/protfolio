@@ -31,6 +31,12 @@
 					clean, efficient code and seamless user experiences. Driven by a love for problem-solving
 					and learning, I aim to deliver innovative solutions that make a meaningful impact.
 				</p>
+
+				<div class="mt-10">
+					<a target="_blank" href="/cv.pdf" class="nav-links px-7 py-3 bg-[#151515] text-white">
+						Download my CV
+					</a>
+				</div>
 			</div>
 			<div class="object-top overflow-hidden md:w-[30%]" in:fade={{ duration: 800, delay: 300 }}>
 				<img loading="lazy" src="my_image.webp" alt="Joy Karmakar" />
