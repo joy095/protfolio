@@ -1,8 +1,5 @@
 <script lang="ts">
-	import StaggerText from './StaggerText.svelte';
 	import { fade, fly } from 'svelte/transition';
-
-	let text = `Hi, I'm Joy Karmakar, an art director and product designer based in India. With my background in visual arts and technology, I specialize in creating engaging user experiences through interactive design. I am deeply passionate about using my creative skills to collaborate on innovative and meaningful projects that make a genuine impact.`;
 
 	let inVisible = false;
 
@@ -28,7 +25,11 @@
 				<p
 					class="font-medium text-lg sm:text-[1.5rem] md:text-[1.625rem] lg:text-3xl lg:leading-[1.6] leading-[1.6] tracking-tighter"
 				>
-					{text}
+					I am a passionate and dedicated web developer with 2 years of experience building
+					scalable, user-friendly applications. Skilled in modern technologies like React.js,
+					Tailwind CSS, Node.js, Express.js, PostgreSQL, and MongoDB, I specialize in creating
+					clean, efficient code and seamless user experiences. Driven by a love for problem-solving
+					and learning, I aim to deliver innovative solutions that make a meaningful impact.
 				</p>
 			</div>
 			<div class="object-top overflow-hidden md:w-[30%]" in:fade={{ duration: 800, delay: 300 }}>
