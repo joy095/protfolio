@@ -26,13 +26,24 @@
 			<div class="container-auto">
 				<div class="flex md:flex-row flex-col-reverse items-center gap-20 md:justify-between mt-32">
 					<div class="flex flex-col gap-5">
-						<a
-							class="text-base md:text-lg lg:text-xl font-medium button overflow-hidden flex items-center gap-2"
-							target="_blank"
-							href="https://www.linkedin.com/in/joy-karmakar-cooch-behar"
-							>Linkdin
-							<img class="h-4 w-4" src="/icons/arrow-2.svg" alt="icon" />
-						</a>
+						<div class="flex flex-col gap-5">
+							<a
+								class="text-base md:text-lg lg:text-xl font-medium button overflow-hidden flex items-center gap-2"
+								target="_blank"
+								href="https://www.linkedin.com/in/joy-karmakar-cooch-behar"
+								>Linkdin
+								<img class="h-4 w-4" src="/icons/arrow-2.svg" alt="icon" />
+							</a>
+						</div>
+						<div class="flex flex-col gap-5">
+							<a
+								class="text-base md:text-lg lg:text-xl font-medium button overflow-hidden flex items-center gap-2"
+								target="_blank"
+								href="https://github.com/joy095"
+								>Github
+								<img class="h-4 w-4" src="/icons/arrow-2.svg" alt="icon" />
+							</a>
+						</div>
 					</div>
 					<p class="text-xl md:text-[1.375rem] font-medium leading-[1.5] md:w-[30%]">
 						I'm currently available for new work, let me know if you need a digital designer. I'd
