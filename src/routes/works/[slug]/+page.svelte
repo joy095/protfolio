@@ -50,8 +50,8 @@
 		<!-- Header -->
 		<header class="mb-3 relative pb-2 overflow-hidden">
 			<div class="nav-border"></div>
-			<div class="flex items-end justify-between gap-5 mb-4">
-				<h1 class="text-7xl font-bold text-gray-900">{work.title}</h1>
+			<div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-4">
+				<h1 class="text-5xl md:text-7xl font-bold text-gray-900">{work.title}</h1>
 				<span class="rounded-full text-2xl font-medium">
 					{work.description}
 				</span>
@@ -96,7 +96,7 @@
 					</ParallaxScroll>
 				{/if}
 
-				<div class="grid grid-cols-2 gap-5">
+				<div class="grid md:grid-cols-2 gap-5">
 					{#if work.image_4}
 						<ParallaxScroll speed={0.2}>
 							<div class="bg-[#c3c2be] px-[10%] pt-[15%]">

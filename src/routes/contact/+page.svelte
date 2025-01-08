@@ -72,7 +72,7 @@
 {#if showContact}
 	<div class="container-auto">
 		<h1
-			class="mt-40 font-semibold text-[6.875rem] tracking-tighter leading-tight"
+			class="mt-40 font-semibold text-[5rem] md:text-[6.875rem] tracking-tighter leading-tight"
 			in:fly={{ duration: 800, y: 50 }}
 		>
 			Contact
@@ -80,9 +80,9 @@
 
 		<div class="border-t border-black">
 			<div class="flex mt-20">
-				<div class="w-[30%]"></div>
-				<div class="w-[70%]">
-					<p class="text-3xl leading-[1.5] font-medium">
+				<div class="md:w-[30%]"></div>
+				<div class="md:w-[70%]">
+					<p class="text-xl md:text-3xl leading-[1.5] font-medium">
 						I'm looking forward to hearing from you! If you prefer not to fill out forms, feel free
 						to email me directly and let's talk about the next big thing!
 					</p>
@@ -109,7 +109,7 @@
 						</div>
 					</a>
 
-					<form on:submit={handleSubmit} class="mt-10 mb-32 bg-[#e5e1dc] p-8">
+					<form on:submit={handleSubmit} class="mt-10 mb-32 bg-[#e5e1dc] p-5 md:p-8">
 						<div class="flex flex-col gap-2">
 							<label class="text-xl font-medium" for="name">Name*</label>
 							<input
