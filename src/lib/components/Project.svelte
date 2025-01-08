@@ -75,10 +75,12 @@
 						class="post-card opacity-0 translate-y-10 transition-all duration-1000 ease-out"
 						use:intersectionObserver={index}
 					>
-						<div class="flex flex-col justify-between gap-5 w-[30%] pr-5">
+						<div class="flex flex-col mt-8 md:mt-0 justify-between gap-4 md:gap-5 md:w-[30%] pr-5">
 							<h2 class="title">{post.title}</h2>
-							<div class="flex flex-col gap-6">
-								<p class="font-medium text-xl tracking-[.8]">{post.description}</p>
+							<div class="flex flex-col gap-4 md:gap-6">
+								{#if post.description}
+									<p class="font-medium text-xl tracking-[.8]">{post.description}</p>
+								{/if}
 								<a class="btn" href="works/{post.slug.current}">View</a>
 							</div>
 						</div>
@@ -115,11 +117,11 @@
 	.post-card {
 		display: flex;
 		justify-content: space-between;
+		flex-direction: column-reverse;
 		will-change: transform, opacity;
 	}
 
 	.banner-wrap {
-		width: 70%;
 		height: 30rem;
 	}
 
@@ -145,5 +147,14 @@
 		color: red;
 		text-align: center;
 		padding: 2rem;
+	}
+
+	@media (min-width: 768px) {
+		.post-card {
+			flex-direction: row;
+		}
+		.banner-wrap {
+			width: 70%;
+		}
 	}
 </style>

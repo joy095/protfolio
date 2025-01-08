@@ -92,7 +92,7 @@
 			<div class="nav-border"></div>
 
 			<a
-				class="nav-links font-bold text-xl"
+				class="nav-links font-bold md:text-xl sm:text-lg text-base"
 				href="/#hero"
 				on:click={(e) => smoothScrollToSection(e, '#hero')}
 				in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
@@ -104,7 +104,7 @@
 			</a>
 
 			<nav>
-				<ul class="flex gap-8 font-semibold text-black/85 text-lg">
+				<ul class="flex gap-5 md:gap-8 font-semibold text-black/85 text-base md:text-lg">
 					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 200, opacity: 0 }}>
 						<a
 							href="/#about"
@@ -144,7 +144,7 @@
 			</nav>
 
 			<div
-				class="text-black/85 text-lg font-semibold"
+				class="text-black/85 text-lg font-semibold md:flex hidden"
 				in:fly={{ y: 20, duration: 800, delay: 800, opacity: 0 }}
 			>
 				{timezone} * {currentTime}

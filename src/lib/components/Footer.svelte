@@ -18,37 +18,38 @@
 
 		<div>
 			<Marquee speed={20} direction="left">
-				<h2 class="text-[13rem] font-semibold tracking-tighter leading-[1] -mt-11">
-					Let's Work together
+				<h2 class="text-[15vw] font-semibold tracking-tighter leading-[1] -mt-11">
+					Let's Work together&nbsp;
 				</h2>
 			</Marquee>
 
 			<div class="container-auto">
-				<div class="flex justify-between mt-32">
+				<div class="flex md:flex-row flex-col-reverse items-center gap-20 md:justify-between mt-32">
 					<div class="flex flex-col gap-5">
 						<a
-							class="text-xl font-medium button overflow-hidden flex items-center gap-2"
+							class="text-base md:text-lg lg:text-xl font-medium button overflow-hidden flex items-center gap-2"
 							target="_blank"
 							href="https://www.linkedin.com/in/joy-karmakar-cooch-behar"
 							>Linkdin
 							<img class="h-4 w-4" src="/icons/arrow-2.svg" alt="icon" />
 						</a>
 					</div>
-					<p class="text-[1.375rem] font-medium leading-[1.5] w-[30%]">
+					<p class="text-xl md:text-[1.375rem] font-medium leading-[1.5] md:w-[30%]">
 						I'm currently available for new work, let me know if you need a digital designer. I'd
 						love to talk about the next big thing!
 					</p>
 				</div>
 
-				<div class="flex justify-between items-center mt-32 gap-5">
-					<a class="text-xl font-medium" href="mailto:joykarmakar987654321@gmail.com"
-						>joykarmakar987654321@gmail.com</a
+				<div class="flex flex-col md:flex-row justify-between items-center mt-32 gap-5">
+					<a
+						class="text-base md:text-lg lg:text-xl font-medium"
+						href="mailto:joykarmakar987654321@gmail.com">joykarmakar987654321@gmail.com</a
 					>
-					<p class="text-xl font-medium leading-[1.5]">
+					<p class="text-base md:text-lg lg:text-xl font-medium leading-[1.5]">
 						© 2025 Joy Karmakar. All rights reserved.
 					</p>
 					<button
-						class="text-xl font-medium flex gap-1 items-center"
+						class="text-base md:text-lg lg:text-xl font-medium flex gap-1 items-center"
 						on:click={scrollToTop}
 						on:keydown={(e) => e.key === 'Enter' && scrollToTop()}
 					>

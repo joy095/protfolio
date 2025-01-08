@@ -23,17 +23,15 @@
 			<div class="nav-border"></div>
 		</div>
 
-		<div id="about" class="flex justify-between mt-16">
-			<div class="w-[60%]">
-				<StaggerText
-					charClass="font-medium text-3xl leading-[1.6] tracking-tighter"
+		<div id="about" class="flex flex-col gap-5 md:flex-row justify-between mt-16">
+			<div class="md:w-[60%]">
+				<p
+					class="font-medium text-lg sm:text-[1.5rem] md:text-[1.625rem] lg:text-3xl lg:leading-[1.6] leading-[1.6] tracking-tighter"
+				>
 					{text}
-					delay={5}
-					initialDelay={200}
-					duration={800}
-				/>
+				</p>
 			</div>
-			<div class="w-[30%]" in:fade={{ duration: 800, delay: 300 }}>
+			<div class="object-top overflow-hidden md:w-[30%]" in:fade={{ duration: 800, delay: 300 }}>
 				<img loading="lazy" src="my_image.webp" alt="Joy Karmakar" />
 			</div>
 		</div>

@@ -20,46 +20,56 @@
 			<div class="nav-border"></div>
 		</div>
 
-		<div class="flex justify-between mt-16">
-			<div class="w-[30%]">
+		<div class="flex gap-10 md:gap-5 flex-col md:flex-row justify-between mt-16">
+			<div class="md:w-[30%]">
 				<p class="font-medium text-xl leading-[1.6] tracking-tighter">
 					I've worked with companies and clients. I enjoy collaborating with clients who appreciate
 					the importance of good developer.
 				</p>
 			</div>
-			<div class="flex justify-between w-[60%]">
-				<div class="flex flex-col gap-5 w-full">
-					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">Skkyee</p>
-					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">Skkyee</p>
-					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">Acceleratron</p>
-					<p class="text-xl font-medium border-b-2 w-full pb-5">Logic ‘n’ Color</p>
-				</div>
-				<div class="flex flex-col gap-5 border-b-2 w-full">
-					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">Web Developer</p>
-					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">
-						Web Development Intern
-					</p>
-					<p class="text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">Internship</p>
-					<p class="text-xl font-medium border-b-2 w-full pb-5">Frontend Developer</p>
-				</div>
-				<div class="flex flex-col gap-5 border-b-2 w-full">
-					<p class="flex justify-end text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">
-						Apr 2024 - Present
-					</p>
-					<p class="flex justify-end text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">
-						Jan 2024 - Apr 2024
-					</p>
-					<p class="flex justify-end text-xl font-medium border-b-2 border-[#c2c2c2] w-full pb-5">
-						Dec 2023 - Jan 2024
-					</p>
-					<p class="flex justify-end text-xl font-medium w-full pb-5">Jun 2023 - Nov 2023</p>
-				</div>
+			<div
+				class="flex flex-col justify-between text-base sm:text-lg md:w-[60%] md:text-xl font-medium"
+			>
+				<table>
+					<tbody>
+						<tr>
+							<td>Skkyee</td>
+							<td>Web Developer</td>
+							<td>Apr 2024 - Present</td>
+						</tr>
+						<tr>
+							<td>Skkyee</td>
+							<td>Web Development Intern</td>
+							<td>Jan 2024 - Apr 2024</td>
+						</tr>
+						<tr>
+							<td>Acceleratron</td>
+							<td>Internship</td>
+							<td>Dec 2023 - Jan 2024</td>
+						</tr>
+						<tr>
+							<td>Logic ‘n’ Color</td>
+							<td>Frontend Developer</td>
+							<td>Jun 2023 - Nov 2023</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
 {/if}
 
 <style>
+	td {
+		padding: 1rem 0;
+	}
+	tr {
+		border-bottom: 2px solid #c2c2c2;
+	}
+	tr:last-child {
+		border-bottom: none;
+	}
+
 	.nav-border {
 		position: absolute;
 		bottom: 0;

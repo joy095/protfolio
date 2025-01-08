@@ -46,7 +46,7 @@
 		</div>
 	</div>
 {:else if work}
-	<article class="container-auto mt-40">
+	<article class="container-auto my-40">
 		<!-- Header -->
 		<header class="mb-3 relative pb-2 overflow-hidden">
 			<div class="nav-border"></div>
@@ -71,8 +71,8 @@
 					</a>
 				{/if}
 			</div>
-			{#if work.image}
-				<div class="mb-5">
+			<div class="flex flex-col gap-5">
+				{#if work.image}
 					<ParallaxScroll speed={0.2}>
 						<img
 							loading="lazy"
@@ -81,9 +81,8 @@
 							class="w-full h-[90vh] object-cover"
 						/>
 					</ParallaxScroll>
-				</div>
-			{/if}
-			<div class="mb-5">
+				{/if}
+
 				{#if work.image_2}
 					<ParallaxScroll speed={0.2}>
 						<div class="bg-[#c3c2be] px-[10%] pt-[15%]">
@@ -96,34 +95,34 @@
 						</div>
 					</ParallaxScroll>
 				{/if}
-			</div>
-			<div class="mb-5 grid grid-cols-2 gap-5">
-				{#if work.image_4}
-					<ParallaxScroll speed={0.2}>
-						<div class="bg-[#c3c2be] px-[10%] pt-[15%]">
-							<img
-								loading="lazy"
-								src={urlFor(work.image_4)}
-								alt={work.title}
-								class="w-full h-[90vh] object-cover"
-							/>
-						</div>
-					</ParallaxScroll>
-				{/if}
-				{#if work.image_5}
-					<ParallaxScroll speed={0.2}>
-						<div class="bg-[#c3c2be] px-[10%] pt-[15%]">
-							<img
-								loading="lazy"
-								src={urlFor(work.image_5)}
-								alt={work.title}
-								class="w-full h-[90vh] object-cover"
-							/>
-						</div>
-					</ParallaxScroll>
-				{/if}
-			</div>
-			<div class="mb-5">
+
+				<div class="grid grid-cols-2 gap-5">
+					{#if work.image_4}
+						<ParallaxScroll speed={0.2}>
+							<div class="bg-[#c3c2be] px-[10%] pt-[15%]">
+								<img
+									loading="lazy"
+									src={urlFor(work.image_4)}
+									alt={work.title}
+									class="w-full h-[90vh] object-cover"
+								/>
+							</div>
+						</ParallaxScroll>
+					{/if}
+					{#if work.image_5}
+						<ParallaxScroll speed={0.2}>
+							<div class="bg-[#c3c2be] px-[10%] pt-[15%]">
+								<img
+									loading="lazy"
+									src={urlFor(work.image_5)}
+									alt={work.title}
+									class="w-full h-[90vh] object-cover"
+								/>
+							</div>
+						</ParallaxScroll>
+					{/if}
+				</div>
+
 				{#if work.image_3}
 					<ParallaxScroll speed={0.2}>
 						<div class="bg-[#c3c2be] px-[10%] pt-[15%]">
@@ -137,7 +136,6 @@
 					</ParallaxScroll>
 				{/if}
 			</div>
-
 			<!-- Additional content sections can be added here based on your Work type -->
 		</div>
 	</article>
