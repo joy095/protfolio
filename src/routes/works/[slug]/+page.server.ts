@@ -5,36 +5,42 @@ import { client } from '$lib/sanity';
 
 export const load: PageServerLoad = async ({ params }: { params: { slug: string } }) => {
 	try {
-		const query = `*[_type == "work" && slug.current == $slug][0] {
-      _id,
-      title,
-      slug,
-      image,
-      image_2,
-      image_3,
-      image_4,
-      image_5,
-      description,
-      type,
-	  link,
-    }`;
+		const query = `{
+            "current": *[_type == "work" && slug.current == $slug][0]{
+                title,
+                "slug": slug.current,
+                serial,
+                image,
+                image_2,
+                image_3,
+                image_4,
+                image_5,
+                description,
+                link,
+            },
+            "next": *[_type == "work" && serial > *[_type == "work" && slug.current == $slug][0].serial] | order(serial asc)[0]{
+            title,
+            "slug": slug.current,
+            image,
+            description,
+            }
+        }`;
 
-		const work = await client.fetch(query, { slug: params.slug });
+		const { current, next } = await client.fetch(query, { slug: params.slug });
 
-		if (!work) {
+		if (!current) {
 			throw error(404, 'Work not found');
 		}
 
 		return {
-			work
+			work: current,
+			nextWork: next
 		};
 	} catch (err) {
 		console.error('Error loading work:', err);
-
 		if (err instanceof Error && 'status' in err) {
 			throw err;
 		}
-
 		throw error(500, 'Error loading work');
 	}
 };

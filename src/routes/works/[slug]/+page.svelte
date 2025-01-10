@@ -2,22 +2,28 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { isLoading, error, fetchPostBySlug } from '$lib/stores/posts';
-	import type { Work } from '$lib/types/post';
+	import type { Work, NextWork } from '$lib/types/post';
 	import { urlFor } from '$lib/sanity';
 	import ParallaxScroll from '$lib/components/ParallaxScroll.svelte';
+	import RevealImage from '$lib/components/RevealImage.svelte';
 
-	export let data: { work: Work | null };
-
-	let work: Work | null = data.work;
+	export let data: { work: Work | null; nextWork: NextWork | null };
+	let work = data.work;
+	let nextWork = data.nextWork;
 
 	onMount(async () => {
 		if (!work && window) {
 			const slug = window.location.pathname.split('/').pop();
 			if (slug) {
-				work = await fetchPostBySlug(slug);
+				const result = await fetchPostBySlug(slug);
+				if (result) {
+					work = result.work;
+					nextWork = result.nextWork;
+				}
 			}
 		}
 	});
+	console.log(nextWork);
 </script>
 
 {#if $isLoading}
@@ -66,7 +72,9 @@
 						class="text-xl font-medium button overflow-hidden flex items-center gap-2"
 						target="_blank"
 						href={work.link}
-						>View live website
+						rel="noopener noreferrer"
+					>
+						View live website
 						<img class="h-4 w-4" src="/icons/arrow-black.svg" alt="icon" />
 					</a>
 				{/if}
@@ -136,9 +144,38 @@
 					</ParallaxScroll>
 				{/if}
 			</div>
-			<!-- Additional content sections can be added here based on your Work type -->
 		</div>
 	</article>
+
+	{#if nextWork}
+		<div class="container-auto mb-20">
+			<div class="post-container">
+				<div class="post-card translate-y-10 transition-all duration-1000 ease-out">
+					<div class="flex flex-col mt-8 md:mt-0 justify-between gap-4 md:gap-5 md:w-[30%] pr-5">
+						<h2 class="title">{nextWork.title}</h2>
+						<div class="flex flex-col gap-4 md:gap-6">
+							{#if nextWork.description}
+								<p class="font-medium text-xl tracking-[.8]">{nextWork.description}</p>
+							{/if}
+							<a class="btn" href={nextWork.slug}>View</a>
+						</div>
+					</div>
+					{#if nextWork.image}
+						<div class="banner-wrap">
+							<RevealImage
+								className="project-banner"
+								src={urlFor(nextWork.image)}
+								alt={nextWork.title}
+								revealOptions={{
+									duration: 1
+								}}
+							/>
+						</div>
+					{/if}
+				</div>
+			</div>
+		</div>
+	{/if}
 {:else}
 	<div class="flex justify-center items-center min-h-[500px]">
 		<p class="text-gray-500">Work not found.</p>
@@ -218,6 +255,46 @@
 		}
 		100% {
 			left: 100%;
+		}
+	}
+
+	.post-container {
+		margin-top: 5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	.post-card {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column-reverse;
+		will-change: transform, opacity;
+	}
+
+	.banner-wrap {
+		height: 30rem;
+	}
+
+	.title {
+		font-size: 2rem;
+		font-weight: 500;
+	}
+
+	.btn {
+		background-color: rgba(21, 21, 21, 0.08);
+		padding: 0.6rem 1rem;
+		width: fit-content;
+		border-radius: 0.25rem;
+		font-weight: 500;
+	}
+
+	@media (min-width: 768px) {
+		.post-card {
+			flex-direction: row;
+		}
+		.banner-wrap {
+			width: 70%;
 		}
 	}
 </style>

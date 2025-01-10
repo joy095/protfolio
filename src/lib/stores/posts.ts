@@ -11,13 +11,13 @@ export const fetchPosts = async (): Promise<void> => {
 	error.set(null);
 
 	try {
-		const query = `*[_type == "work"] {
+		const query = `*[_type == "work"] | order(serial asc) {
       _id,
       title,
       slug,
       image,
 	  description,
-	  type,
+	  serial,
     }`;
 
 		const result = await client.fetch<Work[]>(query);
