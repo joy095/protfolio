@@ -1,29 +1,41 @@
-<!-- src/routes/works/[slug]/+page.svelte -->
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { isLoading, error, fetchPostBySlug } from '$lib/stores/posts';
+	import { goto } from '$app/navigation';
+	import { isLoading, error } from '$lib/stores/posts';
 	import type { Work, NextWork } from '$lib/types/post';
 	import { urlFor } from '$lib/sanity';
 	import ParallaxScroll from '$lib/components/ParallaxScroll.svelte';
 	import RevealImage from '$lib/components/RevealImage.svelte';
+	import { fly } from 'svelte/transition';
 
 	export let data: { work: Work | null; nextWork: NextWork | null };
-	let work = data.work;
-	let nextWork = data.nextWork;
+	let { work, nextWork } = data;
 
-	onMount(async () => {
-		if (!work && window) {
-			const slug = window.location.pathname.split('/').pop();
-			if (slug) {
-				const result = await fetchPostBySlug(slug);
-				if (result) {
-					work = result.work;
-					nextWork = result.nextWork;
-				}
-			}
+	const handleWorkNavigation = async (slug: string, e: MouseEvent) => {
+		e.preventDefault();
+		isLoading.set(true);
+
+		try {
+			await goto(`/works/${slug}`, {
+				replaceState: false,
+				invalidateAll: true
+			});
+
+			// Update local state with new data after navigation
+			work = data.work;
+			nextWork = data.nextWork;
+		} catch (err) {
+			console.error('Navigation failed:', err);
+			error.set(err instanceof Error ? err.message : 'Navigation failed');
+		} finally {
+			isLoading.set(false);
 		}
-	});
-	console.log(nextWork);
+	};
+
+	// Update state when data changes
+	$: {
+		work = data.work;
+		nextWork = data.nextWork;
+	}
 </script>
 
 {#if $isLoading}
@@ -64,7 +76,6 @@
 			</div>
 		</header>
 
-		<!-- Main content -->
 		<div class="prose prose-lg max-w-none">
 			<div class="flex items-end flex-col gap-5 mb-8">
 				{#if work.link}
@@ -149,6 +160,16 @@
 
 	{#if nextWork}
 		<div class="container-auto mb-20">
+			<div class="flex justify-between pb-3 relative overflow-hidden">
+				<p
+					class="font-medium text-2xl leading-[1.6] tracking-tighter"
+					in:fly={{ x: -20, duration: 600, delay: 100 }}
+				>
+					Next Project
+				</p>
+				<div class="nav-border"></div>
+			</div>
+
 			<div class="post-container">
 				<div class="post-card translate-y-10 transition-all duration-1000 ease-out">
 					<div class="flex flex-col mt-8 md:mt-0 justify-between gap-4 md:gap-5 md:w-[30%] pr-5">
@@ -157,7 +178,11 @@
 							{#if nextWork.description}
 								<p class="font-medium text-xl tracking-[.8]">{nextWork.description}</p>
 							{/if}
-							<a class="btn" href={nextWork.slug}>View</a>
+							<a
+								class="btn"
+								href={`/works/${nextWork?.slug}`}
+								on:click={(e) => nextWork && handleWorkNavigation(nextWork.slug, e)}>View</a
+							>
 						</div>
 					</div>
 					{#if nextWork.image}
