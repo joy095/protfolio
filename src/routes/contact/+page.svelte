@@ -123,7 +123,7 @@
 						</div>
 
 						<div class="flex flex-col gap-2 mt-6">
-							<label class="text-xl font-medium" for="name">Subject</label>
+							<label class="text-xl font-medium" for="name">Subject*</label>
 							<input
 								class="rounded bg-[#f1efed] placeholder:text-[#888786] p-3 focus:outline-none"
 								type="text"
