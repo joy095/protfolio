@@ -7,6 +7,13 @@
 	import RevealImage from '$lib/components/RevealImage.svelte';
 	import { fly } from 'svelte/transition';
 
+	const scrollToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		});
+	};
+
 	export let data: { work: Work | null; nextWork: NextWork | null };
 	let { work, nextWork } = data;
 
@@ -181,7 +188,9 @@
 							<a
 								class="btn"
 								href={`/works/${nextWork?.slug}`}
-								on:click={(e) => nextWork && handleWorkNavigation(nextWork.slug, e)}>View</a
+								on:click={(e) => nextWork && handleWorkNavigation(nextWork.slug, e)}
+								on:click={scrollToTop}
+								on:keydown={(e) => e.key === 'Enter' && scrollToTop()}>View</a
 							>
 						</div>
 					</div>
