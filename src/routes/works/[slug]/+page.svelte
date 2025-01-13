@@ -45,6 +45,37 @@
 	}
 </script>
 
+<svelte:head>
+	{#if work}
+		<title>{work.title} - Joy Karmakar</title>
+		<meta name="description" content={work.description || 'Project showcase by Joy Karmakar'} />
+		<meta name="author" content="Joy Karmakar" />
+
+		<!-- Open Graph -->
+		<meta property="og:title" content={`${work.title} - Joy Karmakar`} />
+		<meta
+			property="og:description"
+			content={work.description || 'Project showcase by Joy Karmakar'}
+		/>
+		<meta property="og:image" content={work.image} />
+		<meta property="og:url" content={`https://joykarmakar.vercel.app/works/${work.slug}`} />
+		<meta property="og:type" content="website" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={`${work.title} - Joy Karmakar`} />
+		<meta
+			name="twitter:description"
+			content={work.description || 'Project showcase by Joy Karmakar'}
+		/>
+		<meta name="twitter:image" content={work.image} />
+		<meta name="twitter:creator" content="@joykarmakar" />
+	{:else}
+		<title>Project Details - Joy Karmakar</title>
+		<meta name="description" content="Project showcase by Joy Karmakar" />
+	{/if}
+</svelte:head>
+
 {#if $isLoading}
 	<div class="flex justify-center items-center min-h-[500px]">
 		<div
@@ -71,26 +102,6 @@
 		</div>
 	</div>
 {:else if work}
-<svelte:head>
-    <title>{work?.title || 'Project Details'} - Joy Karmakar</title>
-    <meta name="description" content={work?.description || 'Project showcase by Joy Karmakar'} />
-    <meta name="author" content="Joy Karmakar" />
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content={`${work?.title || 'Project Details'} - Joy Karmakar`} />
-    <meta property="og:description" content={work?.description || 'Project showcase by Joy Karmakar'} />
-    <meta property="og:image" content={work?.image ? urlFor(work.image).url() : ''} />
-    <meta property="og:url" content={`https://joykarmakar.vercel.app/works/${work?.slug?.current || ''}`} />
-    <meta property="og:type" content="website" />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${work?.title || 'Project Details'} - Joy Karmakar`} />
-    <meta name="twitter:description" content={work?.description || 'Project showcase by Joy Karmakar'} />
-    <meta name="twitter:image" content={work?.image ? urlFor(work.image).url() : ''} />
-    <meta name="twitter:creator" content="@joykarmakar" />
-</svelte:head>
-
 	<article class="container-auto my-40">
 		<!-- Header -->
 		<header class="mb-3 relative pb-2 overflow-hidden">
