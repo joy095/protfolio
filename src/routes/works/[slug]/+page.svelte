@@ -71,6 +71,21 @@
 		</div>
 	</div>
 {:else if work}
+	<head>
+		<title>{work.title}</title>
+		<meta name="description" content={work.description} />
+		<meta name="author" content="Joy Karmakar" />
+		<meta property="og:title" content={work.title} />
+		<meta property="og:description" content={work.description} />
+		<meta property="og:image" content={work.image} />
+		<meta property="og:url" content="https://joykarmakar.vercel.app/works/{work.slug}" />
+		<meta property="og:type" content="website" />
+		<meta name="twitter:card" content={work.image} />
+		<meta name="twitter:title" content={work.title} />
+		<meta name="twitter:description" content={work.description} />
+		<meta name="twitter:image" content={work.image} />
+	</head>
+
 	<article class="container-auto my-40">
 		<!-- Header -->
 		<header class="mb-3 relative pb-2 overflow-hidden">

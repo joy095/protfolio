@@ -69,6 +69,30 @@
 	}, 1000);
 </script>
 
+<head>
+	<title> Joy Karmakar - Contact Me </title>
+	<meta
+		name="description"
+		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
+	/>
+	<meta name="author" content="Joy Karmakar" />
+	<meta property="og:title" content="Joy Karmakar - Contact Me" />
+	<meta
+		property="og:description"
+		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
+	/>
+	<meta property="og:image" content="https://joykarmakar.vercel.app/contact.webp" />
+	<meta property="og:url" content="https://joykarmakar.vercel.app/contact" />
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="https://joykarmakar.vercel.app/contact.webp" />
+	<meta name="twitter:title" content="Joy Karmakar - Contact Me" />
+	<meta
+		name="twitter:description"
+		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
+	/>
+	<meta name="twitter:image" content="https://joykarmakar.vercel.app/contact.webp" />
+</head>
+
 {#if showContact}
 	<div class="container-auto">
 		<h1
