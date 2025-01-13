@@ -5,8 +5,8 @@
 	import Experience from '$lib/components/Experience.svelte';
 </script>
 
-<head>
-	<title> Joy Karmakar - Web Developer </title>
+<svelte:head>
+	<title>Joy Karmakar - Web Developer</title>
 	<meta
 		name="description"
 		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
@@ -27,7 +27,7 @@
 		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
 	/>
 	<meta name="twitter:image" content="https://joykarmakar.vercel.app/joy.PNG" />
-</head>
+</svelte:head>
 
 <Hero />
 

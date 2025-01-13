@@ -69,8 +69,8 @@
 	}, 1000);
 </script>
 
-<head>
-	<title> Joy Karmakar - Contact Me </title>
+<svelte:head>
+	<title>Joy Karmakar - Contact Me</title>
 	<meta
 		name="description"
 		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
@@ -91,7 +91,7 @@
 		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
 	/>
 	<meta name="twitter:image" content="https://joykarmakar.vercel.app/contact.webp" />
-</head>
+</svelte:head>
 
 {#if showContact}
 	<div class="container-auto">
