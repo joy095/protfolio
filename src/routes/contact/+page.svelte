@@ -81,6 +81,11 @@
 		property="og:description"
 		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
 	/>
+
+	<meta property="og:url" content="https://joykarmakar.vercel.app/contact" />
+
+	<link rel="canonical" href="https://joykarmakar.vercel.app/contact" />
+
 	<meta property="og:image" content="https://joykarmakar.vercel.app/contact.webp" />
 	<meta property="og:url" content="https://joykarmakar.vercel.app/contact" />
 	<meta property="og:type" content="website" />

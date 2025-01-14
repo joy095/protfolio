@@ -57,6 +57,10 @@
 			property="og:description"
 			content={work.description || 'Project showcase by Joy Karmakar'}
 		/>
+		<meta property="og:url" content={`https://joykarmakar.vercel.app/works/${work.slug}`} />
+
+		<link rel="canonical" href={`https://joykarmakar.vercel.app/works/${work.slug}`} />
+
 		<meta property="og:image" content={urlFor(work.image)} />
 		<meta property="og:url" content={`https://joykarmakar.vercel.app/works/${work.slug}`} />
 		<meta property="og:type" content="website" />
