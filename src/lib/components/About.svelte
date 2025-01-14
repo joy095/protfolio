@@ -35,7 +35,7 @@
 				<div class="mt-10">
 					<a
 						target="_blank"
-						href="/Joy_resume.pdf"
+						href="/Joy's_resume.pdf"
 						class="nav-links px-7 py-3 bg-[#151515] text-white"
 					>
 						Download my CV
