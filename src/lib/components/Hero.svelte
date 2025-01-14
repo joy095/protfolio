@@ -6,7 +6,7 @@
 	import StaggerText from './StaggerText.svelte';
 
 	let text =
-		'A passionate web developer with 2 years of experience in building responsive and scalable web applications using React.js, Node.js, and TypeScript. Skilled in crafting intuitive user interfaces with Tailwind CSS and managing databases like PostgreSQL and MongoDB.';
+		'Full-stack web developer proficient in HTML, CSS, and JavaScript, with experience in React.js, Tailwind CSS, Node.js, and Express.js. Skilled in working with databases like PostgreSQL and MongoDB. Familiar with TypeScript, Webflow for design-centric development, GSAP for animations, Figma for UI/UX design, Golang, Docker, and version control using Git. Focused on creating efficient and functional web applications.';
 
 	let showHero = false;
 

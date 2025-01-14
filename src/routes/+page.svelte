@@ -12,7 +12,6 @@
 		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
 	/>
 
-	<!-- Open Graph -->
 	<meta property="og:title" content="Joy Karmakar - Web Developer" />
 	<meta
 		property="og:description"
@@ -32,7 +31,6 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Joy Karmakar Portfolio" />
 
-	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@joykarmakar" />
 	<meta name="twitter:creator" content="@joykarmakar" />

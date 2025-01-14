@@ -25,15 +25,19 @@
 				<p
 					class="font-medium text-lg sm:text-[1.5rem] md:text-[1.625rem] lg:text-3xl lg:leading-[1.6] leading-[1.6] tracking-tighter"
 				>
-					I am a passionate and dedicated web developer with 2 years of experience building
-					scalable, user-friendly applications. Skilled in modern technologies like React.js,
-					Tailwind CSS, Node.js, Express.js, PostgreSQL, and MongoDB, I specialize in creating
-					clean, efficient code and seamless user experiences. Driven by a love for problem-solving
-					and learning, I aim to deliver innovative solutions that make a meaningful impact.
+					Full-stack web developer proficient in HTML, CSS, and JavaScript, with experience in
+					React.js, Tailwind CSS, Node.js, and Express.js. Skilled in working with databases like
+					PostgreSQL and MongoDB. Familiar with TypeScript, Webflow for design-centric development,
+					GSAP for animations, Figma for UI/UX design, Golang, Docker, and version control using
+					Git. Focused on creating efficient and functional web applications.
 				</p>
 
 				<div class="mt-10">
-					<a target="_blank" href="/cv.pdf" class="nav-links px-7 py-3 bg-[#151515] text-white">
+					<a
+						target="_blank"
+						href="/Joy's_resume.pdf"
+						class="nav-links px-7 py-3 bg-[#151515] text-white"
+					>
 						Download my CV
 					</a>
 				</div>
