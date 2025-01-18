@@ -16,6 +16,7 @@ export const load: PageServerLoad = async ({ params }: { params: { slug: string 
                 image_4,
                 image_5,
                 description,
+                info,
                 link,
             },
             "next": *[_type == "work" && serial > *[_type == "work" && slug.current == $slug][0].serial] | order(serial asc)[0]{
