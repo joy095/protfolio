@@ -139,7 +139,7 @@
 							loading="lazy"
 							src={urlFor(work.image)}
 							alt={work.title}
-							class="w-full h-[90vh] object-cover"
+							class="w-full md:h-[90vh] object-cover"
 						/>
 					</ParallaxScroll>
 				{/if}
