@@ -122,7 +122,7 @@
 	}
 
 	.banner-wrap {
-		height: 30rem;
+		height: 30vh;
 	}
 
 	.title {
@@ -155,6 +155,7 @@
 		}
 		.banner-wrap {
 			width: 70%;
+			height: 90vh;
 		}
 	}
 </style>

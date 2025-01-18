@@ -139,7 +139,7 @@
 							loading="lazy"
 							src={urlFor(work.image)}
 							alt={work.title}
-							class="w-full md:h-[90vh] object-cover"
+							class="w-full h-[35vh] md:h-[90vh] object-cover"
 						/>
 					</ParallaxScroll>
 				{/if}
@@ -349,7 +349,7 @@
 	}
 
 	.banner-wrap {
-		height: 30rem;
+		height: 30vh;
 	}
 
 	.title {
@@ -371,6 +371,7 @@
 		}
 		.banner-wrap {
 			width: 70%;
+			height: 90vh;
 		}
 	}
 </style>
