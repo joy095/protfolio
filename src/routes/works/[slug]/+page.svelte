@@ -145,7 +145,7 @@
 				{/if}
 
 				{#if work.info}
-					<div class="w-[50%] ml-auto my-20">
+					<div class="md:w-[50%] ml-auto my-20">
 						<p class="font-medium text-xl">
 							{@html work.info.replace(/\n/g, '<br />')}
 						</p>
