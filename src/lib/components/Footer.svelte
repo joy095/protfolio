@@ -46,7 +46,7 @@
 						</div>
 					</div>
 					<p class="text-xl md:text-[1.375rem] font-medium leading-[1.5] md:w-[30%]">
-						I'm currently available for new work, let me know if you need a digital designer. I'd
+						I'm currently available for new work, let me know if you need a developer. I'd
 						love to talk about the next big thing!
 					</p>
 				</div>
