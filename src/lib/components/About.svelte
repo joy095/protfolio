@@ -54,7 +54,7 @@
 			<div class="space-y-8">
 				<!-- HackerRank React Certification -->
 				<div
-					class="bg-white p-8 shadow-lg rounded-lg flex items-center space-x-6 hover:shadow-xl transition-shadow duration-300"
+					class="bg-white p-8 shadow-lg rounded-lg flex md:flex-row flex-col gap-5 md:gap-0 md:items-center md:space-x-6 hover:shadow-xl transition-shadow duration-300"
 				>
 					<img
 						class="w-24 h-24 object-cover rounded-full border border-indigo-200 p-1"
@@ -80,7 +80,7 @@
 
 				<!-- Responsive Web Design Certification -->
 				<div
-					class="bg-white p-8 shadow-lg rounded-lg flex items-center space-x-6 hover:shadow-xl transition-shadow duration-300"
+					class="bg-white p-8 shadow-lg rounded-lg flex md:flex-row flex-col gap-5 md:gap-0 md:items-center md:space-x-6 hover:shadow-xl transition-shadow duration-300"
 				>
 					<img
 						class="w-24 h-24 object-cover rounded-full border border-green-200 p-1"
@@ -106,7 +106,7 @@
 
 				<!-- Webflow 101 Certification -->
 				<div
-					class="bg-white p-8 shadow-lg rounded-lg flex items-center space-x-6 hover:shadow-xl transition-shadow duration-300"
+					class="bg-white p-8 shadow-lg rounded-lg flex md:flex-row flex-col gap-5 md:gap-0 md:items-center md:space-x-6 hover:shadow-xl transition-shadow duration-300"
 				>
 					<img
 						class="w-24 h-24 object-cover rounded-full border border-blue-200 p-1"
@@ -120,11 +120,7 @@
 							This certification confirms my expertise in using Webflow for design-centric
 							development, focusing on creating responsive websites without code.
 						</p>
-						<a
-							target="_blank"
-							href="webflow-101.webp"
-							class="mt-4 block font-semibold nav-links"
-						>
+						<a target="_blank" href="webflow-101.webp" class="mt-4 block font-semibold nav-links">
 							View Certification
 						</a>
 					</div>
