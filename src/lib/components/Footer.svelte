@@ -54,7 +54,7 @@
 				<div class="flex flex-col md:flex-row justify-between items-center mt-32 gap-5">
 					<a
 						class="text-base md:text-lg lg:text-xl font-medium"
-						href="mailto:joykarmakar987654321@gmail.com">joykarmakar987654321@gmail.com</a
+						href="mailto:joykarmakar852@gmail.com">joykarmakar852@gmail.com</a
 					>
 					<p class="text-base md:text-lg lg:text-xl font-medium leading-[1.5]">
 						© 2025 Joy Karmakar. All rights reserved.

@@ -118,8 +118,8 @@
 
 					<a
 						class="text-xl font-medium button overflow-hidden flex items-center pb-2 gap-2 mt-5 w-fit nav-links"
-						href="mailto:joykarmakar987654321@gmail.com"
-						>joykarmakar987654321@gmail.com
+						href="mailto:joykarmakar852@gmail.com"
+						>joykarmakar852@gmail.com
 
 						<div class="h-4 w-4">
 							<svg
