@@ -52,6 +52,56 @@
 		<div class="mt-20">
 			<h2 class="text-3xl font-bold text-center mb-6">Certifications Achieved</h2>
 			<div class="space-y-8">
+				<!-- HackerRank Software Engineer Certification -->
+				<div
+					class="bg-white p-8 shadow-lg rounded-lg flex md:flex-row flex-col gap-5 md:gap-0 md:items-center md:space-x-6 hover:shadow-xl transition-shadow duration-300"
+				>
+					<img
+						class="w-24 h-24 object-cover rounded-full border border-indigo-200 p-1"
+						src="react_basic certificate.webp"
+						alt="HackerRank Certification"
+					/>
+					<div>
+						<h3 class="text-xl font-semibold">HackerRank Software Engineer</h3>
+						<p class="mt-2">Passed: March 2025</p>
+						<p class="mt-4">
+							I have successfully completed the HackerRank Software Engineer certification, showcasing my proficiency in software development, data structures, algorithms, and problem-solving skills.
+						</p>
+						<a
+							target="_blank"
+							href="https://www.hackerrank.com/certificates/1a798f193941"
+							class="mt-4 block font-semibold nav-links"
+						>
+							View Certification
+						</a>
+					</div>
+				</div>
+				
+				<!-- HackerRank React Certification -->
+				<div
+					class="bg-white p-8 shadow-lg rounded-lg flex md:flex-row flex-col gap-5 md:gap-0 md:items-center md:space-x-6 hover:shadow-xl transition-shadow duration-300"
+				>
+					<img
+						class="w-24 h-24 object-cover rounded-full border border-indigo-200 p-1"
+						src="react_basic certificate.webp"
+						alt="HackerRank Certification"
+					/>
+					<div>
+						<h3 class="text-xl font-semibold">HackerRank Frontend Developer (React)</h3>
+						<p class="mt-2">Passed: March 2025</p>
+						<p class="mt-4">
+							I have successfully completed the HackerRank Frontend Developer (React) certification, validating my expertise in React.js, component-based development, and modern frontend practices.
+						</p>
+						<a
+							target="_blank"
+							href="https://www.hackerrank.com/certificates/e8616d3e54b8"
+							class="mt-4 block font-semibold nav-links"
+						>
+							View Certification
+						</a>
+					</div>
+				</div>
+
 				<!-- HackerRank React Certification -->
 				<div
 					class="bg-white p-8 shadow-lg rounded-lg flex md:flex-row flex-col gap-5 md:gap-0 md:items-center md:space-x-6 hover:shadow-xl transition-shadow duration-300"
