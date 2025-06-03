@@ -158,33 +158,37 @@
 								loading="lazy"
 								src={urlFor(work.image_2)}
 								alt={work.title}
-								class="w-full h-[90vh] object-cover"
+								class="w-full px-[10%] min-h-[150vh] object-cover"
 							/>
 						</div>
 					</ParallaxScroll>
 				{/if}
 
-				<div class="grid md:grid-cols-2 gap-5">
+				<div class="grid md:grid-cols-2 gap-5 items-stretch">
 					{#if work.image_4}
 						<ParallaxScroll speed={0.2}>
-							<div class="bg-[#c3c2be] px-[10%] pt-[15%]">
+							<div
+								class="relative w-full px-[10%] md:h-[120vh] bg-[#c3c2be] flex justify-center items-center overflow-hidden"
+							>
 								<img
 									loading="lazy"
 									src={urlFor(work.image_4)}
 									alt={work.title}
-									class="w-full h-[90vh] object-cover"
+									class="max-w-full max-h-full object-contain"
 								/>
 							</div>
 						</ParallaxScroll>
 					{/if}
 					{#if work.image_5}
 						<ParallaxScroll speed={0.2}>
-							<div class="bg-[#c3c2be] px-[10%] pt-[15%]">
+							<div
+								class="relative w-full px-[10%] md:h-[120vh] bg-[#c3c2be] flex justify-center items-center overflow-hidden"
+							>
 								<img
 									loading="lazy"
 									src={urlFor(work.image_5)}
 									alt={work.title}
-									class="w-full h-[90vh] object-cover"
+									class="max-w-full max-h-full object-contain"
 								/>
 							</div>
 						</ParallaxScroll>
@@ -198,7 +202,7 @@
 								loading="lazy"
 								src={urlFor(work.image_3)}
 								alt={work.title}
-								class="w-full h-[90vh] object-cover"
+								class="w-full px-[10%] min-h-[150vh] object-cover"
 							/>
 						</div>
 					</ParallaxScroll>
