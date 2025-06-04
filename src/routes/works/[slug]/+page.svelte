@@ -153,12 +153,12 @@
 				{/if}
 				{#if work.image_2}
 					<ParallaxScroll speed={0.2}>
-						<div class="bg-[#c3c2be] px-[10%] pt-[15%]">
+						<div class="bg-[#c3c2be] md:px-[10%] pt-[15%]">
 							<img
 								loading="lazy"
 								src={urlFor(work.image_2)}
 								alt={work.title}
-								class="w-full px-[10%] min-h-[150vh] object-cover"
+								class="mx-auto w-[85%] md:w-full min-h-[150vh] object-cover"
 							/>
 						</div>
 					</ParallaxScroll>
@@ -168,13 +168,13 @@
 					{#if work.image_4}
 						<ParallaxScroll speed={0.2}>
 							<div
-								class="relative w-full px-[10%] md:h-[120vh] bg-[#c3c2be] flex justify-center items-center overflow-hidden"
+								class="relative w-full md:px-[10%] md:h-[120vh] bg-[#c3c2be] flex justify-center items-center overflow-hidden"
 							>
 								<img
 									loading="lazy"
 									src={urlFor(work.image_4)}
 									alt={work.title}
-									class="max-w-full max-h-full object-contain"
+									class="w-[85%] md:w-full max-w-full max-h-full object-contain"
 								/>
 							</div>
 						</ParallaxScroll>
@@ -182,13 +182,13 @@
 					{#if work.image_5}
 						<ParallaxScroll speed={0.2}>
 							<div
-								class="relative w-full px-[10%] md:h-[120vh] bg-[#c3c2be] flex justify-center items-center overflow-hidden"
+								class="relative w-full md:px-[10%] md:h-[120vh] bg-[#c3c2be] flex justify-center items-center overflow-hidden"
 							>
 								<img
 									loading="lazy"
 									src={urlFor(work.image_5)}
 									alt={work.title}
-									class="max-w-full max-h-full object-contain"
+									class="w-[85%] md:w-full max-w-full max-h-full object-contain"
 								/>
 							</div>
 						</ParallaxScroll>
@@ -197,12 +197,12 @@
 
 				{#if work.image_3}
 					<ParallaxScroll speed={0.2}>
-						<div class="bg-[#c3c2be] px-[10%] pt-[15%]">
+						<div class="bg-[#c3c2be] md:px-[10%] pt-[15%]">
 							<img
 								loading="lazy"
 								src={urlFor(work.image_3)}
 								alt={work.title}
-								class="w-full px-[10%] min-h-[150vh] object-cover"
+								class="mx-auto w-[85%] md:w-full min-h-[150vh] object-cover"
 							/>
 						</div>
 					</ParallaxScroll>
