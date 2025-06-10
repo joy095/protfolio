@@ -165,6 +165,20 @@
 				{/if}
 
 				<div class="grid md:grid-cols-2 gap-5 items-stretch">
+					{#if work.image_3}
+						<ParallaxScroll speed={0.2}>
+							<div
+								class="relative w-full md:px-[10%] md:h-[120vh] bg-[#c3c2be] flex justify-center items-center overflow-hidden"
+							>
+								<img
+									loading="lazy"
+									src={urlFor(work.image_3)}
+									alt={work.title}
+									class="w-[85%] md:w-full max-w-full max-h-full object-contain"
+								/>
+							</div>
+						</ParallaxScroll>
+					{/if}
 					{#if work.image_4}
 						<ParallaxScroll speed={0.2}>
 							<div
@@ -194,19 +208,6 @@
 						</ParallaxScroll>
 					{/if}
 				</div>
-
-				{#if work.image_3}
-					<ParallaxScroll speed={0.2}>
-						<div class="bg-[#c3c2be] md:px-[10%] pt-[15%]">
-							<img
-								loading="lazy"
-								src={urlFor(work.image_3)}
-								alt={work.title}
-								class="mx-auto w-[85%] md:w-full min-h-[150vh] object-cover"
-							/>
-						</div>
-					</ParallaxScroll>
-				{/if}
 			</div>
 		</div>
 	</article>
