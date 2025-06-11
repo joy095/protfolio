@@ -19,12 +19,10 @@
 	/>
 	<meta property="og:url" content="https://joykarmakar.vercel.app" />
 
-	<meta property="og:image" content="https://joykarmakar.vercel.app/joy.png" />
-
 	<link rel="canonical" href="https://joykarmakar.vercel.app" />
 
-	<meta property="og:image:type" content="image/png" />
-	<meta property="og:image" content="https://joykarmakar.vercel.app/joy.png" />
+	<meta property="og:image:type" content="image/jpg" />
+	<meta property="og:image" content="https://joykarmakar.vercel.app/joy.jpg" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta property="og:url" content="https://joykarmakar.vercel.app/" />
@@ -39,7 +37,7 @@
 		name="twitter:description"
 		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
 	/>
-	<meta name="twitter:image" content="https://joykarmakar.vercel.app/joy.png" />
+	<meta name="twitter:image" content="https://joykarmakar.vercel.app/joy.jpg" />
 </svelte:head>
 
 <Hero />
