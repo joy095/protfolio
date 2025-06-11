@@ -23,8 +23,6 @@
 
 	<meta property="og:image:type" content="image/jpg" />
 	<meta property="og:image" content="https://joykarmakar.vercel.app/joy.jpg" />
-	<meta property="og:image:width" content="1200" />
-	<meta property="og:image:height" content="630" />
 	<meta property="og:url" content="https://joykarmakar.vercel.app/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Joy Karmakar Portfolio" />
