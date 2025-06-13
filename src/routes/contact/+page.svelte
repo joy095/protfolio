@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 
+	export let data;
+
 	interface FormData {
 		name: string;
 		email: string;
@@ -70,32 +72,26 @@
 </script>
 
 <svelte:head>
-	<title>Joy Karmakar - Contact Me</title>
-	<meta
-		name="description"
-		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
-	/>
-	<meta name="author" content="Joy Karmakar" />
-	<meta property="og:title" content="Joy Karmakar - Contact Me" />
-	<meta
-		property="og:description"
-		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
-	/>
+	<title>{data.title}</title>
+	<meta name="description" content={data.description} />
 
-	<meta property="og:url" content="https://joykarmakar.vercel.app/contact" />
-
-	<link rel="canonical" href="https://joykarmakar.vercel.app/contact" />
-
-	<meta property="og:image" content="https://joykarmakar.vercel.app/contact.webp" />
-	<meta property="og:url" content="https://joykarmakar.vercel.app/contact" />
+	<!-- Open Graph Meta Tags -->
+	<meta property="og:title" content={data.title} />
+	<meta property="og:description" content={data.description} />
+	<meta property="og:url" content={data.url} />
+	<meta property="og:image" content={data.image} />
+	<meta property="og:image:type" content="image/jpg" />
 	<meta property="og:type" content="website" />
-	<meta name="twitter:card" content="https://joykarmakar.vercel.app/contact.webp" />
-	<meta name="twitter:title" content="Joy Karmakar - Contact Me" />
-	<meta
-		name="twitter:description"
-		content="Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies."
-	/>
-	<meta name="twitter:image" content="https://joykarmakar.vercel.app/contact.webp" />
+	<meta property="og:site_name" content={data.siteName} />
+	<link rel="canonical" href={data.url} />
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content={data.twitterHandle} />
+	<meta name="twitter:creator" content={data.twitterHandle} />
+	<meta name="twitter:title" content={data.title} />
+	<meta name="twitter:description" content={data.description} />
+	<meta name="twitter:image" content={data.image} />
 </svelte:head>
 
 {#if showContact}

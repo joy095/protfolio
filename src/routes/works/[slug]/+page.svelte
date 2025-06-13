@@ -14,8 +14,19 @@
 		});
 	};
 
-	export let data: { work: Work | null; nextWork: NextWork | null };
-	let { work, nextWork } = data;
+	export let data: {
+		work: Work;
+		nextWork: NextWork | null;
+		meta: {
+			title: string;
+			description: string;
+			image: any;
+			url: string;
+			twitterHandle: string;
+		};
+	};
+
+	let { work, nextWork, meta } = data;
 
 	const handleWorkNavigation = async (slug: string, e: MouseEvent) => {
 		e.preventDefault();
@@ -46,38 +57,25 @@
 </script>
 
 <svelte:head>
-	{#if work}
-		<title>{work.title} - Joy Karmakar</title>
-		<meta name="description" content={work.description || 'Project showcase by Joy Karmakar'} />
-		<meta name="author" content="Joy Karmakar" />
+	<title>{meta.title}</title>
+	<meta name="description" content={meta.description} />
+	<meta name="author" content="Joy Karmakar" />
 
-		<!-- Open Graph -->
-		<meta property="og:title" content={`${work.title} - Joy Karmakar`} />
-		<meta
-			property="og:description"
-			content={work.description || 'Project showcase by Joy Karmakar'}
-		/>
-		<meta property="og:url" content={`https://joykarmakar.vercel.app/works/${work.slug}`} />
+	<!-- Open Graph -->
+	<meta property="og:title" content={meta.title} />
+	<meta property="og:description" content={meta.description} />
+	<meta property="og:url" content={meta.url} />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content={urlFor(meta.image)} />
 
-		<link rel="canonical" href={`https://joykarmakar.vercel.app/works/${work.slug}`} />
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={meta.title} />
+	<meta name="twitter:description" content={meta.description} />
+	<meta name="twitter:image" content={urlFor(meta.image)} />
+	<meta name="twitter:creator" content={meta.twitterHandle} />
 
-		<meta property="og:image" content={urlFor(work.image)} />
-		<meta property="og:url" content={`https://joykarmakar.vercel.app/works/${work.slug}`} />
-		<meta property="og:type" content="website" />
-
-		<!-- Twitter -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={`${work.title} - Joy Karmakar`} />
-		<meta
-			name="twitter:description"
-			content={work.description || 'Project showcase by Joy Karmakar'}
-		/>
-		<meta name="twitter:image" content={urlFor(work.image)} />
-		<meta name="twitter:creator" content="@joykarmakar" />
-	{:else}
-		<title>Project Details - Joy Karmakar</title>
-		<meta name="description" content="Project showcase by Joy Karmakar" />
-	{/if}
+	<link rel="canonical" href={meta.url} />
 </svelte:head>
 
 {#if $isLoading}
