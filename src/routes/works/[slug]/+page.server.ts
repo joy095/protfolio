@@ -1,11 +1,11 @@
 // src/routes/works/[slug]/+page.server.ts
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
-import { client } from '$lib/sanity';
+import type { PageServerLoad } from './$types.js';
+import { client } from '$lib/sanity.js';
 
 export const load: PageServerLoad = async ({ params }: { params: { slug: string } }) => {
-	try {
-		const query = `{
+    try {
+        const query = `{
             "current": *[_type == "work" && slug.current == $slug][0]{
                 title,
                 "slug": slug.current,
@@ -27,21 +27,21 @@ export const load: PageServerLoad = async ({ params }: { params: { slug: string 
             }
         }`;
 
-		const { current, next } = await client.fetch(query, { slug: params.slug });
+        const { current, next } = await client.fetch(query, { slug: params.slug });
 
-		if (!current) {
-			throw error(404, 'Work not found');
-		}
+        if (!current) {
+            throw error(404, 'Work not found');
+        }
 
-		return {
-			work: current,
-			nextWork: next
-		};
-	} catch (err) {
-		console.error('Error loading work:', err);
-		if (err instanceof Error && 'status' in err) {
-			throw err;
-		}
-		throw error(500, 'Error loading work');
-	}
+        return {
+            work: current,
+            nextWork: next
+        };
+    } catch (err) {
+        console.error('Error loading work:', err);
+        if (err instanceof Error && 'status' in err) {
+            throw err;
+        }
+        throw error(500, 'Error loading work');
+    }
 };

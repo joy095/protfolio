@@ -15,3 +15,32 @@ const builder = imageUrlBuilder(client);
 export function urlFor(source: SanityImage): string {
 	return builder.image(source).url();
 }
+
+export async function getWorkBySlug(slug: string) {
+	const query = `*[_type == "work" && slug.current == $slug][0]{
+		title,
+		"slug": slug.current,
+		serial,
+		image,
+		image_2,
+		image_3,
+		image_4,
+		image_5,
+		description,
+		info,
+		link
+	}`;
+	return await client.fetch(query, { slug });
+}
+
+export async function getNextWork(slug: string) {
+	const query = `
+		*[_type == "work" && serial > *[_type == "work" && slug.current == $slug][0].serial] 
+		| order(serial asc)[0]{
+			title,
+			"slug": slug.current,
+			image,
+			description
+		}`;
+	return await client.fetch(query, { slug });
+}
