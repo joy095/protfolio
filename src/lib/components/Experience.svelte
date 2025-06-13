@@ -35,7 +35,7 @@
 						<tr>
 							<td>Skkyee</td>
 							<td>Web Developer</td>
-							<td>Apr 2024 - Present</td>
+							<td>Apr 2024 - Jan 2025</td>
 						</tr>
 						<tr>
 							<td>Skkyee</td>
@@ -44,7 +44,7 @@
 						</tr>
 						<tr>
 							<td>Acceleratron</td>
-							<td>Internship</td>
+							<td>Web Developer</td>
 							<td>Dec 2023 - Jan 2024</td>
 						</tr>
 						<tr>
