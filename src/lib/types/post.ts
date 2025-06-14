@@ -18,9 +18,7 @@ export interface Work {
 export interface NextWork {
 	_id: string;
 	title: string;
-	slug: {
-		current: string;
-	};
+	slug: string;
 	image: SanityImage;
 	description: string;
 }

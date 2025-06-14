@@ -7,9 +7,7 @@
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
-
-	// Access the meta object from the load function
-	$: meta = data.meta;
+	const { meta } = data;
 </script>
 
 <svelte:head>
