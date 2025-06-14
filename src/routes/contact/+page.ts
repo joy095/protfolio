@@ -5,9 +5,9 @@ export const load: PageLoad = () => {
         title: 'Joy Karmakar - Contact Me',
         description:
             'Explore the portfolio of Joy Karmakar, a web developer and designer specializing in building beautiful, functional websites using modern technologies.',
-        url: 'https://joykarmakar.vercel.app',
+        url: 'https://joykarmakar.vercel.app/contact',
         image: 'https://joykarmakar.vercel.app/contact.webp',
         siteName: 'Joy Karmakar Portfolio',
-        twitterHandle: '@joykarmakar'
+        twitterHandle: '@JoyKarmakar9871'
     };
 };

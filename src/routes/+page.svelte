@@ -1,10 +1,10 @@
 <script lang="ts">
+	export let data;
+
 	import About from '$lib/components/About.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Project from '$lib/components/Project.svelte';
 	import Experience from '$lib/components/Experience.svelte';
-
-	export let data;
 </script>
 
 <svelte:head>

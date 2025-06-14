@@ -20,7 +20,7 @@ export const load: PageLoad = async ({ params, url }) => {
             description: work.description || 'Project showcase by Joy Karmakar',
             image: work.image,
             url: fullUrl,
-            twitterHandle: '@joykarmakar'
+            twitterHandle: '@JoyKarmakar9871'
         }
     };
 };

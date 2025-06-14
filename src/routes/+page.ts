@@ -1,4 +1,4 @@
-import type { PageLoad } from './$types';
+import type { PageLoad } from './$types.js';
 
 export const load: PageLoad = () => {
     return {
@@ -8,6 +8,6 @@ export const load: PageLoad = () => {
         url: 'https://joykarmakar.vercel.app',
         image: 'https://joykarmakar.vercel.app/joy.jpg',
         siteName: 'Joy Karmakar Portfolio',
-        twitterHandle: '@joykarmakar'
+        twitterHandle: '@JoyKarmakar9871'
     };
 };

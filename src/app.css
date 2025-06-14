@@ -1,11 +1,8 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
 
 @layer components {
 	.container-auto {
 		margin: 0 auto;
 		padding: 0 4vw;
-		max-width: 90rem;
 	}
 }

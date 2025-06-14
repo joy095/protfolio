@@ -1,8 +1,8 @@
 <!-- src/routes/posts/+page.svelte -->
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { posts, isLoading, error, fetchPosts } from '$lib/stores/posts';
-	import { urlFor } from '$lib/sanity';
+	import { posts, isLoading, error, fetchPosts } from '$lib/stores/posts.js';
+	import { urlFor } from '$lib/sanity.js';
 	import RevealImage from '$lib/components/RevealImage.svelte';
 	import { smoothScrollToSection } from '$lib/scroll.js';
 
@@ -119,6 +119,8 @@
 		justify-content: space-between;
 		flex-direction: column-reverse;
 		will-change: transform, opacity;
+		max-height: 600px;
+		overflow: hidden;
 	}
 
 	.banner-wrap {
