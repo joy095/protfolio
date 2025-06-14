@@ -1,10 +1,8 @@
 import { client } from '$lib/sanity.js';
-import { xml } from '@sveltejs/kit';
 
 export async function GET() {
     const site = 'https://joykarmakar.vercel.app';
 
-    // Fetch all slugs of works
     const works = await client.fetch(`*[_type == "work"]{ "slug": slug.current }`);
 
     const urls = [
@@ -17,9 +15,9 @@ export async function GET() {
         }))
     ];
 
-    const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-	${urls
+${urls
             .map(
                 (url) => `<url>
 	<loc>${url.loc}</loc>
@@ -29,7 +27,7 @@ export async function GET() {
             .join('\n')}
 </urlset>`;
 
-    return xml(xmlContent, {
+    return new Response(xml, {
         headers: {
             'Content-Type': 'application/xml'
         }
