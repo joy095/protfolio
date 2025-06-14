@@ -29,10 +29,6 @@
 	});
 </script>
 
-<svelte:head>
-	<meta name="google-site-verification" content="google26ea091d7a75ec39.html" />
-</svelte:head>
-
 {#if showSplash}
 	<SplashScreen />
 {/if}

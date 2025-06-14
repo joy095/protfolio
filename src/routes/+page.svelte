@@ -11,6 +11,8 @@
 	<title>{data.title}</title>
 	<meta name="description" content={data.description} />
 
+	<meta name="google-site-verification" content="8QuMtTjaVUm2Q8q6KPtnNY3wAYbpMbxNXww9fx8hxIk" />
+
 	<!-- Open Graph Meta Tags -->
 	<meta property="og:title" content={data.title} />
 	<meta property="og:description" content={data.description} />
