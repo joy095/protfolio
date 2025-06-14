@@ -2,13 +2,13 @@
 	import '@fontsource-variable/space-grotesk';
 	import { onMount } from 'svelte';
 
-	import { initializeLenis } from '$lib/scroll';
+	import { initializeLenis } from '$lib/scroll.js';
 	import '../app.css';
 
 	import Header from '$lib/components/Header.svelte';
 	import SplashScreen from '$lib/components/SplashScreen.svelte';
 	import Cursor from '$lib/Cursor.svelte';
-	import { headerAnimationComplete } from '$lib/stores/store';
+	import { headerAnimationComplete } from '$lib/stores/store.js';
 	import Footer from '$lib/components/Footer.svelte';
 
 	let numberOfLines = 11;
@@ -28,6 +28,10 @@
 		isContentVisible = isComplete;
 	});
 </script>
+
+<svelte:head>
+	<meta name="google-site-verification" content="google26ea091d7a75ec39.html" />
+</svelte:head>
 
 {#if showSplash}
 	<SplashScreen />

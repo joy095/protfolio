@@ -28,8 +28,6 @@
 	<meta name="twitter:title" content={data.title} />
 	<meta name="twitter:description" content={data.description} />
 	<meta name="twitter:image" content={data.image} />
-
-	<meta name="google-site-verification" content="google26ea091d7a75ec39.html" />
 </svelte:head>
 
 <Hero />
