@@ -6,46 +6,55 @@
 	import Project from '$lib/components/Project.svelte';
 	import Experience from '$lib/components/Experience.svelte';
 
-	// Static meta data
-	const metaData = {
-		title: 'Joy Karmakar Portfolio - Full Stack Developer',
-		description: 'Portfolio of Joy - Full Stack Developer specializing in modern web technologies',
+	// Fallback meta data in case server load fails
+	const fallbackMeta = {
+		title: 'Joy Karmakar - Full Stack Developer & UI/UX Designer',
+		description:
+			'Portfolio of Joy Karmakar - Full Stack Developer specializing in React, Svelte, Node.js and modern web technologies.',
 		url: 'https://joykarmakar.vercel.app',
 		image: 'https://joykarmakar.vercel.app/joy.jpg',
-		siteName: 'joykarmakar Portfolio',
+		siteName: 'Joy Karmakar Portfolio',
 		twitterHandle: '@JoyKarmakar9871'
 	};
+
+	// Use data from server or fallback
+	$: metaTitle = data?.title || fallbackMeta.title;
+	$: metaDescription = data?.description || fallbackMeta.description;
+	$: metaUrl = data?.url || fallbackMeta.url;
+	$: metaImage = data?.image || fallbackMeta.image;
+	$: metaSiteName = data?.siteName || fallbackMeta.siteName;
+	$: metaTwitterHandle = data?.twitterHandle || fallbackMeta.twitterHandle;
 </script>
 
 <svelte:head>
-	<title>{data?.title || metaData.title}</title>
-	<meta name="description" content={data?.description || metaData.description} />
-
-	<meta
-		name="keywords"
-		content="portfolio, full stack developer, web developer, Animation,Figma,CSS, GitHub, MongoDB, Docker, Node Js, HTML,Git, GSAP,JavaScript, Python, PostgreSQL, Svelte, Redux, Redis"
-	/>
-	<meta name="author" content="Joy Karmakar" />
-	<meta name="robots" content="index, follow" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>{metaTitle}</title>
+	<meta name="description" content={metaDescription} />
 
 	<!-- Open Graph Meta Tags -->
-	<meta property="og:title" content={data?.title || metaData.title} />
-	<meta property="og:description" content={data?.description || metaData.description} />
-	<meta property="og:url" content={data?.url || metaData.url} />
-	<meta property="og:image" content={data?.image || metaData.image} />
+	<meta property="og:title" content={metaTitle} />
+	<meta property="og:description" content={metaDescription} />
+	<meta property="og:url" content={metaUrl} />
+	<meta property="og:image" content={metaImage} />
 	<meta property="og:image:type" content="image/jpg" />
 	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content={data?.siteName || metaData.siteName} />
-	<link rel="canonical" href={data?.url || metaData.url} />
+	<meta property="og:site_name" content={metaSiteName} />
+	<link rel="canonical" href={metaUrl} />
 
 	<!-- Twitter Meta Tags -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content={data?.twitterHandle || metaData.twitterHandle} />
-	<meta name="twitter:creator" content={data?.twitterHandle || metaData.twitterHandle} />
-	<meta name="twitter:title" content={data?.title || metaData.title} />
-	<meta name="twitter:description" content={data?.description || metaData.description} />
-	<meta name="twitter:image" content={data?.image || metaData.image} />
+	<meta name="twitter:site" content={metaTwitterHandle} />
+	<meta name="twitter:creator" content={metaTwitterHandle} />
+	<meta name="twitter:title" content={metaTitle} />
+	<meta name="twitter:description" content={metaDescription} />
+	<meta name="twitter:image" content={metaImage} />
+
+	<!-- Additional SEO Meta Tags -->
+	<meta
+		name="keywords"
+		content="Joy Karmakar, Full Stack Developer, React, Svelte, Node.js, Portfolio, Web Developer"
+	/>
+	<meta name="author" content="Joy Karmakar" />
+	<meta name="robots" content="index, follow" />
 </svelte:head>
 
 <Hero />
