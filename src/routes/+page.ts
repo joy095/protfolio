@@ -1,6 +1,6 @@
-import type { PageServerLoad } from './$types';
+import type { PageLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
+export const load: PageLoad = () => {
     return {
         title: 'Joy Karmakar - Full Stack Developer & UI/UX Designer',
         description: 'Portfolio of Joy Karmakar - Full Stack Developer specializing in React, Svelte, Node.js and modern web technologies. Explore my projects and experience.',
