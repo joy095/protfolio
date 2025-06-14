@@ -1,4 +1,4 @@
-import { client } from '$lib/sanity.js';
+import { client } from '$lib/sanity';
 
 export async function GET() {
     const site = 'https://joykarmakar.vercel.app';

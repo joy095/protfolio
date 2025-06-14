@@ -1,6 +1,6 @@
 import { writable, type Writable } from 'svelte/store';
-import { client } from '$lib/sanity.js';
-import type { Work } from '$lib/types/post.js';
+import { client } from '$lib/sanity';
+import type { Work } from '$lib/types/post';
 
 export const posts: Writable<Work[]> = writable([]);
 export const isLoading: Writable<boolean> = writable(false);

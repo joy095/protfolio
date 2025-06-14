@@ -1,10 +1,10 @@
 <!-- src/routes/posts/+page.svelte -->
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { posts, isLoading, error, fetchPosts } from '$lib/stores/posts.js';
-	import { urlFor } from '$lib/sanity.js';
+	import { posts, isLoading, error, fetchPosts } from '$lib/stores/posts';
+	import { urlFor } from '$lib/sanity';
 	import RevealImage from '$lib/components/RevealImage.svelte';
-	import { smoothScrollToSection } from '$lib/scroll.js';
+	import { smoothScrollToSection } from '$lib/scroll';
 
 	function intersectionObserver(node: HTMLElement, index: number) {
 		const observer = new IntersectionObserver(

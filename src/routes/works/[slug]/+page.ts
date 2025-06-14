@@ -1,5 +1,5 @@
-import type { PageLoad } from './$types.js';
-import { getWorkBySlug, getNextWork } from '$lib/sanity.js'; // Replace with your actual data loader
+import type { PageLoad } from './$types';
+import { getWorkBySlug, getNextWork } from '$lib/sanity'; // Replace with your actual data loader
 import { error } from '@sveltejs/kit';
 
 export const load: PageLoad = async ({ params, url }) => {

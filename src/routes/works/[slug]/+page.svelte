@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { isLoading, error } from '$lib/stores/posts';
 	import type { Work, NextWork } from '$lib/types/post';
-	import { urlFor } from '$lib/sanity.js';
+	import { urlFor } from '$lib/sanity';
 	import ParallaxScroll from '$lib/components/ParallaxScroll.svelte';
 	import RevealImage from '$lib/components/RevealImage.svelte';
 	import { fly } from 'svelte/transition';

@@ -4,20 +4,15 @@ export interface Work {
 	slug: {
 		current: string;
 	};
+	serial: number;
 	image: SanityImage;
-	image2: SanityImage;
-	image3: SanityImage;
-	image4: SanityImage;
-	image5: SanityImage;
+	image_2: SanityImage;
+	image_3: SanityImage;
+	image_4: SanityImage;
+	image_5: SanityImage;
 	description: string;
-}
-
-export interface SanityImage {
-	_type: 'image';
-	asset: {
-		_ref: string;
-		_type: 'reference';
-	};
+	info: string;
+	link: string;
 }
 
 export interface NextWork {
@@ -28,4 +23,13 @@ export interface NextWork {
 	};
 	image: SanityImage;
 	description: string;
+}
+
+export interface SanityImage {
+	_type: 'image';
+	asset: {
+		_ref: string;
+		_type: 'reference';
+	};
+	alt?: string;
 }

@@ -2,13 +2,13 @@
 	import '@fontsource-variable/space-grotesk';
 	import { onMount } from 'svelte';
 
-	import { initializeLenis } from '$lib/scroll.js';
+	import { initializeLenis } from '$lib/scroll';
 	import '../app.css';
 
 	import Header from '$lib/components/Header.svelte';
 	import SplashScreen from '$lib/components/SplashScreen.svelte';
 	import Cursor from '$lib/Cursor.svelte';
-	import { headerAnimationComplete } from '$lib/stores/store.js';
+	import { headerAnimationComplete } from '$lib/stores/store';
 	import Footer from '$lib/components/Footer.svelte';
 
 	let numberOfLines = 11;

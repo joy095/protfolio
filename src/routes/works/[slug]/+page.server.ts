@@ -1,7 +1,7 @@
 // src/routes/works/[slug]/+page.server.ts
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types.js';
-import { client } from '$lib/sanity.js';
+import type { PageServerLoad } from './$types';
+import { client } from '$lib/sanity';
 
 export const load: PageServerLoad = async ({ params }: { params: { slug: string } }) => {
     try {
