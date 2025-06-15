@@ -28,6 +28,8 @@
 
 	let { work, nextWork, meta } = data;
 
+	// console.log(meta);
+
 	const handleWorkNavigation = async (slug: string, e: MouseEvent) => {
 		e.preventDefault();
 		isLoading.set(true);
@@ -54,6 +56,8 @@
 		work = data.work;
 		nextWork = data.nextWork;
 	}
+
+	// console.log('work', work);
 </script>
 
 <svelte:head>

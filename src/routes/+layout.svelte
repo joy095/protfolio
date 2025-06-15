@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '@fontsource-variable/space-grotesk';
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 
 	import { initializeLenis } from '$lib/scroll';
 	import '../app.css';
@@ -12,42 +13,47 @@
 	import Footer from '$lib/components/Footer.svelte';
 
 	let numberOfLines = 11;
+	let showSplash = false;
+	let isContentVisible = true;
 
-	let showSplash = true;
-	let isContentVisible = false;
+	// Only run splash screen and animations on client
+	if (browser) {
+		showSplash = true;
+		isContentVisible = false;
 
-	onMount(() => {
-		initializeLenis();
+		onMount(() => {
+			initializeLenis();
 
-		setTimeout(() => {
-			showSplash = false;
-		}, 3000);
-	});
+			setTimeout(() => {
+				showSplash = false;
+			}, 3000);
 
-	headerAnimationComplete.subscribe((isComplete: boolean) => {
-		isContentVisible = isComplete;
-	});
+			headerAnimationComplete.subscribe((isComplete: boolean) => {
+				isContentVisible = isComplete;
+			});
+		});
+	}
 </script>
 
-{#if showSplash}
-	<SplashScreen />
-{/if}
+<!-- Always render <slot> so metadata is available for SSR -->
+<main class="background" style="--number-of-lines: {numberOfLines}">
+	<div class="mt-20">
+		<slot />
+	</div>
+</main>
 
-{#if !showSplash}
-	<Header />
-{/if}
+<!-- Client-only visual experience -->
+{#if browser}
+	{#if showSplash}
+		<SplashScreen />
+	{:else}
+		<Header />
+		{#if isContentVisible}
+			<Cursor />
 
-{#if isContentVisible}
-	<Cursor />
-	<main class="background" style="--number-of-lines: {numberOfLines}">
-		<div class="mt-20">
-			<slot />
-		</div>
-	</main>
-{/if}
-
-{#if isContentVisible}
-	<Footer />
+			<Footer />
+		{/if}
+	{/if}
 {/if}
 
 <style lang="postcss">
@@ -62,8 +68,8 @@
 		/* Background container */
 		.background {
 			position: relative;
-			min-height: 100vh; /* Full viewport height */
-			overflow: hidden; /* Prevent scrolling from pseudo-elements */
+			min-height: 100vh;
+			overflow: hidden;
 		}
 
 		/* Background lines */
@@ -71,18 +77,17 @@
 			content: '';
 			position: absolute;
 			top: 0;
-			left: -5vw; /* Start at the very left */
-			right: 0; /* Extend to the very right */
+			left: -5vw;
+			right: 0;
 			bottom: 0;
 			background-image: repeating-linear-gradient(
 				to right,
 				transparent,
 				transparent calc((100% - 4vw) / var(--number-of-lines) - 1px),
-				/* 4vw for left and right padding */ rgba(204, 204, 204, 0.3)
-					calc((100% - 4vw) / var(--number-of-lines) - 1px),
+				rgba(204, 204, 204, 0.3) calc((100% - 4vw) / var(--number-of-lines) - 1px),
 				rgba(204, 204, 204, 0.3) calc((100% - 4vw) / var(--number-of-lines))
 			);
-			z-index: -1; /* Send to back */
+			z-index: -1;
 		}
 	}
 </style>
