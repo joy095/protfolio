@@ -5,8 +5,7 @@
 	import { fly } from 'svelte/transition';
 	import StaggerText from './StaggerText.svelte';
 
-	let text =
-		'Full-stack web developer proficient in HTML, CSS, and JavaScript, with experience in React.js, Tailwind CSS, Node.js, and Express.js. Skilled in working with databases like PostgreSQL and MongoDB. Familiar with TypeScript, Webflow for design-centric development, GSAP for animations, Figma for UI/UX design, Golang, Docker, and version control using Git. Focused on creating efficient and functional web applications.';
+	let text = `A showcase of web applications and backend systems I’ve developed using modern tools like Go, PostgreSQL, Redis, SvelteKit, React, Node.js, and more — all focused on speed, scalability, and great user experience.`;
 
 	let showHero = false;
 
