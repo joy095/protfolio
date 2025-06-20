@@ -160,7 +160,7 @@
 								loading="lazy"
 								src={urlFor(work.image_2)}
 								alt={work.title}
-								class="mx-auto w-[85%] md:w-full min-h-[500vh] object-cover"
+								class="mx-auto w-[85%] md:w-full md:min-h-[500vh] object-cover"
 							/>
 						</div>
 					</ParallaxScroll>
