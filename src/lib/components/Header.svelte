@@ -86,13 +86,13 @@
 >
 	{#if isVisible}
 		<div
-			on:introend={headerAnimationComplete}
+			on:introend={() => headerAnimationComplete.set(true)}
 			class="relative overflow-hidden flex justify-between items-center py-5"
 		>
 			<div class="nav-border"></div>
 
 			<a
-				class="nav-links font-bold md:text-xl sm:text-lg text-base"
+				class="nav-links font-bold md:text-xl sm:text-lg text-base flex gap-1 items-center"
 				href="/#hero"
 				on:click={(e) => smoothScrollToSection(e, '#hero')}
 				in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}

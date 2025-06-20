@@ -75,6 +75,7 @@
 			>
 				I'm Joy Karmakar
 			</h2>
+
 		</div>
 
 		<div class="flex flex-col xl:flex-row justify-between mt-10 gap-10 mx-[8vw] lg:mx-14">

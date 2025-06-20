@@ -7,7 +7,7 @@ export const load: LayoutLoad = ({ url }) => {
             title: 'Joy Karmakar - Full Stack Developer & UI/UX Designer',
             description: 'Portfolio of Joy Karmakar - Full Stack Developer specializing in React, Svelte, Node.js and modern web technologies.',
             url: url.href,
-            image: 'https://joykarmakar.vercel.app/joy.jpg',
+            image: 'https://joykarmakar.vercel.app/logo.webp',
             siteName: 'Joy Karmakar Portfolio',
             twitterHandle: '@JoyKarmakar9871'
         }
