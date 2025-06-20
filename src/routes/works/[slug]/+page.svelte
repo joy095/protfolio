@@ -160,7 +160,7 @@
 								loading="lazy"
 								src={urlFor(work.image_2)}
 								alt={work.title}
-								class="mx-auto w-[85%] md:w-full md:min-h-[500vh] object-cover"
+								class="mx-auto w-[85%] md:w-full min-h-[100vh] md:min-h-[500vh] object-cover"
 							/>
 						</div>
 					</ParallaxScroll>
@@ -176,7 +176,7 @@
 									loading="lazy"
 									src={urlFor(work.image_3)}
 									alt={work.title}
-									class="w-[85%] md:w-full max-w-full max-h-full object-contain"
+									class="w-[85%] md:w-full max-w-full min-h-[100vh] max-h-full object-contain"
 								/>
 							</div>
 						</ParallaxScroll>
@@ -190,7 +190,7 @@
 									loading="lazy"
 									src={urlFor(work.image_4)}
 									alt={work.title}
-									class="w-[85%] md:w-full max-w-full max-h-full object-contain"
+									class="w-[85%] md:w-full max-w-full min-h-[100vh] max-h-full object-contain"
 								/>
 							</div>
 						</ParallaxScroll>
@@ -205,7 +205,7 @@
 								loading="lazy"
 								src={urlFor(work.image_5)}
 								alt={work.title}
-								class="w-[85%] md:w-full max-w-full max-h-full object-contain"
+								class="w-[85%] md:w-full max-w-full min-h-[100vh] max-h-full object-contain"
 							/>
 						</div>
 					</ParallaxScroll>
