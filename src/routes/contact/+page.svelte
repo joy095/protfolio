@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
+	import { enhance } from '$app/forms';
 
 	export let data;
 
@@ -21,6 +22,7 @@
 
 	let showContact = false;
 	let isEmailValid = false;
+	let isPhoneValid = true;
 	let isSubmitting = false;
 	let submitStatus: 'idle' | 'success' | 'error' = 'idle';
 
@@ -30,41 +32,51 @@
 		return isEmailValid;
 	};
 
-	let isPhoneValid = false;
-
-	const validatePhone = (phone: string): boolean => {
+	const validatePhone = (phone?: string): boolean => {
+		if (!phone) {
+			isPhoneValid = true;
+			return true;
+		}
 		const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
 		isPhoneValid = phoneRegex.test(phone);
 		return isPhoneValid;
 	};
 
-	const handleSubmit = async (event: SubmitEvent) => {
-		event.preventDefault();
-		if (!validateEmail(formData.email)) return;
+	const submitEnhance = () => {
+		isSubmitting = true;
+		submitStatus = 'idle'; // Reset status on new submission
 
-		try {
-			isSubmitting = true;
-			const response = await fetch('https://nodemailer-bay.vercel.app/send-email', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(formData)
-			});
+		return async ({
+			result,
+			update
+		}: {
+			result: { type: string; error?: any; data?: any };
+			update: () => Promise<void>;
+		}) => {
+			if (result.type === 'success') {
+				submitStatus = 'success';
+				formData = { name: '', email: '', subject: '', message: '', phone: '' }; // Clear form on success
+				isEmailValid = false; // Reset validation states too
+				isPhoneValid = true; // Reset phone validation
 
-			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
+				isSubmitting = false;
+				await update();
+			} else if (result.type === 'error') {
+				console.error('Submission error:', result.error);
+				submitStatus = 'error';
+				// You might want to get specific error message from result.data if you sent it from the server action
+				// e.g., if (result.data?.error) { /* display result.data.error */ }
 			}
-
-			submitStatus = 'success';
-			formData = { name: '', email: '', subject: '', message: '' };
-		} catch (error) {
-			console.error('Submission error:', error);
-			submitStatus = 'error';
-		} finally {
 			isSubmitting = false;
-		}
+			await update(); // This updates the page data (e.g., if load function changes)
+		};
 	};
+
+	// Add a reactive block to ensure initial validation runs when formData changes
+	$: {
+		validateEmail(formData.email);
+		validatePhone(formData.phone);
+	}
 
 	setTimeout(() => {
 		showContact = true;
@@ -134,7 +146,11 @@
 						</div>
 					</a>
 
-					<form on:submit={handleSubmit} class="mt-10 mb-32 bg-[#e5e1dc] p-5 md:p-8">
+					<form
+						method="POST"
+						use:enhance={submitEnhance}
+						class="mt-10 mb-32 bg-[#e5e1dc] p-5 md:p-8"
+					>
 						<div class="flex flex-col gap-2">
 							<label class="text-xl font-medium" for="name">Name*</label>
 							<input
