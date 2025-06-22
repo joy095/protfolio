@@ -1,10 +1,11 @@
-<!-- src/routes/posts/+page.svelte -->
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { posts, isLoading, error, fetchPosts } from '$lib/stores/posts';
 	import { urlFor } from '$lib/sanity';
 	import RevealImage from '$lib/components/RevealImage.svelte';
 	import { smoothScrollToSection } from '$lib/scroll';
+	import type { Work } from '$lib/types/post'; // Import your Work type
+
+	export let posts: Work[] = []; // Initialize as empty array to avoid undefined errors
+	export let error: Error | null = null; // Initialize as null
 
 	function intersectionObserver(node: HTMLElement, index: number) {
 		const observer = new IntersectionObserver(
@@ -36,15 +37,9 @@
 		};
 	}
 
-	let contentVisible = false;
-
-	onMount(() => {
-		fetchPosts();
-	});
-
-	setTimeout(() => {
-		contentVisible = true;
-	}, 2000);
+	// Since data is pre-rendered at build time, content is inherently visible from the start.
+	// You can safely set this to true for SSG.
+	let contentVisible = true;
 </script>
 
 {#if contentVisible}
@@ -61,16 +56,13 @@
 			</a>
 		</div>
 		<div id="project"></div>
-		{#if $isLoading}
-			<div class="loading">Loading posts...</div>
-		{:else if $error}
+		{#if error}
 			<div class="error">
-				Error: {$error}
-				<button on:click={fetchPosts}>Retry</button>
+				Error: {error.message}
 			</div>
-		{:else if $posts.length > 0}
+		{:else if posts && posts.length > 0}
 			<div class="post-container">
-				{#each $posts as post, index (post._id)}
+				{#each posts as post, index (post._id)}
 					<div
 						class="post-card opacity-0 translate-y-10 transition-all duration-1000 ease-out"
 						use:intersectionObserver={index}
@@ -81,7 +73,7 @@
 								{#if post.description}
 									<p class="font-medium text-xl tracking-[.8]">{post.description}</p>
 								{/if}
-								<a class="btn" href="works/{post.slug.current}">View</a>
+								<a class="btn" href="works/{post.slug}">View</a>
 							</div>
 						</div>
 						{#if post.image}
