@@ -1,11 +1,94 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
+
+	const allCertificates = [
+		{
+			id: '1a798f193941',
+			description: 'Software Engineer',
+			date: 'March 2024',
+			skills: ['Software Development', 'Problem Solving', 'Data Structures', 'Algorithms'],
+			link: 'https://www.hackerrank.com/certificates/1a798f193941',
+			issuer: 'hackerrank'
+		},
+		{
+			id: 'a69958cf2207',
+			description: 'Python (Basic)',
+			date: 'March 2024',
+			skills: ['Python', 'Basic Syntax', 'Data Types', 'Functions'],
+			link: 'https://www.hackerrank.com/certificates/a69958cf2207',
+			issuer: 'hackerrank'
+		},
+		{
+			id: 'e8616d3e54b8',
+			description: 'Frontend Developer (React)',
+			date: 'Feb 2024',
+			skills: ['React.js', 'Frontend Development', 'Components', 'State Management', 'UI/UX'],
+			link: 'https://www.hackerrank.com/certificates/e8616d3e54b8',
+			issuer: 'hackerrank'
+		},
+		{
+			id: 'fcc-responsive-design',
+			description: 'Responsive Web Design',
+			date: 'March 2025',
+			skills: ['HTML5', 'CSS3', 'Flexbox', 'CSS Grid', 'Media Queries', 'Responsive Design'],
+			link: 'https://www.freecodecamp.org/certification/joykarmakar/responsive-web-design',
+			issuer: 'freecodecamp'
+		},
+		{
+			id: 'webflow-101',
+			description: 'Webflow 101',
+			date: 'December 2024',
+			skills: ['Webflow', 'UI/UX Design', 'No-Code', 'CMS', 'Interactions'],
+			link: 'webflow-101.webp',
+			issuer: 'webflow'
+		},
+		{
+			id: '5cca74bd4ea1',
+			description: 'Node.js (Intermediate)',
+			date: 'March 2024',
+			skills: ['Node.js', 'Express.js', 'APIs', 'Middleware', 'NPM'],
+			link: 'https://www.hackerrank.com/certificates/5cca74bd4ea1',
+			issuer: 'hackerrank'
+		},
+		{
+			id: '9c5eff1d4124',
+			description: 'Go (Basic)',
+			date: 'March 2024',
+			skills: ['Go Programming', 'Concurrency', 'Goroutines', 'Channels', 'Basic Syntax'],
+			link: 'https://www.hackerrank.com/certificates/9c5eff1d4124',
+			issuer: 'hackerrank'
+		},
+		{
+			id: 'a8563f63dda9',
+			description: 'Rest API (Intermediate)',
+			date: 'March 2024',
+			skills: ['RESTful APIs', 'API Design', 'HTTP Methods', 'JSON', 'Authentication'],
+			link: 'https://www.hackerrank.com/certificates/a8563f63dda9',
+			issuer: 'hackerrank'
+		},
+		{
+			id: '9b2b3faab172',
+			description: 'SQL (Advanced)',
+			date: 'March 2024',
+			skills: [
+				'SQL',
+				'Database Management',
+				'Queries',
+				'Joins',
+				'Normalization',
+				'Performance Tuning'
+			],
+			link: 'https://www.hackerrank.com/certificates/9b2b3faab172',
+			issuer: 'hackerrank'
+		}
+	];
 
 	let inVisible = false;
 
-	setTimeout(() => {
-		inVisible = true;
-	}, 1000);
+	onMount(() => {
+		setTimeout(() => (inVisible = true), 500);
+	});
 </script>
 
 {#if inVisible}
@@ -33,148 +116,119 @@
 					Git. Focused on creating efficient and functional web applications.
 				</p>
 
-				<div class="mt-10">
+				<div class="mt-12">
 					<a
 						target="_blank"
 						href="/Joy's_resume.pdf"
-						class="nav-links px-7 py-3 bg-[#151515] text-white"
+						class="inline-flex items-center px-8 py-4 bg-gray-900 text-white text-lg font-medium rounded-full shadow-lg hover:bg-gray-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-gray-300"
 					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-6 w-6 mr-3"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+							/>
+						</svg>
 						Download my CV
 					</a>
 				</div>
 			</div>
-			<div class="object-top overflow-hidden md:w-[30%]" in:fade={{ duration: 800, delay: 300 }}>
-				<img loading="lazy" src="my_image.webp" alt="Joy Karmakar" />
+
+			<div
+				class="md:w-2/5 lg:w-1/3 flex justify-center md:justify-end"
+				in:fade={{ duration: 800, delay: 300 }}
+			>
+				<div
+					class="relative rounded-xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105"
+				>
+					<img
+						loading="lazy"
+						src="my_image.webp"
+						alt="Joy Karmakar"
+						class="w-full h-auto object-cover rounded-xl"
+					/>
+					<div
+						class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-xl"
+					></div>
+				</div>
 			</div>
 		</div>
 
-		<!-- Certifications Section -->
-		<div class="mt-20">
-			<h2 class="text-3xl font-bold text-center mb-6">Certifications Achieved</h2>
-			<div class="space-y-8">
-				<!-- HackerRank Software Engineer Certification -->
-				<div
-					class="bg-white p-8 shadow-lg rounded-lg flex md:flex-row flex-col gap-5 md:gap-0 md:items-center md:space-x-6 hover:shadow-xl transition-shadow duration-300"
-				>
-					<img
-						class="w-24 h-24 object-cover rounded-full border border-indigo-200 p-1"
-						src="react_basic certificate.webp"
-						alt="HackerRank Certification"
-					/>
-					<div>
-						<h3 class="text-xl font-semibold">HackerRank Software Engineer</h3>
-						<p class="mt-2">Passed: March 2025</p>
-						<p class="mt-4">
-							I have successfully completed the HackerRank Software Engineer certification, showcasing my proficiency in software development, data structures, algorithms, and problem-solving skills.
-						</p>
-						<a
-							target="_blank"
-							href="https://www.hackerrank.com/certificates/1a798f193941"
-							class="mt-4 block font-semibold nav-links"
-						>
-							View Certification
-						</a>
-					</div>
-				</div>
-				
-				<!-- HackerRank React Certification -->
-				<div
-					class="bg-white p-8 shadow-lg rounded-lg flex md:flex-row flex-col gap-5 md:gap-0 md:items-center md:space-x-6 hover:shadow-xl transition-shadow duration-300"
-				>
-					<img
-						class="w-24 h-24 object-cover rounded-full border border-indigo-200 p-1"
-						src="react_basic certificate.webp"
-						alt="HackerRank Certification"
-					/>
-					<div>
-						<h3 class="text-xl font-semibold">HackerRank Frontend Developer (React)</h3>
-						<p class="mt-2">Passed: March 2025</p>
-						<p class="mt-4">
-							I have successfully completed the HackerRank Frontend Developer (React) certification, validating my expertise in React.js, component-based development, and modern frontend practices.
-						</p>
-						<a
-							target="_blank"
-							href="https://www.hackerrank.com/certificates/e8616d3e54b8"
-							class="mt-4 block font-semibold nav-links"
-						>
-							View Certification
-						</a>
-					</div>
-				</div>
+		<div class="mt-28">
+			<h2 class="text-4xl font-semibold text-center mb-16 text-gray-800">
+				Certifications & Achievements
+			</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+				{#each allCertificates as cert, i (cert.id)}
+					<div
+						in:fly={{ y: 20, duration: 500, delay: i * 100 }}
+						class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 flex flex-col justify-between"
+					>
+						<div class="flex-grow">
+							<div class="h-10 mb-5 flex items-center">
+								{#if cert.issuer === 'freecodecamp'}
+									<img
+										class="h-7 w-auto"
+										src="/icons/freecodecamp-logo.svg"
+										alt="FreeCodeCamp Logo"
+									/>
+								{:else if cert.issuer === 'webflow'}
+									<img
+										class="h-7 w-auto text-gray-900"
+										src="/icons/webflow-icon.svg"
+										alt="Webflow Logo"
+									/>
+								{:else}
+									<img
+										class="h-7 w-auto"
+										src="https://cdn.prod.website-files.com/66b6d7fd4d3e9cef94717176/6765dc51a13e31531996cef3_logo-dark.svg"
+										alt="HackerRank Logo"
+									/>
+								{/if}
+							</div>
+							<h3 class="text-2xl font-bold text-gray-900 mb-2">
+								{cert.description}
+							</h3>
+							<p class="text-sm text-gray-500 mb-6">Issued: {cert.date}</p>
+							{#if cert.skills?.length}
+								<div class="flex flex-wrap gap-2 mb-6">
+									{#each cert.skills as skill}
+										<span
+											class="bg-gray-100 text-gray-700 text-xs font-medium px-3.5 py-1.5 rounded-full border border-gray-200"
+										>
+											{skill}
+										</span>
+									{/each}
+								</div>
+							{/if}
+						</div>
 
-				<!-- HackerRank React Certification -->
-				<div
-					class="bg-white p-8 shadow-lg rounded-lg flex md:flex-row flex-col gap-5 md:gap-0 md:items-center md:space-x-6 hover:shadow-xl transition-shadow duration-300"
-				>
-					<img
-						class="w-24 h-24 object-cover rounded-full border border-indigo-200 p-1"
-						src="react_basic certificate.webp"
-						alt="HackerRank Certification"
-					/>
-					<div>
-						<h3 class="text-xl font-semibold">HackerRank React (Basic)</h3>
-						<p class="mt-2">Passed: February 2025</p>
-						<p class="mt-4">
-							I have successfully completed the HackerRank React (Basic) certification, which
-							validates my fundamental skills in React.js and component-based development.
-						</p>
 						<a
 							target="_blank"
-							href="https://www.hackerrank.com/certificates/a69958cf2207"
-							class="mt-4 block font-semibold nav-links"
+							href={cert.link}
+							class="inline-flex items-center mt-auto font-semibold text-indigo-700 hover:text-indigo-900 transition-colors duration-200"
 						>
-							View Certification
+							View Credential
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-4 w-4 ml-1"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+							</svg>
 						</a>
 					</div>
-				</div>
-
-				<!-- Responsive Web Design Certification -->
-				<div
-					class="bg-white p-8 shadow-lg rounded-lg flex md:flex-row flex-col gap-5 md:gap-0 md:items-center md:space-x-6 hover:shadow-xl transition-shadow duration-300"
-				>
-					<img
-						class="w-24 h-24 object-cover rounded-full border border-green-200 p-1"
-						src="responsive-design.webp"
-						alt="Responsive Web Design Certification"
-					/>
-					<div>
-						<h3 class="text-xl font-semibold">Responsive Web Design</h3>
-						<p class="mt-2">Passed: February 2025</p>
-						<p class="mt-4">
-							This certification highlights my proficiency in building responsive, mobile-first web
-							designs using HTML, CSS, and modern web techniques.
-						</p>
-						<a
-							target="_blank"
-							href="https://www.freecodecamp.org/certification/joykarmakar/responsive-web-design"
-							class="mt-4 block font-semibold nav-links"
-						>
-							View Certification
-						</a>
-					</div>
-				</div>
-
-				<!-- Webflow 101 Certification -->
-				<div
-					class="bg-white p-8 shadow-lg rounded-lg flex md:flex-row flex-col gap-5 md:gap-0 md:items-center md:space-x-6 hover:shadow-xl transition-shadow duration-300"
-				>
-					<img
-						class="w-24 h-24 object-cover rounded-full border border-blue-200 p-1"
-						src="webflow-101.webp"
-						alt="Webflow 101 Certification"
-					/>
-					<div>
-						<h3 class="text-xl font-semibold">Webflow 101</h3>
-						<p class="mt-2">Passed: December 2024</p>
-						<p class="mt-4">
-							This certification confirms my expertise in using Webflow for design-centric
-							development, focusing on creating responsive websites without code.
-						</p>
-						<a target="_blank" href="webflow-101.webp" class="mt-4 block font-semibold nav-links">
-							View Certification
-						</a>
-					</div>
-				</div>
+				{/each}
 			</div>
 		</div>
 	</div>
