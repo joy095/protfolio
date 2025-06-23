@@ -58,22 +58,6 @@
 		selectedCategory && selectedCategory !== 'All'
 			? data.posts.filter((post) => post.categories?.some((cat) => cat.title === selectedCategory))
 			: data.posts;
-
-	// Share functionality
-	const sharePost = (platform: string, post: Post) => {
-		const shareUrl = `https://joykarmakar.vercel.app/blog/${post.slug?.current || ''}`;
-		const shareTitle = post.title || 'Blog Post';
-		let url = '';
-		switch (platform) {
-			case 'twitter':
-				url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`;
-				break;
-			case 'linkedin':
-				url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
-				break;
-		}
-		window.open(url, '_blank');
-	};
 </script>
 
 <svelte:head>
@@ -194,32 +178,6 @@
 									<p class="card-excerpt">{post.excerpt}</p>
 								{/if}
 								<div class="read-more">Read More</div>
-								<div
-									class="share-buttons flex gap-3 mt-4 opacity-0 group-hover:opacity-100 transition-opacity"
-								>
-									<button
-										class="share-btn twitter"
-										on:click|stopPropagation={() => sharePost('twitter', post)}
-										aria-label="Share on Twitter"
-									>
-										<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-											<path
-												d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 001.88-2.38 8.6 8.6 0 01-2.72 1.04A4.28 4.28 0 0015.88 4c-2.37 0-4.3 1.93-4.3 4.3 0 .34.04.67.11.98A12.2 12.2 0 012.07 4.76a4.3 4.3 0 001.33 5.73 4.27 4.27 0 01-1.95-.54v.05c0 2.08 1.48 3.82 3.44 4.21a4.3 4.3 0 01-1.94.07 4.3 4.3 0 004.01 2.98A8.6 8.6 0 010 19.54a12.14 12.14 0 006.58 1.93c7.9 0 12.22-6.54 12.22-12.22 0-.19 0-.37-.01-.56A8.7 8.7 0 0022.46 6z"
-											/>
-										</svg>
-									</button>
-									<button
-										class="share-btn linkedin"
-										on:click|stopPropagation={() => sharePost('linkedin', post)}
-										aria-label="Share on LinkedIn"
-									>
-										<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-											<path
-												d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.35V9h3.41v1.56h.05c.47-.89 1.63-1.83 3.35-1.83 3.58 0 4.24 2.36 4.24 5.43v6.29zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06s.92-2.06 2.06-2.06 2.06.92 2.06 2.06-.92 2.06-2.06 2.06zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.78C.8 0 0 .8 0 1.78v20.44C0 23.2.8 24 1.78 24h20.44c.98 0 1.78-.8 1.78-1.78V1.78C24 .8 23.2 0 22.22 0z"
-											/>
-										</svg>
-									</button>
-								</div>
 							</div>
 						</a>
 					{/each}
@@ -374,29 +332,6 @@
 	}
 	.share-buttons {
 		margin-top: 0.5rem;
-	}
-	.share-btn {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 2rem;
-		height: 2rem;
-		border-radius: 50%;
-		background: #151515;
-		color: #f1efed;
-		transition:
-			background 0.3s ease,
-			transform 0.3s ease;
-	}
-	.share-btn:hover {
-		background: #333;
-		transform: scale(1.1);
-	}
-	.share-btn.twitter {
-		background: #1da1f2;
-	}
-	.share-btn.linkedin {
-		background: #0077b5;
 	}
 
 	/* Responsive Adjustments */
