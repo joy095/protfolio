@@ -151,7 +151,7 @@
 					<img
 						loading="lazy"
 						src="my_image.webp"
-						alt="Joy Karmakar"
+						alt="Joy Karmakar's professional headshot**, a web developer based in west bengal, india"
 						class="w-full h-auto object-cover rounded-xl"
 					/>
 					<div
