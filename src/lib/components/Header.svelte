@@ -119,14 +119,13 @@
 					</li>
 					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}>
 						<a
-							href="/#project"
-							on:click={(e) => smoothScrollToSection(e, '#project')}
+							href="/blog"
 							class="button overflow-hidden flex"
-							on:mouseover={() => handleHover('project')}
-							on:focus={() => handleHover('project')}
-							class:hovered={hoveredButtons['project']}
+							on:mouseover={() => handleHover('blog')}
+							on:focus={() => handleHover('blog')}
+							class:hovered={hoveredButtons['blog']}
 						>
-							Project
+							Blog
 						</a>
 					</li>
 					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 600, opacity: 0 }}>

@@ -3,6 +3,7 @@
 	import RevealImage from '$lib/components/RevealImage.svelte';
 	import { smoothScrollToSection } from '$lib/scroll';
 	import type { Work } from '$lib/types/post'; // Import your Work type
+	// Removed: import { afterNavigate } from '$app/navigation'; // Not needed for this specific class removal
 
 	export let posts: Work[] = []; // Initialize as empty array to avoid undefined errors
 	export let error: Error | null = null; // Initialize as null
@@ -37,8 +38,6 @@
 		};
 	}
 
-	// Since data is pre-rendered at build time, content is inherently visible from the start.
-	// You can safely set this to true for SSG.
 	let contentVisible = true;
 </script>
 

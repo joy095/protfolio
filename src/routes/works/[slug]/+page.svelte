@@ -61,14 +61,12 @@
 	<meta name="description" content={meta.description} />
 	<meta name="author" content="Joy Karmakar" />
 
-	<!-- Open Graph -->
 	<meta property="og:title" content={meta.title} />
 	<meta property="og:description" content={meta.description} />
 	<meta property="og:url" content={meta.url} />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content={urlFor(meta.image)} />
 
-	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={meta.title} />
 	<meta name="twitter:description" content={meta.description} />
@@ -105,7 +103,6 @@
 	</div>
 {:else if work}
 	<article class="container-auto my-40">
-		<!-- Header -->
 		<header class="mb-3 relative pb-2 overflow-hidden">
 			<div class="nav-border"></div>
 			<div class="flex flex-col md:flex-row md:items-end justify-between gap-5 md:gap-40 mb-4">
@@ -124,6 +121,7 @@
 						target="_blank"
 						href={work.link}
 						rel="noopener noreferrer"
+						in:fly={{ y: 20, duration: 600, delay: 500 }}
 					>
 						View live website
 						<img class="h-4 w-4" src="/icons/arrow-black.svg" alt="icon" />
@@ -235,7 +233,8 @@
 								href={`/works/${nextWork?.slug}`}
 								on:click={(e) => nextWork && handleWorkNavigation(nextWork.slug, e)}
 								on:click={scrollToTop}
-								on:keydown={(e) => e.key === 'Enter' && scrollToTop()}>View</a
+								on:keydown={(e) => e.key === 'Enter' && scrollToTop()}
+								in:fly={{ y: 20, duration: 600, delay: 700 }}>View</a
 							>
 						</div>
 					</div>
