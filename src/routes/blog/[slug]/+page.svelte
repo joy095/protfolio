@@ -50,11 +50,11 @@
 		const shareTitle = data.title || 'Blog Post';
 		let url = '';
 		switch (platform) {
-			case 'twitter':
-				url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`;
+			case 'x':
+				url = `https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${shareTitle}`;
 				break;
 			case 'linkedin':
-				url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+				url = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}&text=${encodeURIComponent(shareTitle)}`;
 				break;
 		}
 		window.open(url, '_blank');
