@@ -4,6 +4,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	import StaggerText from './StaggerText.svelte';
+	import { inView } from '$lib/actions/inView';
 
 	let text = `A showcase of web applications and backend systems I’ve developed using modern tools like Go, PostgreSQL, Redis, SvelteKit, React, Node.js, and more — all focused on speed, scalability, and great user experience.`;
 
@@ -56,58 +57,60 @@
 	}, 1000);
 </script>
 
-{#if showHero}
-	<div id="hero" class="overflow-hidden container-auto">
-		<div
-			in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
-			id="animated-text"
-			class="flex items-center justify-center gap-5 transition-transform duration-800"
-			style="transform: translateX({$xPos1}px)"
-		>
-			<img
-				loading="lazy"
-				class="icon h-[12vw] sm:h-20 xl:h-full {scrollDirection}"
-				src="/icons/line.svg"
-				alt=""
-			/>
-			<h2
-				class="text-[10vw] xl:text-[7rem] lg:text-[5.5rem] md:text-[5rem] leading-[0.8] font-light tracking-tighter"
-			>
-				I'm Joy Karmakar
-			</h2>
-
-		</div>
-
-		<div class="flex flex-col xl:flex-row justify-between mt-10 gap-10 mx-[8vw] lg:mx-14">
-			<div in:fly={{ y: 20, duration: 800, delay: 600, opacity: 0 }} class="xl:max-w-[50%]">
-				<StaggerText
-					charClass="font-medium text-lg md:text-xl lg:text-2xl leading-[1.6] tracking-tighter"
-					{text}
-					delay={5}
-					initialDelay={200}
-					duration={800}
-				/>
-			</div>
-
-			<div
-				in:fly={{ y: 20, duration: 800, delay: 200, opacity: 0 }}
-				class="flex items-center min-w-fit"
-			>
-				<h3 class="font-bold text-[10vw] xl:text-[7rem] lg:text-[5.5rem] md:text-[5rem]">
-					A developer
-				</h3>
-			</div>
-		</div>
-
+<div
+	use:inView={{ threshold: 0.2 }}
+	on:inview={() => (showHero = true)}
+	id="hero"
+	class="overflow-hidden container-auto"
+>
+	<div
+		in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
+		id="animated-text"
+		class="flex items-center justify-center gap-5 transition-transform duration-800"
+		style="transform: translateX({$xPos1}px)"
+	>
+		<img
+			loading="lazy"
+			class="icon h-[12vw] sm:h-20 xl:h-full {scrollDirection}"
+			src="/icons/line.svg"
+			alt=""
+		/>
 		<h2
-			in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}
-			class="text-[10vw] xl:text-[7rem] lg:text-[5.5rem] md:text-[5rem] font-light leading-[0.9] mt-4 tracking-tighter flex justify-center"
-			style="transform: translateX({$xPos2}px)"
+			class="text-[10vw] xl:text-[7rem] lg:text-[5.5rem] md:text-[5rem] leading-[0.8] font-light tracking-tighter"
 		>
-			lives by develop
+			I'm Joy Karmakar
 		</h2>
 	</div>
-{/if}
+
+	<div class="flex flex-col xl:flex-row justify-between mt-10 gap-10 mx-[8vw] lg:mx-14">
+		<div in:fly={{ y: 20, duration: 800, delay: 600, opacity: 0 }} class="xl:max-w-[50%]">
+			<StaggerText
+				charClass="font-medium text-lg md:text-xl lg:text-2xl leading-[1.6] tracking-tighter"
+				{text}
+				delay={5}
+				initialDelay={200}
+				duration={800}
+			/>
+		</div>
+
+		<div
+			in:fly={{ y: 20, duration: 800, delay: 200, opacity: 0 }}
+			class="flex items-center min-w-fit"
+		>
+			<h3 class="font-bold text-[10vw] xl:text-[7rem] lg:text-[5.5rem] md:text-[5rem]">
+				A developer
+			</h3>
+		</div>
+	</div>
+
+	<h2
+		in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}
+		class="text-[10vw] xl:text-[7rem] lg:text-[5.5rem] md:text-[5rem] font-light leading-[0.9] mt-4 tracking-tighter flex justify-center"
+		style="transform: translateX({$xPos2}px)"
+	>
+		lives by develop
+	</h2>
+</div>
 
 <style>
 	.letter {

@@ -3,6 +3,7 @@
 	import { fly, fade } from 'svelte/transition';
 	import { PortableText } from '@portabletext/svelte';
 	import { urlFor } from '$lib/sanityImage';
+	import { inView } from '$lib/actions/inView';
 
 	interface Category {
 		_id?: string;
@@ -82,7 +83,12 @@
 </svelte:head>
 
 {#if showContent}
-	<div class="container-auto" in:fly={{ duration: 800, y: 50 }}>
+	<div
+		use:inView={{ threshold: 0.2 }}
+		on:inview={() => (showContent = true)}
+		class="container-auto"
+		in:fly={{ duration: 800, y: 50 }}
+	>
 		{#if errorMessage}
 			<div class="text-red-500 text-xl p-4 text-center">
 				<p>{errorMessage}</p>

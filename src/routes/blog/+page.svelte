@@ -3,6 +3,7 @@
 	import { fly, fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import { urlFor } from '$lib/sanityImage';
+	import { inView } from '$lib/actions/inView';
 
 	interface Author {
 		name?: string;
@@ -99,7 +100,12 @@
 </svelte:head>
 
 {#if showContent}
-	<div class="container-auto" in:fly={{ duration: 800, y: 50 }}>
+	<div
+		use:inView={{ threshold: 0.2 }}
+		on:inview={() => (showContent = true)}
+		class="container-auto"
+		in:fly={{ duration: 800, y: 50 }}
+	>
 		<!-- Hero Header -->
 		<header class="hero text-center mb-16">
 			<h1
