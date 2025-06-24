@@ -60,8 +60,6 @@
 		}
 		window.open(url, '_blank');
 	};
-
-	const BASE_URL = import.meta.env.VITE_BASE_URL;
 </script>
 
 <svelte:head>
