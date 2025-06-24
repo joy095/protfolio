@@ -1,13 +1,22 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import About from '$lib/components/About.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Project from '$lib/components/Project.svelte';
 	import Experience from '$lib/components/Experience.svelte';
 
-	import type { PageData } from './$types'; // Correct type for page data
+	import type { PageData } from './$types';
 
-	export let data: PageData; // Data from the load functions
-	const { posts, meta, error } = data; // Destructure all relevant data
+	export let data: PageData;
+	const { posts, meta, error } = data;
+
+	let showHero = false;
+
+	onMount(() => {
+		setTimeout(() => {
+			showHero = true;
+		}, 1500);
+	});
 </script>
 
 <svelte:head>
@@ -29,7 +38,9 @@
 	<meta name="twitter:creator" content={meta.twitterHandle} />
 </svelte:head>
 
-<Hero />
+{#if showHero}
+	<Hero />
+{/if}
 
 <Project {posts} {error} />
 
