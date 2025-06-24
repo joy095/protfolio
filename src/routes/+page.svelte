@@ -9,14 +9,6 @@
 
 	export let data: PageData;
 	const { posts, meta, error } = data;
-
-	let showHero = false;
-
-	onMount(() => {
-		setTimeout(() => {
-			showHero = true;
-		}, 1500);
-	});
 </script>
 
 <svelte:head>
@@ -38,9 +30,7 @@
 	<meta name="twitter:creator" content={meta.twitterHandle} />
 </svelte:head>
 
-{#if showHero}
-	<Hero />
-{/if}
+<Hero />
 
 <Project {posts} {error} />
 
