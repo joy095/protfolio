@@ -104,7 +104,10 @@
 		</div>
 
 		<div class="flex flex-col xl:flex-row justify-between mt-10 gap-10 mx-[8vw] lg:mx-14">
-			<div in:fly={{ y: 20, duration: 800, delay: 1500, opacity: 0 }} class="xl:max-w-[50%]">
+			<div
+				in:fly={{ y: 20, duration: 800, delay: 1200, opacity: 0 }}
+				class="xl:max-w-[50%] min-h-fit"
+			>
 				<StaggerText
 					charClass="font-medium text-lg md:text-xl lg:text-2xl leading-[1.6] tracking-tighter"
 					{text}

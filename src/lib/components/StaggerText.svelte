@@ -56,7 +56,10 @@
 	}
 </script>
 
-<div class={`flex flex-col ${containerClass}`}>
+<div
+	in:fly={{ y: 20, duration: 800, delay: 300, opacity: 0 }}
+	class={`flex flex-col ${containerClass}`}
+>
 	{#if mounted}
 		{#each lines as line, lineIndex}
 			<div class={`flex flex-wrap gap-x-2 ${lineClass}`}>
