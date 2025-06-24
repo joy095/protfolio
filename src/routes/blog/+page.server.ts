@@ -25,7 +25,6 @@ export const load: PageServerLoad = async () => {
 
   try {
     const posts = await client.fetch(query);
-    console.log('Fetched posts:', JSON.stringify(posts, null, 2)); // Detailed logging
     if (!posts || posts.length === 0) {
       return { posts: [] };
     }

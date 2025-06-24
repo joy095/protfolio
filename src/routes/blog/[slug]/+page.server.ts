@@ -30,7 +30,6 @@ function _urlFor(source: any) {
 }
 
 export const load: PageServerLoad = async ({ params }) => {
-  console.log('Fetching post with slug:', params.slug);
   const query = `*[_type == "post" && slug.current == $slug && !(_id in path('drafts.**'))][0] {
     title,
     slug,
@@ -52,7 +51,6 @@ export const load: PageServerLoad = async ({ params }) => {
 
   try {
     const post = await client.fetch(query, { slug: params.slug });
-    console.log('Fetched post:', JSON.stringify(post, null, 2));
 
     if (!post) {
       throw error(404, 'Post not found');

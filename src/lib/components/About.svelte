@@ -186,11 +186,7 @@
 										alt="Webflow Logo"
 									/>
 								{:else}
-									<img
-										class="h-7 w-auto"
-										src="https://cdn.prod.website-files.com/66b6d7fd4d3e9cef94717176/6765dc51a13e31531996cef3_logo-dark.svg"
-										alt="HackerRank Logo"
-									/>
+									<img class="h-7 w-auto" src="/icons/hacker-rank-logo.svg" alt="HackerRank Logo" />
 								{/if}
 							</div>
 							<h3 class="text-2xl font-bold text-gray-900 mb-2">
