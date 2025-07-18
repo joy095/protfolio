@@ -215,8 +215,6 @@
 	}
 	.hero-image {
 		position: relative;
-		height: 60vh;
-		max-height: 600px;
 		overflow: hidden;
 		border-radius: 1rem;
 	}
