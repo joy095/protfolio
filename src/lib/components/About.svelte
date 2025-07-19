@@ -87,7 +87,7 @@
 	let inVisible = false;
 
 	onMount(() => {
-		setTimeout(() => (inVisible = true), 500);
+		setTimeout(() => (inVisible = true), 1800);
 	});
 </script>
 

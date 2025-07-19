@@ -79,79 +79,81 @@
 	};
 </script>
 
-<header
-	class="header-container container-auto background"
-	style="--number-of-lines: {numberOfLines}"
-	class:scrolling-down={scrollDirection === 'down'}
-	class:scrolling-up={scrollDirection === 'up'}
->
-	<div
-		use:inView={{ threshold: 0.2 }}
-		on:inview={() => (isVisible = true)}
-		on:introend={() => headerAnimationComplete.set(true)}
-		class="relative overflow-hidden flex justify-between items-center py-5"
+{#if isVisible}
+	<header
+		class="header-container container-auto background"
+		style="--number-of-lines: {numberOfLines}"
+		class:scrolling-down={scrollDirection === 'down'}
+		class:scrolling-up={scrollDirection === 'up'}
 	>
-		<div class="nav-border"></div>
-
-		<a
-			class="nav-links font-bold md:text-xl sm:text-lg text-base flex gap-1 items-center"
-			href="/#hero"
-			on:click={(e) => smoothScrollToSection(e, '#hero')}
-			in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
-			on:mouseover={() => handleHover('home')}
-			on:focus={() => handleHover('home')}
-			class:hovered={hoveredButtons['home']}
-		>
-			Joy Karmakar
-		</a>
-
-		<nav>
-			<ul class="flex gap-5 md:gap-8 font-semibold text-black/85 text-base md:text-lg">
-				<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 200, opacity: 0 }}>
-					<a
-						href="/#about"
-						on:click={(e) => smoothScrollToSection(e, '#about')}
-						class="button overflow-hidden flex"
-						on:mouseover={() => handleHover('about')}
-						on:focus={() => handleHover('about')}
-						class:hovered={hoveredButtons['about']}
-					>
-						About
-					</a>
-				</li>
-				<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}>
-					<a
-						href="/blog"
-						class="button overflow-hidden flex"
-						on:mouseover={() => handleHover('blog')}
-						on:focus={() => handleHover('blog')}
-						class:hovered={hoveredButtons['blog']}
-					>
-						Blog
-					</a>
-				</li>
-				<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 600, opacity: 0 }}>
-					<a
-						href="/contact"
-						class="button overflow-hidden flex"
-						on:mouseover={() => handleHover('contact')}
-						on:focus={() => handleHover('contact')}
-						class:hovered={hoveredButtons['contact']}
-					>
-						Contact
-					</a>
-				</li>
-			</ul>
-		</nav>
-
 		<div
-			class="text-black/85 text-lg font-semibold md:flex hidden"
-			in:fly={{ y: 20, duration: 800, delay: 800, opacity: 0 }}
+			use:inView={{ threshold: 0.2 }}
+			on:inview={() => (isVisible = true)}
+			on:introend={() => headerAnimationComplete.set(true)}
+			class="relative overflow-hidden flex justify-between items-center py-5"
 		>
-			{timezone} * {currentTime}
+			<div class="nav-border"></div>
+
+			<a
+				class="nav-links font-bold md:text-xl sm:text-lg text-base flex gap-1 items-center"
+				href="/#hero"
+				on:click={(e) => smoothScrollToSection(e, '#hero')}
+				in:fly={{ y: 20, duration: 800, delay: 0, opacity: 0 }}
+				on:mouseover={() => handleHover('home')}
+				on:focus={() => handleHover('home')}
+				class:hovered={hoveredButtons['home']}
+			>
+				Joy Karmakar
+			</a>
+
+			<nav>
+				<ul class="flex gap-5 md:gap-8 font-semibold text-black/85 text-base md:text-lg">
+					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 200, opacity: 0 }}>
+						<a
+							href="/#about"
+							on:click={(e) => smoothScrollToSection(e, '#about')}
+							class="button overflow-hidden flex"
+							on:mouseover={() => handleHover('about')}
+							on:focus={() => handleHover('about')}
+							class:hovered={hoveredButtons['about']}
+						>
+							About
+						</a>
+					</li>
+					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 400, opacity: 0 }}>
+						<a
+							href="/blog"
+							class="button overflow-hidden flex"
+							on:mouseover={() => handleHover('blog')}
+							on:focus={() => handleHover('blog')}
+							class:hovered={hoveredButtons['blog']}
+						>
+							Blog
+						</a>
+					</li>
+					<li class="nav-links" in:fly={{ y: 20, duration: 800, delay: 600, opacity: 0 }}>
+						<a
+							href="/contact"
+							class="button overflow-hidden flex"
+							on:mouseover={() => handleHover('contact')}
+							on:focus={() => handleHover('contact')}
+							class:hovered={hoveredButtons['contact']}
+						>
+							Contact
+						</a>
+					</li>
+				</ul>
+			</nav>
+
+			<div
+				class="text-black/85 text-lg font-semibold md:flex hidden"
+				in:fly={{ y: 20, duration: 800, delay: 800, opacity: 0 }}
+			>
+				{timezone} * {currentTime}
+			</div>
 		</div>
-	</div>
-</header>
+	</header>
+{/if}
 
 <style>
 	/* Header styles */
