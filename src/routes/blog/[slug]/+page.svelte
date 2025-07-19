@@ -212,6 +212,7 @@
 	.hero {
 		position: relative;
 		margin-bottom: 4rem;
+		margin-top: 10rem;
 	}
 	.hero-image {
 		position: relative;
@@ -220,7 +221,7 @@
 	}
 	.hero-image img {
 		width: 100%;
-		height: 100%;
+		max-height: 120vh;
 		object-fit: cover;
 		transition: transform 0.5s ease;
 	}

@@ -1,13 +1,37 @@
 <script lang="ts">
 	import '@fontsource-variable/space-grotesk';
+	import { onMount } from 'svelte';
+
+	import { initializeLenis } from '$lib/scroll';
 	import '../app.css';
 
 	import Header from '$lib/components/Header.svelte';
 	import Cursor from '$lib/Cursor.svelte';
+	import { headerAnimationComplete } from '$lib/stores/store';
 	import Footer from '$lib/components/Footer.svelte';
 
 	let numberOfLines = 11;
+	let showSplash = false; // Initialize to false by default on SSR
 	let isContentVisible = false; // Initialize to false to hide content initially
+
+	onMount(() => {
+		initializeLenis(); // Initialize Lenis on mount
+
+		if (showSplash) {
+			// Only hide splash after 3 seconds if it was shown
+			setTimeout(() => {
+				showSplash = false;
+			}, 3000);
+		}
+
+		// Subscribe to headerAnimationComplete
+		headerAnimationComplete.subscribe((isComplete: boolean) => {
+			// Only update isContentVisible if splash is no longer shown
+			if (!showSplash) {
+				isContentVisible = isComplete;
+			}
+		});
+	});
 </script>
 
 <main class="background" style="--number-of-lines: {numberOfLines}">
